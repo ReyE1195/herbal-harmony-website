@@ -3,43 +3,39 @@
 //   Netlify Function — update-password.js
 // ============================================
 
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import { getStore } from '@netlify/blobs';
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { connectLambda, getStore } = require('@netlify/blobs');
 
-export default async (req, context) => {
-    if (req.method === 'OPTIONS') {
-        return new Response('', { status: 200, headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Content-Type, Authorization', 'Access-Control-Allow-Methods': 'POST, OPTIONS' } });
+exports.handler = async (event) => {
+    if (event.httpMethod === 'OPTIONS') {
+        return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Content-Type, Authorization', 'Access-Control-Allow-Methods': 'POST, OPTIONS' }, body: '' };
     }
-    if (req.method !== 'POST') return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405 });
+    if (event.httpMethod !== 'POST') return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
 
     try {
-        const authHeader = req.headers.get('authorization') || '';
+        connectLambda(event);
+        const authHeader = event.headers.authorization || '';
         const token = authHeader.replace('Bearer ', '');
-        if (!token) return new Response(JSON.stringify({ error: 'Not authenticated.' }), { status: 401, headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' } });
+        if (!token) return { statusCode: 401, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ error: 'Not authenticated.' }) };
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const { currentPassword, newPassword } = await req.json();
-
-        if (!currentPassword || !newPassword || newPassword.length < 8) {
-            return new Response(JSON.stringify({ error: 'Valid current and new password (8+ chars) required.' }), { status: 400, headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' } });
-        }
+        const { currentPassword, newPassword } = JSON.parse(event.body);
+        if (!currentPassword || !newPassword || newPassword.length < 8) return { statusCode: 400, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ error: 'Valid current and new password (8+ chars) required.' }) };
 
         const store = getStore('hh-users');
         const user = await store.get(decoded.email, { type: 'json' });
-        if (!user) return new Response(JSON.stringify({ error: 'User not found.' }), { status: 404, headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' } });
+        if (!user) return { statusCode: 404, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ error: 'User not found.' }) };
 
         const match = await bcrypt.compare(currentPassword, user.password);
-        if (!match) return new Response(JSON.stringify({ error: 'Current password is incorrect.' }), { status: 401, headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' } });
+        if (!match) return { statusCode: 401, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ error: 'Current password is incorrect.' }) };
 
         user.password = await bcrypt.hash(newPassword, 12);
         await store.setJSON(decoded.email, user);
+        return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ success: true, message: 'Password updated successfully! 🌿' }) };
 
-        return new Response(JSON.stringify({ success: true, message: 'Password updated successfully! 🌿' }), { status: 200, headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' } });
     } catch (err) {
         console.error('Update password error:', err);
-        return new Response(JSON.stringify({ error: 'Something went wrong. Please try again.' }), { status: 500, headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' } });
+        return { statusCode: 500, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ error: 'Something went wrong. Please try again.' }) };
     }
 };
-
-export const config = { path: '/netlify/functions/update-password' };

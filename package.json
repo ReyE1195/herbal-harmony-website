@@ -1,5 +1,7 @@
 {
   "name": "herbal-harmony-with-holistic-healing",
+  "version": "1.0.0",
+  "description": "Herbal Harmony with Holistic Healing — e-commerce website",
   "private": true,
   "dependencies": {
     "stripe": "^14.0.0",
