@@ -804,6 +804,15 @@
                 wishlist = wishlist.filter(item => item.name !== name);
             }
             localStorage.setItem('hh_wishlist', JSON.stringify(wishlist));
+            // Sync to server if logged in
+            const token = localStorage.getItem('hh_token');
+            if (token) {
+                fetch('/.netlify/functions/update-profile', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+                    body: JSON.stringify({ wishlist })
+                }).catch(function() {});
+            }
         } catch(e) {}
 
         // Visual feedback

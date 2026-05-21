@@ -19,7 +19,7 @@
         <li class="nav-link"><a href="#about-us">About</a></li>
         <li class="nav-link"><a href="#contact">Contact</a></li>
     </ul>
-    <ul class="sign-up_login">
+    <ul class="sign-up_login" id="auth-nav">
         <li><a href="signup.html" target="_blank">Sign Up</a></li>
         <li><a href="login.html" target="_blank">Login</a></li>
         <li>
@@ -187,6 +187,18 @@
 
 <script src="cart.js"></script>
 <script src="index.js"></script>
+<script>
+    // ── Update navbar based on login state ────────────────────────
+    (function() {
+        const token = localStorage.getItem('hh_token');
+        const profile = JSON.parse(localStorage.getItem('hh_profile') || '{}');
+        const authNav = document.getElementById('auth-nav');
+        if (token && profile.firstName && authNav) {
+            authNav.innerHTML =
+                '<li><a href="account.html" target="_blank">My Account</a></li>';
+        }
+    })();
+</script>
 <!-- MailerLite footer form handler -->
 <script>
     (function() {
