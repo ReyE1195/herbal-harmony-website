@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return Policy — Herbal Harmony with Holistic Healing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon:              #528552;
+            --neon-forest:       #3D5A3D;
+            --neon-frosted-mint: #D0EED0;
+            --cream:             #F8F4E9;
+            --cream-dark:        #CDCFC0;
+            --sage:              #B8BBA3;
+            --sage-dark:         #9F9989;
+            --forest:            #3d5a3d;
+            --charcoal:          #3B575A;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: "Montserrat", sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
+        h1, h2, h3 { font-family: "Cormorant Garamond", serif; }
+        a { text-decoration: none; color: inherit; }
+        img { display: block; max-width: 100%; }
+        @keyframes fadeSlideUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+
+        /* ── Hero ── */
+        .page-hero {
+            padding: 5rem 3rem 3.5rem;
+            background: linear-gradient(160deg, var(--neon-forest) 0%, var(--neon) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: "";
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 380px; height: 380px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(208,238,208,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--neon-frosted-mint);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            display: block;
+        }
+        .page-hero h1 { font-size: 3rem; color: white; margin-bottom: 0.5rem; position: relative; z-index: 1; }
+        .page-hero > p { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-style: italic; color: var(--neon-frosted-mint); position: relative; z-index: 1; }
+        .back-home {
+            display: inline-block;
+            font-size: 0.76rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--neon-frosted-mint); border: 2px solid var(--neon-frosted-mint);
+            border-radius: 999px; padding: 0.38rem 1rem;
+            position: relative; z-index: 1; margin-bottom: 1.25rem;
+            transition: all 0.3s ease;
+        }
+        .back-home:hover { background: var(--neon-frosted-mint); color: var(--neon-forest); }
+
+        /* ── Main content ── */
+        .policy-wrapper {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+            animation: fadeSlideUp 0.6s ease forwards;
+        }
+
+        .last-updated {
+            font-size: 0.78rem;
+            color: var(--sage-dark);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .intro-text {
+            font-size: 0.92rem;
+            line-height: 1.9;
+            color: var(--charcoal);
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 1rem;
+            border-left: 4px solid var(--neon);
+        }
+
+        /* ── Policy sections ── */
+        .policy-section {
+            margin-bottom: 2.75rem;
+            padding-bottom: 2.75rem;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+        .policy-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .policy-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--forest);
+            margin-bottom: 1rem;
+            letter-spacing: 0.03em;
+        }
+        .policy-section p {
+            font-size: 0.88rem;
+            line-height: 1.9;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+        .policy-section p:last-child { margin-bottom: 0; }
+        .policy-section p strong { color: var(--forest); font-weight: 600; }
+
+        /* ── Return address block ── */
+        .address-block {
+            background: var(--cream);
+            border: 1px solid var(--cream-dark);
+            border-radius: 0.75rem;
+            padding: 1.25rem 1.5rem;
+            margin: 1rem 0;
+            font-size: 0.88rem;
+            line-height: 2;
+            color: var(--charcoal);
+        }
+        .address-block a { color: var(--neon); text-decoration: underline; }
+
+        /* ── Please note banner ── */
+        .please-note {
+            background: var(--neon-forest);
+            color: var(--neon-frosted-mint);
+            border-radius: 1rem;
+            padding: 1.5rem 1.75rem;
+            margin-top: 1.25rem;
+        }
+        .please-note h3 {
+            font-size: 1rem;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .please-note ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .please-note ul li {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--neon-frosted-mint);
+            padding-left: 1.25rem;
+            position: relative;
+        }
+        .please-note ul li::before {
+            content: "🌿";
+            position: absolute;
+            left: 0;
+            font-size: 0.75rem;
+        }
+
+        /* ── Contact block ── */
+        .contact-block {
+            background: white;
+            border: 1px solid var(--cream-dark);
+            border-radius: 1rem;
+            padding: 1.5rem 1.75rem;
+            margin-top: 1rem;
+        }
+        .contact-block p {
+            font-size: 0.88rem;
+            line-height: 1.9;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+        .contact-block a { color: var(--neon); text-decoration: underline; }
+
+        /* ── Footer ── */
+        footer { background:#000000; color: var(--cream); padding: 4rem 3rem 2rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(208,238,208,0.15); max-width: 1100px; margin: 0 auto; }
+        .footer-brand h2 { font-size: 1.6rem; color: var(--neon-frosted-mint); margin-bottom: 0.75rem; line-height: 1.3; }
+        .footer-brand p { font-size: 0.85rem; color: rgba(208,238,208,0.7); line-height: 1.85; margin-bottom: 1.5rem; max-width: 280px; }
+        .footer-col-title { font-family: "Montserrat", sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon-frosted-mint); margin-bottom: 1.2rem; }
+        .footer-contact ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+        .footer-contact li { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.85rem; color: rgba(208,238,208,0.75); line-height: 1.5; }
+        .footer-newsletter p.newsletter-desc { font-size: 0.84rem; color: rgba(208,238,208,0.7); line-height: 1.7; margin-bottom: 1.1rem; }
+        .newsletter-form { display: flex; flex-direction: column; gap: 0.65rem; }
+        .newsletter-form input[type="email"] { width: 100%; padding: 0.65rem 0.9rem; border-radius: 0.55rem; border: 1px solid rgba(208,238,208,0.25); background: rgba(208,238,208,0.08); color: var(--cream); font-family: "Montserrat", sans-serif; font-size: 0.82rem; outline: none; }
+        .newsletter-form input[type="email"]::placeholder { color: rgba(208,238,208,0.4); }
+        .newsletter-submit { padding: 0.65rem 1.2rem; background: transparent; border: 2px solid var(--neon-frosted-mint); border-radius: 999px; color: var(--neon-frosted-mint); font-family: "Montserrat", sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; width: 100%; }
+        .newsletter-submit:hover { background: var(--neon-frosted-mint); color: var(--neon-forest); }
+        .newsletter-note { font-size: 0.71rem; color: rgba(208,238,208,0.45); margin-top: 0.2rem; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.75rem; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; gap: 0.75rem; }
+        .footer-copy { font-size: 0.76rem; color: rgba(208,238,208,0.45); }
+        .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .footer-links a { font-size: 0.76rem; color: rgba(208,238,208,0.55); transition: color 0.3s; }
+
+
+        @media (max-width: 900px) {
+            .page-hero { padding: 4rem 1.5rem 2.5rem; }
+            .page-hero h1 { font-size: 2.2rem; }
+            .policy-wrapper { padding: 2.5rem 1.5rem 4rem; }
+            footer { padding: 3rem 1.5rem 1.5rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .footer-brand { grid-column: 1/-1; }
+        }
+        @media (max-width: 640px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        /* ── Footer hover styles ── */
+        .footer-links a { transition: color 0.3s ease; }
+
+        .footer-bottom-links a { transition: color 0.3s ease; }
+
+        .footer-review-link { transition: color 0.3s ease, text-shadow 0.3s ease; }
+
+        .social-icons a { transition: all 0.3s ease; }
+        .social-icons a:hover { background: rgba(208,238,208,0.15); border-color: #D0EED0; color: #D0EED0; transform: translateY(-3px); box-shadow: 0 4px 16px rgba(208,238,208,0.2); }
+
+        /* ══ FOOTER OVERRIDES — always last to win ══ */
+        footer { background: #000000 !important; }
+        .footer-links a { font-size: 0.76rem; color: rgba(208,238,208,0.55); transition: color 0.3s ease; }
+        .footer-links a:hover { color: #D0EED0; }
+        .footer-bottom-links a { font-size: 0.76rem; color: rgba(208,238,208,0.55); transition: color 0.3s ease; }
+        .footer-bottom-links a:hover { color: #D0EED0; }
+        .footer-review-link { color: rgba(208,238,208,0.8); text-decoration: underline; text-underline-offset: 3px; transition: color 0.3s ease, text-shadow 0.3s ease; }
+        .footer-review-link:hover { color: #D0EED0; text-shadow: 0 0 8px rgba(208,238,208,0.4); }
+        .newsletter-submit:hover { background: #D0EED0 !important; color: #000000 !important; }
+
+        /* ── Footer hover styles ── */
+        .footer-social-icon { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1.5px solid rgba(208,238,208,0.3); color:rgba(208,238,208,0.8); transition:all 0.3s ease; text-decoration:none; }
+        .footer-social-icon:hover { background:rgba(208,238,208,0.15); border-color:#D0EED0; color:#D0EED0; transform:translateY(-3px); box-shadow:0 4px 16px rgba(208,238,208,0.2); }
+        .footer-review-link { font-size:0.76rem; color:#D0EED0; text-decoration:underline; text-underline-offset:3px; transition:color 0.3s ease, text-shadow 0.3s ease; }
+        .footer-review-link:hover { color:#D0EED0; text-shadow:0 0 8px rgba(208,238,208,0.4); opacity:1; }
+        .footer-legal-link { font-size:0.76rem; color:rgba(208,238,208,0.55); text-decoration:none; transition:color 0.3s ease; }
+        .footer-legal-link:hover { color:#D0EED0; }
+        footer { background:#000000 !important; }
+    </style>
+</head>
+<body>
+
+<!-- ── Hero ── -->
+<section class="page-hero">
+    <a href="index.html" class="back-home">← Back to Home</a>
+    <span class="section-label">Legal</span>
+    <h1>Return Policy</h1>
+    <p>Your satisfaction is our priority — here's how we make it right.</p>
+</section>
+
+<!-- ── Policy Content ── -->
+<main class="policy-wrapper">
+
+    <p class="last-updated">Last updated: February 19, 2026</p>
+
+    <p class="intro-text">Thank you for your purchase. We hope you are happy with your purchase. However, if you are not completely satisfied with your purchase for any reason, you may return it to us for a <strong>refund, store credit, or an exchange</strong>. Please see below for more information on our return policy.</p>
+
+    <!-- ── RETURNS ── -->
+    <div class="policy-section">
+        <h2>Returns</h2>
+        <p>All returns must be postmarked within <strong>thirty (30) days</strong> of the purchase date. All returned items must be in new and unused condition, with all original tags and labels attached.</p>
+    </div>
+
+    <!-- ── RETURN PROCESS ── -->
+    <div class="policy-section">
+        <h2>Return Process</h2>
+        <p>To return an item, please email customer service at <a href="mailto:herbalharmonywithholisticheali@gmail.com" style="color: var(--neon); text-decoration: underline;">herbalharmonywithholisticheali@gmail.com</a> to obtain a Return Merchandise Authorization (RMA) number. After receiving an RMA number, place the item securely in its original packaging and include your proof of purchase, then mail your return to the following address:</p>
+
+        <div class="address-block">
+            <strong>Herbal Harmony with Holistic Healing</strong><br>
+            Attn: Returns<br>
+            RMA #<br>
+            15661 HWY 262 Lot 25 Unit 23<br>
+            Warden, WA 98857<br>
+            United States
+        </div>
+
+        <p>Please note, you will be responsible for all return shipping charges. We strongly recommend that you use a trackable method to mail your return.</p>
+    </div>
+
+    <!-- ── REFUNDS ── -->
+    <div class="policy-section">
+        <h2>Refunds</h2>
+        <p>After receiving your return and inspecting the condition of your item, we will process your return or exchange. Please allow at least <strong>seven (7) days</strong> from the receipt of your item to process your return or exchange. Refunds may take 1–2 billing cycles to appear on your credit card statement, depending on your credit card company. We will notify you by email when your return has been processed.</p>
+    </div>
+
+    <!-- ── EXCEPTIONS ── -->
+    <div class="policy-section">
+        <h2>Exceptions</h2>
+        <p>For defective or damaged products, please contact us at the contact details below to arrange a refund or exchange.</p>
+
+        <div class="please-note">
+            <h3>Please Note</h3>
+            <ul>
+                <li>Sale items are FINAL SALE and cannot be returned</li>
+                <li>Candles that have been lit are non-returnable</li>
+                <li>Balms, foot soaks, and wraps that have been opened or used are non-returnable</li>
+                <li>Damaged or defective items are eligible for a full refund or exchange, and return shipping will be covered by Herbal Harmony with Holistic Healing</li>
+                <li>Items must be in their original packaging and unused condition to qualify for a return</li>
+                <li>Sale or discounted items are final sale and non-returnable</li>
+                <li>Opened or used items are non-returnable for hygiene and safety reasons</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ── QUESTIONS ── -->
+    <div class="policy-section">
+        <h2>Questions</h2>
+        <p>If you have any questions concerning our return policy, please contact us at:</p>
+        <div class="contact-block">
+            <p>📞 509-596-9462</p>
+            <p>📧 <a href="mailto:connect@herbalharmonywithholistichealing.com">connect@herbalharmonywithholistichealing.com</a></p>
+        </div>
+    </div>
+
+</main>
+
+<!-- ── Footer ── -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h2>Herbal Harmony<br>with Holistic Healing</h2>
+            <p>Rooted in nature, guided by faith, crafted with love. Every product is a prayer and a promise to support your wellness journey.</p>
+            <div class="social-icons" style="display:flex;gap:0.75rem;margin-top:1rem;">
+                <a href="#" aria-label="Instagram" class="footer-social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" aria-label="TikTok" class="footer-social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.85 4.85 0 0 1-1.01-.09z"/></svg>
+                </a>
+                <a href="#" aria-label="Facebook" class="footer-social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="#" aria-label="YouTube" class="footer-social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-contact">
+            <p class="footer-col-title">Get In Touch</p>
+            <ul>
+                <li>📞 (509) 596-9462</li>
+                <li>✉️ connect@herbalharmonywithholistichealing.com</li>
+                <li>📍 15661 HWY 262, Lot 25 Unit 23, Warden, WA 98857</li>
+                <li>🛒 Online sales only — we ship to your door!</li>
+                <li>🌿 All products handcrafted &amp; prayed over with love</li>
+            </ul>
+        </div>
+        <div class="footer-newsletter">
+            <p class="footer-col-title">Stay Connected</p>
+            <p class="newsletter-desc">Join our herbal community for wellness tips, new product arrivals, and exclusive offers delivered straight to your inbox.</p>
+            <div class="newsletter-form" id="ml-footer-form">
+                <input type="email" id="ml-footer-email" placeholder="Your email address" aria-label="Email address">
+                <button class="newsletter-submit" id="ml-footer-btn">Subscribe 🌿</button>
+            </div>
+            <p class="newsletter-note">🔒 We respect your privacy. No spam, ever. Unsubscribe anytime.</p>
+            <p class="newsletter-note" style="margin-top:0.3rem;">📧 Powered by <a href="https://www.mailerlite.com" target="_blank" style="color:rgba(208,238,208,0.6);text-decoration:underline;">MailerLite</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-left">
+            <p class="footer-copy">&copy; 2026 Herbal Harmony with Holistic Healing, LLC. All rights reserved.</p>
+            <div class="footer-links" style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:0.4rem;">
+                <a href="disclaimer.html" class="footer-legal-link">Disclaimer</a>
+                <a href="terms.html" class="footer-legal-link">Terms &amp; Conditions</a>
+                <a href="returns.html" class="footer-legal-link">Refund Policy</a>
+                <a href="privacy.html" class="footer-legal-link">Privacy Policy</a>
+                <a href="cookie-policy.html" class="footer-legal-link">Cookie Policy</a>
+                <a href="index.html" class="footer-legal-link">Home</a>
+            </div>
+        </div>
+        <a href="review.html" class="footer-review-link">&#9733; Write a product review</a>
+    </div>
+</footer>
+
+
+<!-- MailerLite footer form handler -->
+<script>
+    (function() {
+        var btn = document.getElementById('ml-footer-btn');
+        var input = document.getElementById('ml-footer-email');
+        if (!btn || !input) return;
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            var email = input.value.trim();
+            if (!email || !email.includes('@')) {
+                input.style.borderColor = '#e05c5c';
+                input.placeholder = 'Please enter a valid email';
+                return;
+            }
+            input.style.borderColor = '';
+            if (typeof ml !== 'undefined') { ml('webforms', 'show', 'no8Cs2'); }
+            btn.textContent = "You're in! 🌿";
+            btn.style.background = 'var(--neon-frosted-mint, #D0EED0)';
+            btn.style.color = 'var(--neon-forest, #3D5A3D)';
+            input.value = '';
+            input.placeholder = 'Your email address';
+            setTimeout(function() {
+                btn.textContent = 'Subscribe 🌿';
+                btn.style.background = 'transparent';
+                btn.style.color = 'var(--neon-frosted-mint, #D0EED0)';
+            }, 3000);
+        });
+    })();
+</script>
+</body>
+</html>

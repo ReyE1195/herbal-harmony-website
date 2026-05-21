@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found — Herbal Harmony with Holistic Healing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon:              #528552;
+            --neon-glow:         0 0 8px #528552, 0 0 22px #528552, 0 0 44px rgba(82,133,82,0.35);
+            --neon-forest:       #3D5A3D;
+            --neon-frosted-mint: #D0EED0;
+            --cream:             #F8F4E9;
+            --cream-dark:        #CDCFC0;
+            --sage:              #B8BBA3;
+            --sage-dark:         #9F9989;
+            --forest:            #3d5a3d;
+            --charcoal:          #3B575A;
+            --ink:               #1a1a1a;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: "Montserrat", sans-serif;
+            background: var(--ink);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Atmospheric background */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                    radial-gradient(ellipse at 20% 50%, rgba(61,90,61,0.4) 0%, transparent 55%),
+                    radial-gradient(ellipse at 80% 20%, rgba(82,133,82,0.2) 0%, transparent 50%),
+                    radial-gradient(ellipse at 60% 85%, rgba(208,238,208,0.08) 0%, transparent 45%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Floating botanical elements */
+        .botanicals {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .leaf {
+            position: absolute;
+            opacity: 0.06;
+            animation: drift linear infinite;
+        }
+
+        .leaf svg { fill: var(--neon-frosted-mint); }
+
+        .leaf:nth-child(1) { top: 10%; left: 5%; animation-duration: 20s; animation-delay: 0s; transform: scale(1.5) rotate(20deg); }
+        .leaf:nth-child(2) { top: 60%; left: 90%; animation-duration: 25s; animation-delay: -5s; transform: scale(2) rotate(-30deg); }
+        .leaf:nth-child(3) { top: 80%; left: 15%; animation-duration: 18s; animation-delay: -10s; transform: scale(1.2) rotate(45deg); }
+        .leaf:nth-child(4) { top: 20%; left: 75%; animation-duration: 22s; animation-delay: -3s; transform: scale(1.8) rotate(-15deg); }
+
+        @keyframes drift {
+            0%, 100% { transform: translateY(0) rotate(20deg); opacity: 0.06; }
+            50% { transform: translateY(-20px) rotate(25deg); opacity: 0.1; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 600px;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error-number {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(8rem, 20vw, 14rem);
+            font-weight: 300;
+            line-height: 1;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(82,133,82,0.4);
+            letter-spacing: -0.02em;
+            position: relative;
+            margin-bottom: -1rem;
+        }
+
+        .error-number::after {
+            content: "404";
+            position: absolute;
+            inset: 0;
+            color: var(--neon-forest);
+            opacity: 0.15;
+            filter: blur(20px);
+            -webkit-text-stroke: 0;
+        }
+
+        .herb-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .herb-divider::before,
+        .herb-divider::after {
+            content: "";
+            height: 1px;
+            width: 80px;
+            background: linear-gradient(90deg, transparent, var(--neon));
+        }
+
+        .herb-divider::after {
+            background: linear-gradient(90deg, var(--neon), transparent);
+        }
+
+        .herb-icon {
+            color: var(--neon);
+            font-size: 1.4rem;
+            filter: drop-shadow(var(--neon-glow));
+        }
+
+        .brand {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--neon);
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 8px rgba(82,133,82,0.5));
+        }
+
+        h1 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 400;
+            color: var(--cream);
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        h1 em {
+            font-style: italic;
+            color: var(--neon-frosted-mint);
+        }
+
+        p {
+            font-size: 0.88rem;
+            color: var(--sage);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.03em;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            border: 2px solid var(--neon);
+            border-radius: 999px;
+            background: var(--neon-forest);
+            color: var(--neon-frosted-mint);
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(82,133,82,0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--neon);
+            border-color: var(--neon);
+            box-shadow: var(--neon-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            border: 1px solid rgba(184,187,163,0.3);
+            border-radius: 999px;
+            background: transparent;
+            color: var(--sage);
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--sage);
+            color: var(--cream);
+            transform: translateY(-2px);
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            font-size: 0.72rem;
+            color: rgba(184,187,163,0.4);
+            letter-spacing: 0.1em;
+        }
+
+        @media (max-width: 480px) {
+            .btn-group { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="botanicals">
+    <div class="leaf">
+        <svg width="120" height="120" viewBox="0 0 100 100"><path d="M50 5 C20 20 5 50 20 80 C35 95 65 95 80 80 C95 50 80 20 50 5Z"/></svg>
+    </div>
+    <div class="leaf">
+        <svg width="160" height="160" viewBox="0 0 100 100"><path d="M50 5 C20 20 5 50 20 80 C35 95 65 95 80 80 C95 50 80 20 50 5Z"/></svg>
+    </div>
+    <div class="leaf">
+        <svg width="100" height="100" viewBox="0 0 100 100"><path d="M50 5 C20 20 5 50 20 80 C35 95 65 95 80 80 C95 50 80 20 50 5Z"/></svg>
+    </div>
+    <div class="leaf">
+        <svg width="140" height="140" viewBox="0 0 100 100"><path d="M50 5 C20 20 5 50 20 80 C35 95 65 95 80 80 C95 50 80 20 50 5Z"/></svg>
+    </div>
+</div>
+
+<div class="container">
+    <p class="brand">Herbal Harmony with Holistic Healing</p>
+
+    <div class="error-number">404</div>
+
+    <div class="herb-divider">
+        <span class="herb-icon">🌿</span>
+    </div>
+
+    <h1>This path leads<br><em>off the garden trail</em></h1>
+
+    <p>The page you're looking for has wandered away.<br>
+        Let us guide you back to where the wellness grows.</p>
+
+    <div class="btn-group">
+        <a href="index.html" class="btn-primary">Return Home</a>
+        <a href="products.html" class="btn-secondary">Browse Products</a>
+    </div>
+
+    <p class="footer-note">© 2026 Herbal Harmony with Holistic Healing, LLC</p>
+</div>
+
+</body>
+</html>

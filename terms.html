@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms &amp; Conditions — Herbal Harmony with Holistic Healing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon:              #528552;
+            --neon-glow:         0 0 8px #528552, 0 0 22px #528552, 0 0 44px rgba(82,133,82,0.35);
+            --neon-forest:       #3D5A3D;
+            --neon-frosted-mint: #D0EED0;
+            --cream:             #F8F4E9;
+            --cream-dark:        #CDCFC0;
+            --sage:              #B8BBA3;
+            --sage-dark:         #9F9989;
+            --forest:            #3d5a3d;
+            --charcoal:          #3B575A;
+            --ink:               #000000;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: "Montserrat", sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
+        h1, h2, h3 { font-family: "Cormorant Garamond", serif; }
+        a { text-decoration: none; color: inherit; }
+        @keyframes fadeSlideUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+
+        .page-hero { padding: 5rem 3rem 3.5rem; background: linear-gradient(160deg, var(--neon-forest) 0%, var(--neon) 100%); text-align: center; position: relative; overflow: hidden; }
+        .page-hero::before { content: ""; position: absolute; top: -80px; right: -80px; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(208,238,208,0.15) 0%, transparent 70%); pointer-events: none; }
+        .section-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--neon-frosted-mint); margin-bottom: 0.5rem; position: relative; z-index: 1; display: block; }
+        .page-hero h1 { font-size: 3rem; color: white; margin-bottom: 0.5rem; position: relative; z-index: 1; }
+        .page-hero > p { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-style: italic; color: var(--neon-frosted-mint); position: relative; z-index: 1; }
+        .back-home { display: inline-block; font-size: 0.76rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--neon-frosted-mint); border: 2px solid var(--neon-frosted-mint); border-radius: 999px; padding: 0.38rem 1rem; position: relative; z-index: 1; margin-bottom: 1.25rem; transition: all 0.3s ease; }
+        .back-home:hover { background: var(--neon-frosted-mint); color: var(--neon-forest); }
+
+        .policy-wrapper { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 6rem; animation: fadeSlideUp 0.6s ease forwards; }
+        .last-updated { font-size: 0.78rem; color: var(--sage-dark); margin-bottom: 2rem; font-style: italic; }
+
+        .intro-text { font-size: 0.88rem; line-height: 1.9; color: var(--charcoal); margin-bottom: 2.5rem; padding: 1.5rem; background: white; border-radius: 1rem; border-left: 4px solid var(--neon); }
+
+        .toc { background: white; border: 1px solid var(--cream-dark); border-radius: 1rem; padding: 1.75rem 2rem; margin-bottom: 3rem; }
+        .toc h3 { font-size: 1.2rem; color: var(--forest); margin-bottom: 1rem; }
+        .toc ol { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.4rem; }
+        .toc ol li { font-size: 0.84rem; line-height: 1.6; }
+        .toc ol li a { color: var(--neon); text-decoration: underline; text-underline-offset: 2px; transition: color 0.3s; }
+        .toc ol li a:hover { color: var(--neon-forest); }
+
+        .policy-section { margin-bottom: 2.75rem; padding-bottom: 2.75rem; border-bottom: 1px solid var(--cream-dark); }
+        .policy-section:last-child { border-bottom: none; margin-bottom: 0; }
+        .policy-section h2 { font-size: 1.5rem; font-weight: 600; color: var(--forest); margin-bottom: 1rem; letter-spacing: 0.03em; }
+        .policy-section h3 { font-size: 1rem; color: var(--forest); margin: 1.25rem 0 0.6rem; font-family: "Montserrat", sans-serif; font-weight: 600; }
+        .policy-section p { font-size: 0.88rem; line-height: 1.9; color: var(--charcoal); margin-bottom: 1rem; }
+        .policy-section p:last-child { margin-bottom: 0; }
+        .policy-section p strong { color: var(--forest); font-weight: 600; }
+        .policy-section ul { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+        .policy-section ul li { font-size: 0.88rem; line-height: 1.75; color: var(--charcoal); }
+        .caps { font-size: 0.84rem; line-height: 1.85; color: var(--charcoal); font-weight: 500; margin-bottom: 1rem; }
+
+        .contact-block { background: white; border: 1px solid var(--cream-dark); border-radius: 1rem; padding: 1.5rem 1.75rem; margin-top: 1rem; }
+        .contact-block p { font-size: 0.88rem; line-height: 1.9; color: var(--charcoal); margin-bottom: 0.5rem; }
+        .contact-block p:last-child { margin-bottom: 0; }
+        .contact-block a { color: var(--neon); text-decoration: underline; }
+
+        .placeholder { background: #fff3cd; padding: 0.1rem 0.3rem; border-radius: 0.25rem; font-style: italic; color: #856404; }
+
+        footer { background:#000000; color: var(--cream); padding: 4rem 3rem 2rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(208,238,208,0.15); max-width: 1100px; margin: 0 auto; }
+        .footer-brand h2 { font-size: 1.6rem; color: var(--neon-frosted-mint); margin-bottom: 0.75rem; line-height: 1.3; }
+        .footer-brand p { font-size: 0.85rem; color: rgba(208,238,208,0.7); line-height: 1.85; margin-bottom: 1.5rem; max-width: 280px; }
+        .footer-col-title { font-family: "Montserrat", sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon-frosted-mint); margin-bottom: 1.2rem; }
+        .footer-contact ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+        .footer-contact li { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.85rem; color: rgba(208,238,208,0.75); line-height: 1.5; }
+        .footer-newsletter p.newsletter-desc { font-size: 0.84rem; color: rgba(208,238,208,0.7); line-height: 1.7; margin-bottom: 1.1rem; }
+        .newsletter-form { display: flex; flex-direction: column; gap: 0.65rem; }
+        .newsletter-form input[type="email"] { width: 100%; padding: 0.65rem 0.9rem; border-radius: 0.55rem; border: 1px solid rgba(208,238,208,0.25); background: rgba(208,238,208,0.08); color: var(--cream); font-family: "Montserrat", sans-serif; font-size: 0.82rem; outline: none; }
+        .newsletter-form input[type="email"]::placeholder { color: rgba(208,238,208,0.4); }
+        .newsletter-submit { padding: 0.65rem 1.2rem; background: transparent; border: 2px solid var(--neon-frosted-mint); border-radius: 999px; color: var(--neon-frosted-mint); font-family: "Montserrat", sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; width: 100%; }
+        .newsletter-submit:hover { background: var(--neon-frosted-mint); color: var(--neon-forest); }
+        .newsletter-note { font-size: 0.71rem; color: rgba(208,238,208,0.45); margin-top: 0.2rem; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.75rem; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; gap: 0.75rem; }
+        .footer-copy { font-size: 0.76rem; color: rgba(208,238,208,0.45); }
+        .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .footer-links a { font-size: 0.76rem; color: rgba(208,238,208,0.55); transition: color 0.3s; }
+
+
+        @media (max-width: 900px) { .page-hero { padding: 4rem 1.5rem 2.5rem; } .page-hero h1 { font-size: 2.2rem; } .policy-wrapper { padding: 2.5rem 1.5rem 4rem; } footer { padding: 3rem 1.5rem 1.5rem; } .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1/-1; } }
+        @media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } }
+
+        /* ── Footer hover styles ── */
+        .footer-links a { transition: color 0.3s ease; }
+
+        .footer-bottom-links a { transition: color 0.3s ease; }
+
+        .footer-review-link { transition: color 0.3s ease, text-shadow 0.3s ease; }
+
+        .social-icons a { transition: all 0.3s ease; }
+        .social-icons a:hover { background: rgba(208,238,208,0.15); border-color: #D0EED0; color: #D0EED0; transform: translateY(-3px); box-shadow: 0 4px 16px rgba(208,238,208,0.2); }
+
+        /* ══ FOOTER OVERRIDES — always last to win ══ */
+        footer { background: #000000 !important; }
+        .footer-links a { font-size: 0.76rem; color: rgba(208,238,208,0.55); transition: color 0.3s ease; }
+        .footer-links a:hover { color: #D0EED0; }
+        .footer-bottom-links a { font-size: 0.76rem; color: rgba(208,238,208,0.55); transition: color 0.3s ease; }
+        .footer-bottom-links a:hover { color: #D0EED0; }
+        .footer-review-link { color: rgba(208,238,208,0.8); text-decoration: underline; text-underline-offset: 3px; transition: color 0.3s ease, text-shadow 0.3s ease; }
+        .footer-review-link:hover { color: #D0EED0; text-shadow: 0 0 8px rgba(208,238,208,0.4); }
+        .newsletter-submit:hover { background: #D0EED0 !important; color: #000000 !important; }
+
+        /* ── Footer hover styles ── */
+        .footer-social-icon { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1.5px solid rgba(208,238,208,0.3); color:rgba(208,238,208,0.8); transition:all 0.3s ease; text-decoration:none; }
+        .footer-social-icon:hover { background:rgba(208,238,208,0.15); border-color:#D0EED0; color:#D0EED0; transform:translateY(-3px); box-shadow:0 4px 16px rgba(208,238,208,0.2); }
+        .footer-review-link { font-size:0.76rem; color:#D0EED0; text-decoration:underline; text-underline-offset:3px; transition:color 0.3s ease, text-shadow 0.3s ease; }
+        .footer-review-link:hover { color:#D0EED0; text-shadow:0 0 8px rgba(208,238,208,0.4); opacity:1; }
+        .footer-legal-link { font-size:0.76rem; color:rgba(208,238,208,0.55); text-decoration:none; transition:color 0.3s ease; }
+        .footer-legal-link:hover { color:#D0EED0; }
+        footer { background:#000000 !important; }
+    </style>
+</head>
+<body>
+
+<section class="page-hero">
+    <a href="index.html" class="back-home">← Back to Home</a>
+    <span class="section-label">Legal</span>
+    <h1>Terms &amp; Conditions</h1>
+    <p>Please read these terms carefully before using our website or placing an order.</p>
+</section>
+
+<main class="policy-wrapper">
+
+    <p class="last-updated">Last updated: February 19, 2026</p>
+
+    <div class="intro-text">
+        <p>We are Herbal Harmony with Holistic Healing (<strong>"Company," "we," "us," "our"</strong>). We operate the website <a href="https://www.herbalharmonywithholistichealing.com" style="color:var(--neon);text-decoration:underline;">https://www.herbalharmonywithholistichealing.com</a>, as well as any other related products and services that refer or link to these legal terms (collectively, the <strong>"Services"</strong>).</p>
+        <br>
+        <p>You can contact us by email at <a href="mailto:herbalharmonywithholisticheali@gmail.com" style="color:var(--neon);text-decoration:underline;">herbalharmonywithholisticheali@gmail.com</a> or by mail to 15661 HWY 62 Lot 25 Unit 23, Warden, WA 98857, United States.</p>
+        <br>
+        <p>These Legal Terms constitute a legally binding agreement between you and Herbal Harmony with Holistic Healing concerning your access to and use of the Services. <strong>IF YOU DO NOT AGREE WITH ALL OF THESE LEGAL TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SERVICES AND YOU MUST DISCONTINUE USE IMMEDIATELY.</strong></p>
+        <br>
+        <p>We reserve the right to make changes or modifications to these Legal Terms at any time and for any reason. We recommend that you print a copy of these Legal Terms for your records.</p>
+    </div>
+
+    <div class="toc">
+        <h3>Table of Contents</h3>
+        <ol>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#ip">Intellectual Property Rights</a></li>
+            <li><a href="#representations">User Representations</a></li>
+            <li><a href="#prohibited">Prohibited Activities</a></li>
+            <li><a href="#ugc">User Generated Contributions</a></li>
+            <li><a href="#license">Contribution License</a></li>
+            <li><a href="#management">Services Management</a></li>
+            <li><a href="#termination">Term and Termination</a></li>
+            <li><a href="#modifications">Modifications and Interruptions</a></li>
+            <li><a href="#governing">Governing Law</a></li>
+            <li><a href="#dispute">Dispute Resolution</a></li>
+            <li><a href="#corrections">Corrections</a></li>
+            <li><a href="#disclaimer">Disclaimer</a></li>
+            <li><a href="#liability">Limitations of Liability</a></li>
+            <li><a href="#indemnification">Indemnification</a></li>
+            <li><a href="#userdata">User Data</a></li>
+            <li><a href="#cookies">Cookies and Tracking Technologies</a></li>
+            <li><a href="#electronic">Electronic Communications, Transactions, and Signatures</a></li>
+            <li><a href="#miscellaneous">Miscellaneous</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ol>
+    </div>
+
+    <div class="policy-section" id="services">
+        <h2>1. Our Services</h2>
+        <p>The information provided when using the Services is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country. Accordingly, those persons who choose to access the Services from other locations do so on their own initiative and are solely responsible for compliance with local laws, if and to the extent local laws are applicable.</p>
+    </div>
+
+    <div class="policy-section" id="ip">
+        <h2>2. Intellectual Property Rights</h2>
+        <h3>Our intellectual property</h3>
+        <p>We are the owner or the licensee of all intellectual property rights in our Services, including all source code, databases, functionality, website designs, audio, video, text, photographs, and graphics in the Services (collectively, the "Content"), as well as the trademarks, service marks, and logos contained therein (the "Marks").</p>
+        <p>Our Content and Marks are protected by copyright and trademark laws and various other intellectual property rights and unfair competition laws and treaties around the world. The Content and Marks are provided in or through the Services "AS IS" for your personal, non-commercial use or internal business purpose only.</p>
+        <h3>Your use of our Services</h3>
+        <p>Subject to your compliance with these Legal Terms, we grant you a non-exclusive, non-transferable, revocable license to: access the Services; and download or print a copy of any portion of the Content to which you have properly gained access, solely for your personal, non-commercial use or internal business purpose.</p>
+        <p>Except as set out in this section, no part of the Services and no Content or Marks may be copied, reproduced, aggregated, republished, uploaded, posted, publicly displayed, encoded, translated, transmitted, distributed, sold, licensed, or otherwise exploited for any commercial purpose whatsoever, without our express prior written permission.</p>
+        <p>Any breach of these Intellectual Property Rights will constitute a material breach of our Legal Terms and your right to use our Services will terminate immediately.</p>
+        <h3>Your submissions</h3>
+        <p><strong>Submissions:</strong> By directly sending us any question, comment, suggestion, idea, feedback, or other information about the Services ("Submissions"), you agree to assign to us all intellectual property rights in such Submission. You agree that we shall own this Submission and be entitled to its unrestricted use and dissemination for any lawful purpose, commercial or otherwise, without acknowledgment or compensation to you.</p>
+        <p><strong>You are responsible for what you post or upload:</strong> By sending us Submissions through any part of the Services you: confirm that you have read and agree with our Prohibited Activities and will not post, send, publish, upload, or transmit any Submission that is illegal, harassing, hateful, harmful, defamatory, obscene, bullying, abusive, discriminatory, threatening, sexually explicit, false, inaccurate, deceitful, or misleading; warrant that any such Submission is original to you or that you have the necessary rights and licenses to submit it; and warrant that your Submissions do not constitute confidential information.</p>
+        <p>You are solely responsible for your Submissions and you expressly agree to reimburse us for any and all losses that we may suffer because of your breach of this section, any third party's intellectual property rights, or applicable law.</p>
+    </div>
+
+    <div class="policy-section" id="representations">
+        <h2>3. User Representations</h2>
+        <p>By using the Services, you represent and warrant that: (1) you have the legal capacity and you agree to comply with these Legal Terms; (2) you are not a minor in the jurisdiction in which you reside; (3) you will not access the Services through automated or non-human means, whether through a bot, script, or otherwise; (4) you will not use the Services for any illegal or unauthorized purpose; and (5) your use of the Services will not violate any applicable law or regulation.</p>
+        <p>If you provide any information that is untrue, inaccurate, not current, or incomplete, we have the right to suspend or terminate your account and refuse any and all current or future use of the Services (or any portion thereof).</p>
+    </div>
+
+    <div class="policy-section" id="prohibited">
+        <h2>4. Prohibited Activities</h2>
+        <p>You may not access or use the Services for any purpose other than that for which we make the Services available. As a user of the Services, you agree not to:</p>
+        <ul>
+            <li>Systematically retrieve data or other content from the Services to create or compile, directly or indirectly, a collection, compilation, database, or directory without written permission from us.</li>
+            <li>Trick, defraud, or mislead us and other users, especially in any attempt to learn sensitive account information such as user passwords.</li>
+            <li>Circumvent, disable, or otherwise interfere with security-related features of the Services, including features that prevent or restrict the use or copying of any Content or enforce limitations on the use of the Services and/or the Content contained therein.</li>
+            <li>Disparage, tarnish, or otherwise harm, in our opinion, us and/or the Services.</li>
+            <li>Use any information obtained from the Services in order to harass, abuse, or harm another person.</li>
+            <li>Make improper use of our support services or submit false reports of abuse or misconduct.</li>
+            <li>Use the Services in a manner inconsistent with any applicable laws or regulations.</li>
+            <li>Engage in unauthorized framing of or linking to the Services.</li>
+            <li>Upload or transmit (or attempt to upload or to transmit) viruses, Trojan horses, or other material, including excessive use of capital letters and spamming, that interferes with any party's uninterrupted use and enjoyment of the Services or modifies, impairs, disrupts, alters, or interferes with the use, features, functions, operation, or maintenance of the Services.</li>
+            <li>Engage in any automated use of the system, such as using scripts to send comments or messages, or using any data mining, robots, or similar data gathering and extraction tools.</li>
+            <li>Delete the copyright or other proprietary rights notice from any Content.</li>
+            <li>Attempt to impersonate another user or person or use the username of another user.</li>
+            <li>Attempt to bypass any measures of the Services designed to prevent or restrict access to the Services, or any portion of the Services.</li>
+            <li>Copy or adapt the Services' software, including but not limited to Flash, PHP, HTML, JavaScript, or other code.</li>
+            <li>Use the Services as part of any effort to compete with us or otherwise use the Services and/or the Content for any revenue-generating endeavor or commercial enterprise.</li>
+            <li>Use the Services to advertise or offer to sell goods and services.</li>
+        </ul>
+    </div>
+
+    <div class="policy-section" id="ugc">
+        <h2>5. User Generated Contributions</h2>
+        <p>The Services may provide you with the opportunity to create, submit, post, display, transmit, perform, publish, distribute, or broadcast content and materials to us or on the Services, including but not limited to text, writings, video, audio, photographs, graphics, comments, suggestions, or personal information or other material (collectively, "Contributions"). Contributions may be viewable by other users of the Services and through third-party websites. When you create or make available any Contributions, you thereby represent and warrant that your Contributions comply with our Legal Terms and all applicable laws.</p>
+    </div>
+
+    <div class="policy-section" id="license">
+        <h2>6. Contribution License</h2>
+        <p>You and the Services agree that we may access, store, process, and use any information and personal data that you provide and your choices (including settings).</p>
+        <p>By submitting suggestions or other feedback regarding the Services, you agree that we can use and share such feedback for any purpose without compensation to you.</p>
+        <p>We do not assert any ownership over your Contributions. You retain full ownership of all of your Contributions and any intellectual property rights or other proprietary rights associated with your Contributions. We are not liable for any statements or representations in your Contributions provided by you in any area on the Services. You are solely responsible for your Contributions to the Services and you expressly agree to exonerate us from any and all responsibility and to refrain from any legal action against us regarding your Contributions.</p>
+    </div>
+
+    <div class="policy-section" id="management">
+        <h2>7. Services Management</h2>
+        <p>We reserve the right, but not the obligation, to: (1) monitor the Services for violations of these Legal Terms; (2) take appropriate legal action against anyone who, in our sole discretion, violates the law or these Legal Terms, including without limitation, reporting such user to law enforcement authorities; (3) in our sole discretion and without limitation, refuse, restrict access to, limit the availability of, or disable (to the extent technologically feasible) any of your Contributions or any portion thereof; (4) in our sole discretion and without limitation, notice, or liability, remove from the Services or otherwise disable all files and content that are excessive in size or are in any way burdensome to our systems; and (5) otherwise manage the Services in a manner designed to protect our rights and property and to facilitate the proper functioning of the Services.</p>
+    </div>
+
+    <div class="policy-section" id="termination">
+        <h2>8. Term and Termination</h2>
+        <p>These Legal Terms shall remain in full force and effect while you use the Services. WITHOUT LIMITING ANY OTHER PROVISION OF THESE LEGAL TERMS, WE RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION AND WITHOUT NOTICE OR LIABILITY, DENY ACCESS TO AND USE OF THE SERVICES (INCLUDING BLOCKING CERTAIN IP ADDRESSES), TO ANY PERSON FOR ANY REASON OR FOR NO REASON, INCLUDING WITHOUT LIMITATION FOR BREACH OF ANY REPRESENTATION, WARRANTY, OR COVENANT CONTAINED IN THESE LEGAL TERMS OR OF ANY APPLICABLE LAW OR REGULATION. WE MAY TERMINATE YOUR USE OR PARTICIPATION IN THE SERVICES OR DELETE ANY CONTENT OR INFORMATION THAT YOU POSTED AT ANY TIME, WITHOUT WARNING, IN OUR SOLE DISCRETION.</p>
+        <p>If we terminate or suspend your account for any reason, you are prohibited from registering and creating a new account under your name, a fake or borrowed name, or the name of any third party, even if you may be acting on behalf of the third party. In addition to terminating or suspending your account, we reserve the right to take appropriate legal action, including without limitation pursuing civil, criminal, and injunctive redress.</p>
+    </div>
+
+    <div class="policy-section" id="modifications">
+        <h2>9. Modifications and Interruptions</h2>
+        <p>We reserve the right to change, modify, or remove the contents of the Services at any time or for any reason at our sole discretion without notice. However, we have no obligation to update any information on our Services. We will not be liable to you or any third party for any modification, price change, suspension, or discontinuance of the Services.</p>
+        <p>We cannot guarantee the Services will be available at all times. We may experience hardware, software, or other problems or need to perform maintenance related to the Services, resulting in interruptions, delays, or errors. We reserve the right to change, revise, update, suspend, discontinue, or otherwise modify the Services at any time or for any reason without notice to you. You agree that we have no liability whatsoever for any loss, damage, or inconvenience caused by your inability to access or use the Services during any downtime or discontinuance of the Services. Nothing in these Legal Terms will be construed to obligate us to maintain and support the Services or to supply any corrections, updates, or releases in connection therewith.</p>
+    </div>
+
+    <div class="policy-section" id="governing">
+        <h2>10. Governing Law</h2>
+        <p>These Legal Terms shall be governed by and defined following the laws of the State of Washington, United States. Herbal Harmony with Holistic Healing and yourself irrevocably consent that the courts of Grant County, Washington shall have exclusive jurisdiction to resolve any dispute which may arise in connection with these Legal Terms.</p>
+    </div>
+
+    <div class="policy-section" id="dispute">
+        <h2>11. Dispute Resolution</h2>
+        <h3>Informal Negotiations</h3>
+        <p>To expedite resolution and control the cost of any Dispute, the Parties agree to first attempt to negotiate any Dispute informally for at least 30 days before initiating arbitration. Such informal negotiations commence upon written notice from one Party to the other Party.</p>
+        <h3>Binding Arbitration</h3>
+        <p>Any dispute arising out of or in connection with these Legal Terms, including any question regarding its existence, validity, or termination, shall be referred to and finally resolved by the International Commercial Arbitration Court under the European Arbitration Chamber according to the Rules of this ICAC. The number of arbitrators shall be 1. The seat, or legal place, of arbitration shall be Warden, Washington. The language of the proceedings shall be English. The governing law shall be the substantive law of Washington, United States.</p>
+        <h3>Restrictions</h3>
+        <p>The Parties agree that any arbitration shall be limited to the Dispute between the Parties individually. To the full extent permitted by law, (a) no arbitration shall be joined with any other proceeding; (b) there is no right or authority for any Dispute to be arbitrated on a class-action basis; and (c) there is no right or authority for any Dispute to be brought in a purported representative capacity on behalf of the general public or any other persons.</p>
+        <h3>Exceptions to Informal Negotiations and Arbitration</h3>
+        <p>The Parties agree that the following Disputes are not subject to the above provisions: (a) any Disputes seeking to enforce or protect the intellectual property rights of a Party; (b) any Dispute related to allegations of theft, piracy, invasion of privacy, or unauthorized use; and (c) any claim for injunctive relief.</p>
+    </div>
+
+    <div class="policy-section" id="corrections">
+        <h2>12. Corrections</h2>
+        <p>There may be information on the Services that contains typographical errors, inaccuracies, or omissions, including descriptions, pricing, availability, and various other information. We reserve the right to correct any errors, inaccuracies, or omissions and to change or update the information on the Services at any time, without prior notice.</p>
+    </div>
+
+    <div class="policy-section" id="disclaimer">
+        <h2>13. Disclaimer</h2>
+        <p class="caps">THE SERVICES ARE PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS. YOU AGREE THAT YOUR USE OF THE SERVICES WILL BE AT YOUR SOLE RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION WITH THE SERVICES AND YOUR USE THEREOF, INCLUDING THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE MAKE NO WARRANTIES OR REPRESENTATIONS ABOUT THE ACCURACY OR COMPLETENESS OF THE SERVICES' CONTENT OR THE CONTENT OF ANY WEBSITES OR MOBILE APPLICATIONS LINKED TO THE SERVICES AND WE WILL ASSUME NO LIABILITY OR RESPONSIBILITY FOR ANY (1) ERRORS, MISTAKES, OR INACCURACIES OF CONTENT AND MATERIALS, (2) PERSONAL INJURY OR PROPERTY DAMAGE, OF ANY NATURE WHATSOEVER, RESULTING FROM YOUR ACCESS TO AND USE OF THE SERVICES, (3) ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SECURE SERVERS AND/OR ANY AND ALL PERSONAL INFORMATION AND/OR FINANCIAL INFORMATION STORED THEREIN, (4) ANY INTERRUPTION OR CESSATION OF TRANSMISSION TO OR FROM THE SERVICES, (5) ANY BUGS, VIRUSES, TROJAN HORSES, OR THE LIKE WHICH MAY BE TRANSMITTED TO OR THROUGH THE SERVICES BY ANY THIRD PARTY, AND/OR (6) ANY ERRORS OR OMISSIONS IN ANY CONTENT AND MATERIALS OR FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF ANY CONTENT POSTED, TRANSMITTED, OR OTHERWISE MADE AVAILABLE VIA THE SERVICES. WE DO NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME RESPONSIBILITY FOR ANY PRODUCT OR SERVICE ADVERTISED OR OFFERED BY A THIRD PARTY THROUGH THE SERVICES AND WE WILL NOT BE A PARTY TO OR IN ANY WAY BE RESPONSIBLE FOR MONITORING ANY TRANSACTION BETWEEN YOU AND ANY THIRD-PARTY PROVIDERS OF PRODUCTS OR SERVICES.</p>
+    </div>
+
+    <div class="policy-section" id="liability">
+        <h2>14. Limitations of Liability</h2>
+        <p class="caps">IN NO EVENT WILL WE OR OUR DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL, OR PUNITIVE DAMAGES, INCLUDING LOST PROFIT, LOST REVENUE, LOSS OF DATA, OR OTHER DAMAGES ARISING FROM YOUR USE OF THE SERVICES, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN, OUR LIABILITY TO YOU FOR ANY CAUSE WHATSOEVER AND REGARDLESS OF THE FORM OF THE ACTION, WILL AT ALL TIMES BE LIMITED TO THE LESSER OF THE AMOUNT PAID, IF ANY, BY YOU TO US. CERTAIN US STATE LAWS AND INTERNATIONAL LAWS DO NOT ALLOW LIMITATIONS ON IMPLIED WARRANTIES OR THE EXCLUSION OR LIMITATION OF CERTAIN DAMAGES. IF THESE LAWS APPLY TO YOU, SOME OR ALL OF THE ABOVE DISCLAIMERS OR LIMITATIONS MAY NOT APPLY TO YOU, AND YOU MAY HAVE ADDITIONAL RIGHTS.</p>
+    </div>
+
+    <div class="policy-section" id="indemnification">
+        <h2>15. Indemnification</h2>
+        <p>You agree to defend, indemnify, and hold us harmless, including our subsidiaries, affiliates, and all of our respective officers, agents, partners, and employees, from and against any loss, damage, liability, claim, or demand, including reasonable attorneys' fees and expenses, made by any third party due to or arising out of: (1) use of the Services; (2) breach of these Legal Terms; (3) any breach of your representations and warranties set forth in these Legal Terms; (4) your violation of the rights of a third party, including but not limited to intellectual property rights; or (5) any overt harmful act toward any other user of the Services with whom you connected via the Services. Notwithstanding the foregoing, we reserve the right, at your expense, to assume the exclusive defense and control of any matter for which you are required to indemnify us, and you agree to cooperate, at your expense, with our defense of such claims.</p>
+    </div>
+
+    <div class="policy-section" id="userdata">
+        <h2>16. User Data</h2>
+        <p>We will maintain certain data that you transmit to the Services for the purpose of managing the performance of the Services, as well as data relating to your use of the Services. Although we perform regular routine backups of data, you are solely responsible for all data that you transmit or that relates to any activity you have undertaken using the Services. You agree that we shall have no liability to you for any loss or corruption of any such data, and you hereby waive any right of action against us arising from any such loss or corruption of such data.</p>
+    </div>
+
+    <div class="policy-section" id="cookies">
+        <h2>16b. Cookies and Tracking Technologies</h2>
+        <p>We use cookies and similar tracking technologies to enhance your experience on our website. Cookies are small data files placed on your device when you visit our website. Some cookies are essential for the website to function properly, while others help us understand how visitors interact with our Services.</p>
+        <p>By continuing to use our website, you consent to our use of cookies in accordance with our Cookie Policy. You have the right to accept or reject non-essential cookies at any time through your browser settings or through the Cookie Preference Center on our website.</p>
+        <p>For full details about the types of cookies we use, their purposes, and how you can control them, please review our Cookie Policy at: <a href="cookie-policy.html" class="footer-legal-link">https://www.herbalharmonywithholistichealing.com/cookie-policy.html</a>.</p>
+    </div>
+
+    <div class="policy-section" id="electronic">
+        <h2>17. Electronic Communications, Transactions, and Signatures</h2>
+        <p>Visiting the Services, sending us emails, and completing online forms constitute electronic communications. You consent to receive electronic communications, and you agree that all agreements, notices, disclosures, and other communications we provide to you electronically, via email and on the Services, satisfy any legal requirement that such communication be in writing. YOU HEREBY AGREE TO THE USE OF ELECTRONIC SIGNATURES, CONTRACTS, ORDERS, AND OTHER RECORDS, AND TO ELECTRONIC DELIVERY OF NOTICES, POLICIES, AND RECORDS OF TRANSACTIONS INITIATED OR COMPLETED BY US OR VIA THE SERVICES. You hereby waive any rights or requirements under any statutes, regulations, rules, ordinances, or other laws in any jurisdiction which require an original signature or delivery or retention of non-electronic records, or to payments or the granting of credits by any other means than electronic means.</p>
+    </div>
+
+    <div class="policy-section" id="miscellaneous">
+        <h2>18. Miscellaneous</h2>
+        <p>These Legal Terms and any policies or operating rules posted by us on the Services constitute the entire agreement and understanding between you and us. Our failure to exercise or enforce any right or provision of these Legal Terms shall not operate as a waiver of such right or provision. These Legal Terms operate to the fullest extent permissible by law. We may assign any or all of our rights and obligations to others at any time. We shall not be responsible or liable for any loss, damage, delay, or failure to act caused by any cause beyond our reasonable control. If any provision or part of a provision of these Legal Terms is determined to be unlawful, void, or unenforceable, that provision is deemed severable from these Legal Terms and does not affect the validity and enforceability of any remaining provisions. There is no joint venture, partnership, employment or agency relationship created between you and us as a result of these Legal Terms or use of the Services. You agree that these Legal Terms will not be construed against us by virtue of having drafted them. You hereby waive any and all defenses you may have based on the electronic form of these Legal Terms and the lack of signing by the parties hereto to execute these Legal Terms.</p>
+    </div>
+
+    <div class="policy-section" id="contact">
+        <h2>19. Contact Us</h2>
+        <p>In order to resolve a complaint regarding the Services or to receive further information regarding use of the Services, please contact us at:</p>
+        <div class="contact-block">
+            <p>🏢 <strong>Herbal Harmony with Holistic Healing</strong></p>
+            <p>📍 15661 HWY 262 Lot 25 Unit 23, Warden, WA 98857, United States</p>
+            <p>📞 <a href="tel:5092707346">509-270-7346</a></p>
+            <p>📧 <a href="mailto:connect@herbalharmonywithholistichealing.com">connect@herbalharmonywithholistichealing.com</a></p>
+        </div>
+        <p style="margin-top:1.5rem; font-size:0.78rem; color:var(--sage-dark); font-style:italic;">This Terms and Conditions was created using Termly's Terms and Conditions Generator.</p>
+    </div>
+
+</main>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h2>Herbal Harmony<br>with Holistic Healing</h2>
+            <p>Rooted in nature, guided by faith, crafted with love. Every product is a prayer and a promise to support your wellness journey.</p>
+            <div class="social-icons" style="display:flex;gap:0.75rem;margin-top:1rem;">
+                <a href="#" aria-label="Instagram" class="footer-social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" aria-label="TikTok" class="footer-social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.85 4.85 0 0 1-1.01-.09z"/></svg>
+                </a>
+                <a href="#" aria-label="Facebook" class="footer-social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="#" aria-label="YouTube" class="footer-social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-contact">
+            <p class="footer-col-title">Get In Touch</p>
+            <ul>
+                <li>📞 (509) 596-9462</li>
+                <li>✉️ connect@herbalharmonywithholistichealing.com</li>
+                <li>📍 15661 HWY 262, Lot 25 Unit 23, Warden, WA 98857</li>
+                <li>🛒 Online sales only — we ship to your door!</li>
+                <li>🌿 All products handcrafted &amp; prayed over with love</li>
+            </ul>
+        </div>
+        <div class="footer-newsletter">
+            <p class="footer-col-title">Stay Connected</p>
+            <p class="newsletter-desc">Join our herbal community for wellness tips, new product arrivals, and exclusive offers delivered straight to your inbox.</p>
+            <div class="newsletter-form" id="ml-footer-form">
+                <input type="email" id="ml-footer-email" placeholder="Your email address" aria-label="Email address">
+                <button class="newsletter-submit" id="ml-footer-btn">Subscribe 🌿</button>
+            </div>
+            <p class="newsletter-note">🔒 We respect your privacy. No spam, ever. Unsubscribe anytime.</p>
+            <p class="newsletter-note" style="margin-top:0.3rem;">📧 Powered by <a href="https://www.mailerlite.com" target="_blank" style="color:rgba(208,238,208,0.6);text-decoration:underline;">MailerLite</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-left">
+            <p class="footer-copy">&copy; 2026 Herbal Harmony with Holistic Healing, LLC. All rights reserved.</p>
+            <div class="footer-links" style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:0.4rem;">
+                <a href="disclaimer.html" class="footer-legal-link">Disclaimer</a>
+                <a href="terms.html" class="footer-legal-link">Terms &amp; Conditions</a>
+                <a href="returns.html" class="footer-legal-link">Refund Policy</a>
+                <a href="privacy.html" class="footer-legal-link">Privacy Policy</a>
+                <a href="cookie-policy.html" class="footer-legal-link">Cookie Policy</a>
+                <a href="index.html" class="footer-legal-link">Home</a>
+            </div>
+        </div>
+        <a href="review.html" class="footer-review-link">&#9733; Write a product review</a>
+    </div>
+</footer>
+
+
+<!-- MailerLite footer form handler -->
+<script>
+    (function() {
+        var btn = document.getElementById('ml-footer-btn');
+        var input = document.getElementById('ml-footer-email');
+        if (!btn || !input) return;
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            var email = input.value.trim();
+            if (!email || !email.includes('@')) {
+                input.style.borderColor = '#e05c5c';
+                input.placeholder = 'Please enter a valid email';
+                return;
+            }
+            input.style.borderColor = '';
+            if (typeof ml !== 'undefined') { ml('webforms', 'show', 'no8Cs2'); }
+            btn.textContent = "You're in! 🌿";
+            btn.style.background = 'var(--neon-frosted-mint, #D0EED0)';
+            btn.style.color = 'var(--neon-forest, #3D5A3D)';
+            input.value = '';
+            input.placeholder = 'Your email address';
+            setTimeout(function() {
+                btn.textContent = 'Subscribe 🌿';
+                btn.style.background = 'transparent';
+                btn.style.color = 'var(--neon-frosted-mint, #D0EED0)';
+            }, 3000);
+        });
+    })();
+</script>
+</body>
+</html>

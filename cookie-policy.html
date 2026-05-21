@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Policy — Herbal Harmony with Holistic Healing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon:              #528552;
+            --neon-glow:         0 0 8px #528552, 0 0 22px #528552, 0 0 44px rgba(82,133,82,0.35);
+            --neon-forest:       #3D5A3D;
+            --neon-frosted-mint: #D0EED0;
+            --cream:             #F8F4E9;
+            --cream-dark:        #CDCFC0;
+            --sage:              #B8BBA3;
+            --sage-dark:         #9F9989;
+            --forest:            #3d5a3d;
+            --charcoal:          #3B575A;
+            --ink:               #000000;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: "Montserrat", sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
+        h1, h2, h3 { font-family: "Cormorant Garamond", serif; }
+        a { text-decoration: none; color: inherit; }
+        @keyframes fadeSlideUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+
+        /* ── Hero ── */
+        .page-hero { padding: 5rem 3rem 3.5rem; background: linear-gradient(160deg, var(--neon-forest) 0%, var(--neon) 100%); text-align: center; position: relative; overflow: hidden; }
+        .page-hero::before { content: ""; position: absolute; top: -80px; right: -80px; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(208,238,208,0.15) 0%, transparent 70%); pointer-events: none; }
+        .section-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--neon-frosted-mint); margin-bottom: 0.5rem; position: relative; z-index: 1; display: block; }
+        .page-hero h1 { font-size: 3rem; color: white; margin-bottom: 0.5rem; position: relative; z-index: 1; }
+        .page-hero > p { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-style: italic; color: var(--neon-frosted-mint); position: relative; z-index: 1; }
+        .back-home { display: inline-block; font-size: 0.76rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--neon-frosted-mint); border: 2px solid var(--neon-frosted-mint); border-radius: 999px; padding: 0.38rem 1rem; position: relative; z-index: 1; margin-bottom: 1.25rem; transition: all 0.3s ease; }
+        .back-home:hover { background: var(--neon-frosted-mint); color: var(--neon-forest); }
+
+        /* ── Main content ── */
+        .policy-wrapper { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 6rem; animation: fadeSlideUp 0.6s ease forwards; }
+        .last-updated { font-size: 0.78rem; color: var(--sage-dark); margin-bottom: 2rem; font-style: italic; }
+
+        .intro-text { font-size: 0.88rem; line-height: 1.9; color: var(--charcoal); margin-bottom: 2.5rem; padding: 1.5rem; background: white; border-radius: 1rem; border-left: 4px solid var(--neon); }
+        .intro-text p { margin-bottom: 0.75rem; }
+        .intro-text p:last-child { margin-bottom: 0; }
+
+        /* ── Policy sections ── */
+        .policy-section { margin-bottom: 2.75rem; padding-bottom: 2.75rem; border-bottom: 1px solid var(--cream-dark); }
+        .policy-section:last-child { border-bottom: none; margin-bottom: 0; }
+        .policy-section h2 { font-size: 1.5rem; font-weight: 600; color: var(--forest); margin-bottom: 1rem; letter-spacing: 0.03em; }
+        .policy-section h3 { font-size: 1rem; color: var(--forest); margin: 1.25rem 0 0.6rem; font-family: "Montserrat", sans-serif; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+        .policy-section p { font-size: 0.88rem; line-height: 1.9; color: var(--charcoal); margin-bottom: 1rem; }
+        .policy-section p:last-child { margin-bottom: 0; }
+        .policy-section p strong { color: var(--forest); font-weight: 600; }
+        .policy-section ul { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+        .policy-section ul li { font-size: 0.88rem; line-height: 1.75; color: var(--charcoal); }
+        .policy-section ul li a { color: var(--neon); text-decoration: underline; }
+
+        /* ── Cookie detail card ── */
+        .cookie-card { background: white; border: 1px solid var(--cream-dark); border-radius: 1rem; padding: 1.25rem 1.5rem; margin: 1rem 0; display: grid; grid-template-columns: 140px 1fr; gap: 0.5rem 1rem; }
+        .cookie-card .label { font-size: 0.78rem; font-weight: 600; color: var(--forest); text-transform: uppercase; letter-spacing: 0.08em; }
+        .cookie-card .value { font-size: 0.85rem; color: var(--charcoal); line-height: 1.6; }
+        .cookie-card .value a { color: var(--neon); text-decoration: underline; }
+
+        /* ── Contact block ── */
+        .contact-block { background: white; border: 1px solid var(--cream-dark); border-radius: 1rem; padding: 1.5rem 1.75rem; margin-top: 1rem; }
+        .contact-block p { font-size: 0.88rem; line-height: 1.9; color: var(--charcoal); margin-bottom: 0.5rem; }
+        .contact-block p:last-child { margin-bottom: 0; }
+        .contact-block a { color: var(--neon); text-decoration: underline; }
+
+        /* ── Footer ── */
+        footer { background: #000000; color: var(--cream); padding: 4rem 3rem 2rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(208,238,208,0.15); max-width: 1100px; margin: 0 auto; }
+        .footer-brand h2 { font-size: 1.6rem; color: var(--neon-frosted-mint); margin-bottom: 0.75rem; line-height: 1.3; }
+        .footer-brand p { font-size: 0.85rem; color: rgba(208,238,208,0.7); line-height: 1.85; margin-bottom: 1.5rem; max-width: 280px; }
+        .footer-col-title { font-family: "Montserrat", sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon-frosted-mint); margin-bottom: 1.2rem; }
+        .footer-contact ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+        .footer-contact li { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.85rem; color: rgba(208,238,208,0.75); line-height: 1.5; }
+        .footer-newsletter p.newsletter-desc { font-size: 0.84rem; color: rgba(208,238,208,0.7); line-height: 1.7; margin-bottom: 1.1rem; }
+        .newsletter-form { display: flex; flex-direction: column; gap: 0.65rem; }
+        .newsletter-form input[type="email"] { width: 100%; padding: 0.65rem 0.9rem; border-radius: 0.55rem; border: 1px solid rgba(208,238,208,0.25); background: rgba(208,238,208,0.08); color: var(--cream); font-family: "Montserrat", sans-serif; font-size: 0.82rem; outline: none; }
+        .newsletter-form input[type="email"]::placeholder { color: rgba(208,238,208,0.4); }
+        .newsletter-submit { padding: 0.65rem 1.2rem; background: transparent; border: 2px solid var(--neon-frosted-mint); border-radius: 999px; color: var(--neon-frosted-mint); font-family: "Montserrat", sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; width: 100%; }
+        .newsletter-submit:hover { background: var(--neon-frosted-mint); color: var(--neon-forest); }
+        .newsletter-note { font-size: 0.71rem; color: rgba(208,238,208,0.45); margin-top: 0.2rem; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.75rem; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; gap: 0.75rem; }
+        .footer-copy { font-size: 0.76rem; color: rgba(208,238,208,0.45); }
+        .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .footer-links a { font-size: 0.76rem; color: rgba(208,238,208,0.55); transition: color 0.3s; }
+
+
+        @media (max-width: 900px) { .page-hero { padding: 4rem 1.5rem 2.5rem; } .page-hero h1 { font-size: 2.2rem; } .policy-wrapper { padding: 2.5rem 1.5rem 4rem; } footer { padding: 3rem 1.5rem 1.5rem; } .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1/-1; } .data-table { font-size: 0.78rem; } }
+        @media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } .data-table th, .data-table td { padding: 0.5rem 0.6rem; } }
+
+        /* ── Footer ── */
+        footer { background:#1a2e1a; color:#D0EED0; padding:4rem 3rem 2rem; }
+        .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(208,238,208,0.15); max-width:1100px; margin:0 auto; }
+        .footer-brand h2 { font-family:"Cormorant Garamond",serif; font-size:1.6rem; color:#D0EED0; margin-bottom:0.75rem; line-height:1.3; }
+        .footer-brand p { font-size:0.85rem; color:rgba(208,238,208,0.7); line-height:1.85; margin-bottom:0.5rem; max-width:280px; }
+        .footer-col-title { font-size:0.68rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#D0EED0; margin-bottom:1.2rem; display:block; }
+        .footer-contact ul { list-style:none; display:flex; flex-direction:column; gap:0.9rem; }
+        .footer-contact li { font-size:0.85rem; color:rgba(208,238,208,0.75); line-height:1.5; }
+        .newsletter-desc { font-size:0.84rem; color:rgba(208,238,208,0.7); line-height:1.7; margin-bottom:1.1rem; }
+        .newsletter-form { display:flex; flex-direction:column; gap:0.65rem; }
+        .newsletter-form input[type="email"] { width:100%; padding:0.65rem 0.9rem; border-radius:0.55rem; border:1px solid rgba(208,238,208,0.25); background:rgba(208,238,208,0.08); color:#D0EED0; font-family:"Montserrat",sans-serif; font-size:0.82rem; outline:none; transition:border-color 0.3s; }
+        .newsletter-form input[type="email"]::placeholder { color:rgba(208,238,208,0.4); }
+        .newsletter-form input[type="email"]:focus { border-color:#D0EED0; }
+        .newsletter-submit { padding:0.65rem 1.2rem; background:transparent; border:2px solid #D0EED0; border-radius:999px; color:#D0EED0; font-family:"Montserrat",sans-serif; font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; transition:all 0.3s ease; width:100%; }
+        .newsletter-submit:hover { background:#D0EED0; color:#1a2e1a; }
+        .newsletter-note { font-size:0.71rem; color:rgba(208,238,208,0.45); margin-top:0.2rem; }
+        .footer-bottom { display:flex; justify-content:space-between; align-items:center; padding-top:1.75rem; max-width:1100px; margin:0 auto; flex-wrap:wrap; gap:0.75rem; }
+        .footer-bottom-left { display:flex; flex-direction:column; gap:0.4rem; }
+        .footer-copy { font-size:0.76rem; color:rgba(208,238,208,0.45); }
+        /* ── Footer hover styles ── */
+        .footer-social-icon { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border: 1.5px solid rgba(208,238,208,0.3); color:rgba(208,238,208,0.8); transition:all 0.3s ease; text-decoration:none; }
+        .footer-social-icon:hover { background:rgba(208,238,208,0.15); border-color:#D0EED0; color:#D0EED0; transform:translateY(-3px); box-shadow:0 4px 16px rgba(208,238,208,0.2); }
+        .footer-review-link { font-size:0.76rem; color:#D0EED0; text-decoration:underline; text-underline-offset:3px; transition:color 0.3s ease, text-shadow 0.3s ease, opacity 0.3s ease; }
+
+        .footer-legal-link { font-size:0.76rem; color:rgba(208,238,208,0.55); text-decoration:none; transition:color 0.3s ease; }
+        .footer-legal-link:hover { color:#D0EED0; }
+        @media(max-width:900px) { footer { padding:3rem 1.5rem 1.5rem; } .footer-grid { grid-template-columns:1fr 1fr; } .footer-brand { grid-column:1/-1; } }
+        @media(max-width:640px) { .footer-grid { grid-template-columns:1fr; } .footer-bottom { flex-direction:column; text-align:center; } }
+
+        /* ══ FOOTER HOVER ══ */
+        footer { background: #000000; }
+        .footer-links a { font-size: 0.76rem; color: rgba(208,238,208,0.55); transition: color 0.3s ease; }
+        .footer-links a:hover { color: #D0EED0; }
+        .footer-bottom-links a { font-size: 0.76rem; color: rgba(208,238,208,0.55); transition: color 0.3s ease; }
+        .footer-bottom-links a:hover { color: #D0EED0; }
+        .footer-review-link { color: rgba(208,238,208,0.8); text-decoration: underline; text-underline-offset: 3px; transition: color 0.3s ease, text-shadow 0.3s ease; }
+        .footer-review-link:hover { color: #D0EED0; text-shadow: 0 0 8px rgba(208,238,208,0.4); }
+        .newsletter-submit:hover { background: #D0EED0; color: #000000 }
+    </style>
+</head>
+<body>
+
+<!-- ── Hero ── -->
+<section class="page-hero">
+    <a href="index.html" class="back-home">← Back to Home</a>
+    <span class="section-label">Legal</span>
+    <h1>Cookie Policy</h1>
+    <p>How we use cookies and similar tracking technologies on our website.</p>
+</section>
+
+<!-- ── Content ── -->
+<main class="policy-wrapper">
+
+    <p class="last-updated">Last updated February 19th, 2026</p>
+
+    <div class="intro-text">
+        <p>This Cookie Policy explains how Herbal Harmony with Holistic Healing (<strong>"Company," "we," "us,"</strong> and <strong>"our"</strong>) uses cookies and similar technologies to recognize you when you visit our website at <a href="https://www.herbalharmonywithholistichealing.com" style="color:var(--neon);text-decoration:underline;">https://www.herbalharmonywithholistichealing.com</a> (<strong>"Website"</strong>). It explains what these technologies are and why we use them, as well as your rights to control our use of them.</p>
+        <p>In some cases we may use cookies to collect personal information, or that becomes personal information if we combine it with other information.</p>
+    </div>
+
+    <!-- What are cookies -->
+    <div class="policy-section">
+        <h2>What are cookies?</h2>
+        <p>Cookies are small data files that are placed on your computer or mobile device when you visit a website. Cookies are widely used by website owners in order to make their websites work, or to work more efficiently, as well as to provide reporting information.</p>
+        <p>Cookies set by the website owner (in this case, Herbal Harmony with Holistic Healing) are called "first-party cookies." Cookies set by parties other than the website owner are called "third-party cookies." Third-party cookies enable third-party features or functionality to be provided on or through the website (e.g., advertising, interactive content, and analytics). The parties that set these third-party cookies can recognize your computer both when it visits the website in question and also when it visits certain other websites.</p>
+    </div>
+
+    <!-- Why do we use cookies -->
+    <div class="policy-section">
+        <h2>Why do we use cookies?</h2>
+        <p>We use first- and third-party cookies for several reasons. Some cookies are required for technical reasons in order for our Website to operate, and we refer to these as "essential" or "strictly necessary" cookies. Other cookies also enable us to track and target the interests of our users to enhance the experience on our Online Properties. Third parties serve cookies through our Website for analytics, and other purposes. This is described in more detail below.</p>
+    </div>
+
+    <!-- How can I control cookies -->
+    <div class="policy-section">
+        <h2>How can I control cookies?</h2>
+        <p>You have the right to decide whether to accept or reject cookies. You can exercise your cookie rights by setting your preferences in the Cookie Preference Center. The Cookie Preference Center allows you to select which categories of cookies you accept or reject. Essential cookies cannot be rejected as they are strictly necessary to provide you with services.</p>
+        <p>The Cookie Preference Center can be found in the notification banner and on our Website. If you choose to reject cookies, you may still use our Website though your access to some functionality and areas of our Website may be restricted. You may also set or amend your web browser controls to accept or refuse cookies.</p>
+        <p>The specific types of first- and third-party cookies served through our Website and the purposes they perform are described below:</p>
+
+        <h3>Analytics and customization cookies:</h3>
+        <p>These cookies collect information that is used either in aggregate form to help us understand how our Website is being used or how effective our marketing campaigns are, or to help us customize our Website for you.</p>
+
+        <div class="cookie-card">
+            <span class="label">Name</span>
+            <span class="value">crumb</span>
+            <span class="label">Purpose</span>
+            <span class="value">The crumb cookie is used in order to recognise a computer when a user visits our website. It also prevents cross-site request forgery.</span>
+            <span class="label">Provider</span>
+            <span class="value">www.herbalharmonywithholistichealing.com</span>
+            <span class="label">Service</span>
+            <span class="value">Showtime Analytics <a href="https://www.showtimeanalytics.com/privacy-policy" target="_blank">View Service Privacy Policy</a></span>
+            <span class="label">Type</span>
+            <span class="value">server_cookie</span>
+            <span class="label">Expires in</span>
+            <span class="value">session</span>
+        </div>
+    </div>
+
+    <!-- How can I control cookies on my browser -->
+    <div class="policy-section">
+        <h2>How can I control cookies on my browser?</h2>
+        <p>As the means by which you can refuse cookies through your web browser controls vary from browser to browser, you should visit your browser's help menu for more information. The following is information about how to manage cookies on the most popular browsers:</p>
+        <ul>
+            <li><a href="https://support.google.com/chrome/answer/95647" target="_blank">Chrome</a></li>
+            <li><a href="https://support.microsoft.com/en-us/windows/delete-and-manage-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank">Internet Explorer</a></li>
+            <li><a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop" target="_blank">Firefox</a></li>
+            <li><a href="https://support.apple.com/en-ie/guide/safari/sfri11471/mac" target="_blank">Safari</a></li>
+            <li><a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank">Edge</a></li>
+            <li><a href="https://help.opera.com/en/latest/web-preferences/" target="_blank">Opera</a></li>
+        </ul>
+        <p>In addition, most advertising networks offer you a way to opt out of targeted advertising. If you would like to find out more information, please visit:</p>
+        <ul>
+            <li><a href="https://optout.aboutads.info/" target="_blank">Digital Advertising Alliance</a></li>
+            <li><a href="https://youradchoices.ca/" target="_blank">Digital Advertising Alliance of Canada</a></li>
+            <li><a href="https://www.youronlinechoices.com/" target="_blank">European Interactive Digital Advertising Alliance</a></li>
+        </ul>
+    </div>
+
+    <!-- Web beacons -->
+    <div class="policy-section">
+        <h2>What about other tracking technologies, like web beacons?</h2>
+        <p>Cookies are not the only way to recognize or track visitors to a website. We may use other, similar technologies from time to time, like web beacons (sometimes called "tracking pixels" or "clear gifs"). These are tiny graphics files that contain a unique identifier that enables us to recognize when someone has visited our Website or opened an email including them. This allows us, for example, to monitor the traffic patterns of users from one page within a website to another, to deliver or communicate with cookies, to understand whether you have come to the website from an online advertisement displayed on a third-party website, to improve site performance, and to measure the success of email marketing campaigns. In many instances, these technologies are reliant on cookies to function properly, and so declining cookies will impair their functioning.</p>
+    </div>
+
+    <!-- Flash cookies -->
+    <div class="policy-section">
+        <h2>Do you use Flash cookies or Local Shared Objects?</h2>
+        <p>Websites may also use so-called "Flash Cookies" (also known as Local Shared Objects or "LSOs") to, among other things, collect and store information about your use of our services, fraud prevention, and for other site operations.</p>
+        <p>If you do not want Flash Cookies stored on your computer, you can adjust the settings of your Flash player to block Flash Cookies storage using the tools contained in the <a href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager07.html" target="_blank" style="color:var(--neon);text-decoration:underline;">Website Storage Settings Panel</a>. You can also control Flash Cookies by going to the <a href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager03.html" target="_blank" style="color:var(--neon);text-decoration:underline;">Global Storage Settings Panel</a> and following the instructions.</p>
+        <p>Please note that setting the Flash Player to restrict or limit acceptance of Flash Cookies may reduce or impede the functionality of some Flash applications, including, potentially, Flash applications used in connection with our services or online content.</p>
+    </div>
+
+    <!-- Targeted advertising -->
+    <div class="policy-section">
+        <h2>Do you serve targeted advertising?</h2>
+        <p>Third parties may serve cookies on your computer or mobile device to serve advertising through our Website. These companies may use information about your visits to this and other websites in order to provide relevant advertisements about goods and services that you may be interested in. They may also employ technology that is used to measure the effectiveness of advertisements. They can accomplish this by using cookies or web beacons to collect information about your visits to this and other websites in order to provide relevant advertisements about goods and services of potential interest to you. The information collected through this process does not enable us or them to identify your name, contact details, or other details that directly identify you unless you choose to provide these.</p>
+    </div>
+
+    <!-- How often updated -->
+    <div class="policy-section">
+        <h2>How often will you update this Cookie Policy?</h2>
+        <p>We may update this Cookie Policy from time to time in order to reflect, for example, changes to the cookies we use or for other operational, legal, or regulatory reasons. Please therefore revisit this Cookie Policy regularly to stay informed about our use of cookies and related technologies.</p>
+        <p>The date at the top of this Cookie Policy indicates when it was last updated.</p>
+    </div>
+
+    <!-- Further information -->
+    <div class="policy-section">
+        <h2>Where can I get further information?</h2>
+        <p>If you have any questions about our use of cookies or other technologies, please contact us:</p>
+        <div class="contact-block">
+            <p>🏢 <strong>Herbal Harmony with Holistic Healing, LLC</strong></p>
+            <p>📍 15661 HWY 262, Lot 25 Unit 23, Warden, WA 98857, United States</p>
+            <p>📞 <a href="tel:5095969462">509-596-9462</a></p>
+            <p>📧 <a href="mailto:connect@herbalharmonywithholistichealing.com">connect@herbalharmonywithholistichealing.com</a></p>
+        </div>
+        <p style="margin-top:1.5rem; font-size:0.78rem; color:var(--sage-dark); font-style:italic;">This Cookie Policy was created using Termly's <a href="https://termly.io/products/cookie-consent-manager/" target="_blank" style="color:var(--neon);text-decoration:underline;">Cookie Consent Manager</a>.</p>
+    </div>
+
+</main>
+
+<!-- ── Footer ── -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h2>Herbal Harmony<br>with Holistic Healing</h2>
+            <p>Rooted in nature, guided by faith, crafted with love. Every product is a prayer and a promise to support your wellness journey.</p>
+            <div style="display:flex;gap:0.75rem;margin-top:1rem;">
+                <a href="#" aria-label="Instagram" class="footer-social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" aria-label="TikTok" class="footer-social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.85 4.85 0 0 1-1.01-.09z"/></svg>
+                </a>
+                <a href="#" aria-label="Facebook" class="footer-social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="#" aria-label="YouTube" class="footer-social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-contact">
+            <p class="footer-col-title">Get In Touch</p>
+            <ul>
+                <li>📞 (509) 596-9462</li>
+                <li>✉️ connect@herbalharmonywithholistichealing.com</li>
+                <li>📍 15661 HWY 262, Lot 25 Unit 23, Warden, WA 98857</li>
+                <li>🛒 Online sales only — we ship to your door!</li>
+                <li>🌿 All products handcrafted &amp; prayed over with love</li>
+            </ul>
+        </div>
+        <div class="footer-newsletter">
+            <p class="footer-col-title">Stay Connected</p>
+            <p class="newsletter-desc">Join our herbal community for wellness tips, new product arrivals, and exclusive offers delivered straight to your inbox.</p>
+            <div class="newsletter-form" id="ml-footer-form">
+                <input type="email" id="ml-footer-email" placeholder="Your email address" aria-label="Email address">
+                <button class="newsletter-submit" id="ml-footer-btn">Subscribe 🌿</button>
+            </div>
+            <p class="newsletter-note">🔒 We respect your privacy. No spam, ever. Unsubscribe anytime.</p>
+            <p class="newsletter-note" style="margin-top:0.3rem;">📧 Powered by <a href="https://www.mailerlite.com" target="_blank" style="color:rgba(208,238,208,0.6);text-decoration:underline;">MailerLite</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-left">
+            <p class="footer-copy">&copy; 2026 Herbal Harmony with Holistic Healing, LLC. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="disclaimer.html" class="footer-legal-link">Disclaimer</a>
+                <a href="returns.html" class="footer-legal-link">Refund Policy</a>
+                <a href="terms.html" class="footer-legal-link">Terms &amp; Conditions</a>
+                <a href="privacy.html" class="footer-legal-link">Privacy Policy</a>
+                <a href="cookie-policy.html" class="footer-legal-link">Cookie Policy</a>
+                <a href="index.html" class="footer-legal-link">Home</a>
+            </div>
+        </div>
+        <a href="review.html" class="footer-review-link">&#9733; Write a product review</a>
+    </div>
+</footer>
+
+</body>
+</html>
