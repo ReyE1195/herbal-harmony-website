@@ -1041,17 +1041,36 @@ footer {
     width: auto;
 }
 
+/* ── Read More button (About section mobile) ── */
+.read-more-btn {
+    display: none;
+    margin-top: 1.25rem;
+    padding: 0.6rem 1.5rem;
+    background: transparent;
+    border: 2px solid var(--teal-light);
+    border-radius: 999px;
+    color: var(--teal-light);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.read-more-btn:hover {
+    background: var(--teal-light);
+    color: var(--charcoal);
+}
+
 /* ══════════════════════════════════════════
    RESPONSIVE — LAPTOP (max-width: 1200px)
 ══════════════════════════════════════════ */
 @media (max-width: 1200px) {
     #navbar { padding: 1.2rem 2rem; }
     .nav-list { gap: 1.8rem; }
-
     .scroll-wrapper { width: 80%; }
-
     .footer-grid { gap: 2.5rem; }
-
     #about-us { padding: 5rem 2rem; }
     .about-text { padding: 2.5rem; }
 }
@@ -1060,20 +1079,24 @@ footer {
    RESPONSIVE — TABLET (max-width: 900px)
 ══════════════════════════════════════════ */
 @media (max-width: 900px) {
-    /* Navbar — show hamburger, hide desktop nav */
+    /* Navbar */
     #navbar { padding: 1rem 1.5rem; }
     .nav-list { display: none; }
     .sign-up_login { display: none; }
     .hamburger { display: flex; }
     .mobile-nav { display: flex; }
 
-    /* Scroll wrapper wider on tablet */
+    /* Scroll wrapper */
     .scroll-wrapper { width: 90%; }
 
+    /* View more button */
+    .view-more { width: auto; padding: 0.9rem 2rem; }
+
+    /* Footer */
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .footer-brand { grid-column: 1 / -1; }
 
-    /* About section */
+    /* About */
     .about-content { grid-template-columns: 1fr; gap: 2rem; }
     .about-text { margin-left: 0; padding: 2.5rem; }
 
@@ -1086,42 +1109,80 @@ footer {
    RESPONSIVE — MOBILE (max-width: 640px)
 ══════════════════════════════════════════ */
 @media (max-width: 640px) {
-    /* Navbar */
+    /* ── Navbar ── */
     #navbar { padding: 1rem 1.25rem; }
 
-    /* Hero */
-    .hero-tagline { font-size: 1.1rem; margin-bottom: 1.75rem; }
-    .hero-inner img { max-width: 260px; }
-    .hero-logo { max-width: 260px; }
-    .hero-btn { padding: 0.8rem 1.8rem; font-size: 0.8rem; }
+    /* ── Hero ── */
+    #home { min-height: 85vh; }
+    .hero-bg { background-position: center top; }
+    .hero-inner { padding: 1.25rem; }
+    .hero-inner img { max-width: 200px; margin: 0 auto; }
+    .hero-logo { max-width: 200px; }
+    .hero-tagline { font-size: 1rem; margin-bottom: 1.5rem; }
+    .hero-btn { padding: 0.75rem 1.6rem; font-size: 0.78rem; }
 
-    /* Products section */
-    #products { padding: 4rem 1rem 1.5rem; }
-    #products h2 { font-size: 2rem; }
-    .scroll-wrapper { width: 100%; gap: 0.4rem; }
-    .left-btn, .right-btn { padding: 0.5rem 0.65rem; font-size: 0.9rem; }
+    /* ── Products ── */
+    #products { padding: 3.5rem 1rem 1.5rem; }
+    #products h2 { font-size: 1.9rem; }
+    #products h3 { font-size: 0.9rem; margin-bottom: 1.5rem; }
 
-    /* About */
+    /* Carousel — full width, single card fills screen */
+    .scroll-wrapper { width: 100%; gap: 0.3rem; }
+    .left-btn, .right-btn { width: 2.2rem; height: 2.2rem; font-size: 0.85rem; flex-shrink: 0; }
+
+    /* Product card sizing */
+    .product-card { width: calc(100vw - 7rem); max-width: 280px; }
+    .product-image { height: 200px; object-fit: cover; }
+
+    /* View more button */
+    .view-more {
+        width: auto;
+        min-width: 160px;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.78rem;
+    }
+
+    /* ── About Us ── */
     #about-us { padding: 3.5rem 1.25rem; }
-    #about-us h2 { font-size: 2rem; }
-    .about-text { padding: 1.5rem; font-size: 0.84rem; }
+    #about-us h2 { font-size: 1.9rem; margin-bottom: 1.5rem; }
+    .about-content { grid-template-columns: 1fr; gap: 1.5rem; }
+    .about-text { margin-left: 0; padding: 1.5rem; }
     .background-image { min-height: 220px; }
 
-    /* Contact */
+    /* Read More — truncate paragraph on mobile */
+    .about-text p {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        transition: all 0.4s ease;
+    }
+    .about-text p.expanded {
+        display: block;
+        -webkit-line-clamp: unset;
+        overflow: visible;
+    }
+    .read-more-btn { display: inline-block; }
+
+    /* ── Contact ── */
     #contact { padding: 3.5rem 1.25rem; }
-    #contact h2 { font-size: 2rem; }
+    #contact h2 { font-size: 1.9rem; }
     .contact-grid { flex-direction: column; align-items: center; }
     .review-card  { max-width: 100%; width: 100%; }
     .contact-hours { min-width: unset; width: 100%; }
 
-    /* Footer */
+    /* Fix Wednesday hours wrapping */
+    .contact-hours p span:first-child { min-width: 100px; }
+    .contact-hours p span:last-child  { text-align: right; white-space: nowrap; }
+
+    /* ── Footer ── */
     .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
     footer { padding: 3rem 1.25rem 1.5rem; }
     .footer-bottom { flex-direction: column; text-align: center; }
     .footer-bottom-links { justify-content: center; }
     .footer-brand p { max-width: 100%; }
 
-    /* About section mobile */
-    .about-content { grid-template-columns: 1fr; gap: 1.5rem; }
-    .about-text { margin-left: 0; padding: 1.5rem; }
+    /* Prevent footer text overflow */
+    .footer-contact li { word-break: break-word; }
+    .footer-contact li span:last-child { overflow-wrap: break-word; word-break: break-all; }
 }

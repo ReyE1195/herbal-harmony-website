@@ -62,7 +62,7 @@
     </div>
 </nav>
 
-<!-- ══ HERO ══ -->
+    <!-- ══ HERO ══ -->
     <section id="home">
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
@@ -108,6 +108,7 @@
                         Sharing this passion with others has been one of the most rewarding aspects of my journey.
                         Whether it's through workshops, community gatherings, or one-on-one consultations, I am continually inspired by the stories of transformation and healing that my clients share.
                         It is a privilege to contribute to their wellness journeys and to witness the profound impact that nature's remedies can have on their lives.</p>
+                    <button class="read-more-btn" id="read-more-btn" onclick="toggleReadMore()">Read More ↓</button>
                 </div>
             </div>
         </div>
@@ -212,113 +213,127 @@
         </div>
     </footer>
 
-    <script src="cart.js"></script>
-    <script src="index.js"></script>
-    <script>
-        // ── Update navbar based on login state ────────────────────────
-        (function() {
-            const token = localStorage.getItem('hh_token');
-            const profile = JSON.parse(localStorage.getItem('hh_profile') || '{}');
-            const authNav = document.getElementById('auth-nav');
-            if (token && profile.firstName && authNav) {
-                authNav.innerHTML =
-                    '<li><a href="account.html" target="_blank">My Account</a></li>';
+<script src="cart.js"></script>
+<script src="index.js"></script>
+<script>
+    // ── Update navbar based on login state ────────────────────────
+    (function() {
+        const token = localStorage.getItem('hh_token');
+        const profile = JSON.parse(localStorage.getItem('hh_profile') || '{}');
+        const authNav = document.getElementById('auth-nav');
+        if (token && profile.firstName && authNav) {
+            authNav.innerHTML =
+                '<li><a href="account.html" target="_blank">My Account</a></li>';
+        }
+    })();
+</script>
+<!-- MailerLite footer form handler -->
+<script>
+    (function() {
+        const btn   = document.getElementById('ml-footer-btn');
+        const input = document.getElementById('ml-footer-email');
+        if (!btn || !input) return;
+
+        btn.addEventListener('click', async function(e) {
+            e.preventDefault();
+            const email = input.value.trim();
+
+            if (!email || !email.includes('@')) {
+                input.style.borderColor = '#e05c5c';
+                input.placeholder = 'Please enter a valid email';
+                return;
             }
-        })();
-    </script>
-    <!-- MailerLite footer form handler -->
-    <script>
-        (function() {
-            const btn   = document.getElementById('ml-footer-btn');
-            const input = document.getElementById('ml-footer-email');
-            if (!btn || !input) return;
 
-            btn.addEventListener('click', async function(e) {
-                e.preventDefault();
-                const email = input.value.trim();
+            input.style.borderColor = '';
+            btn.disabled = true;
+            btn.textContent = 'Subscribing...';
 
-                if (!email || !email.includes('@')) {
+            try {
+                const res  = await fetch('/.netlify/functions/subscribe', {
+                    method:  'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body:    JSON.stringify({ email })
+                });
+                await res.json();
+
+                if (!res.ok) {
                     input.style.borderColor = '#e05c5c';
-                    input.placeholder = 'Please enter a valid email';
+                    btn.textContent = 'Try again';
+                    btn.disabled = false;
                     return;
                 }
 
-                input.style.borderColor = '';
-                btn.disabled = true;
-                btn.textContent = 'Subscribing...';
+                btn.textContent = "You're in! 🌿";
+                btn.style.background = 'var(--neon-frosted-mint, #D0EED0)';
+                btn.style.color      = 'var(--neon-forest, #3D5A3D)';
+                input.value       = '';
+                input.placeholder = 'Your email address';
 
-                try {
-                    const res  = await fetch('/.netlify/functions/subscribe', {
-                        method:  'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body:    JSON.stringify({ email })
-                    });
-                    const data = await res.json();
+                setTimeout(function() {
+                    btn.textContent      = 'Subscribe 🌿';
+                    btn.style.background = 'transparent';
+                    btn.style.color      = 'var(--neon-frosted-mint, #D0EED0)';
+                    btn.disabled         = false;
+                }, 3000);
 
-                    if (!res.ok) {
-                        input.style.borderColor = '#e05c5c';
-                        btn.textContent = 'Try again';
-                        btn.disabled = false;
-                        return;
-                    }
-
-                    btn.textContent = "You're in! 🌿";
-                    btn.style.background = 'var(--neon-frosted-mint, #D0EED0)';
-                    btn.style.color      = 'var(--neon-forest, #3D5A3D)';
-                    input.value       = '';
-                    input.placeholder = 'Your email address';
-
-                    setTimeout(function() {
-                        btn.textContent      = 'Subscribe 🌿';
-                        btn.style.background = 'transparent';
-                        btn.style.color      = 'var(--neon-frosted-mint, #D0EED0)';
-                        btn.disabled         = false;
-                    }, 3000);
-
-                } catch(err) {
-                    btn.textContent = 'Try again';
-                    btn.disabled    = false;
-                }
-            });
-        })();
-    </script>
-
-    <!-- Hamburger menu -->
-    <script>
-        const hamburger  = document.getElementById('hamburger');
-        const mobileNav  = document.getElementById('mobile-nav');
-
-        function openMobileNav() {
-            hamburger.classList.add('open');
-            mobileNav.classList.add('open');
-            hamburger.setAttribute('aria-expanded', 'true');
-            mobileNav.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMobileNav() {
-            hamburger.classList.remove('open');
-            mobileNav.classList.remove('open');
-            hamburger.setAttribute('aria-expanded', 'false');
-            mobileNav.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-        }
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.contains('open') ? closeMobileNav() : openMobileNav();
+            } catch(err) {
+                btn.textContent = 'Try again';
+                btn.disabled    = false;
+            }
         });
+    })();
+</script>
 
-        // Close on ESC key
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileNav(); });
+<!-- Hamburger menu -->
+<script>
+    const hamburger  = document.getElementById('hamburger');
+    const mobileNav  = document.getElementById('mobile-nav');
 
-        // Update mobile nav auth links based on login state
-        (function() {
-            const token   = localStorage.getItem('hh_token');
-            const profile = JSON.parse(localStorage.getItem('hh_profile') || '{}');
-            const mobileAuthNav = document.getElementById('mobile-auth-nav');
-            if (token && profile.firstName && mobileAuthNav) {
-                mobileAuthNav.innerHTML =
-                    `<a href="account.html" class="btn-login">My Account</a>
+    function openMobileNav() {
+        hamburger.classList.add('open');
+        mobileNav.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        mobileNav.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileNav() {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    // ── Read More / Read Less (About section mobile) ──────────────
+    function toggleReadMore() {
+        const p   = document.querySelector('.about-text p');
+        const btn = document.getElementById('read-more-btn');
+        if (p.classList.contains('expanded')) {
+            p.classList.remove('expanded');
+            btn.textContent = 'Read More ↓';
+        } else {
+            p.classList.add('expanded');
+            btn.textContent = 'Read Less ↑';
+        }
+    }
+    window.toggleReadMore = toggleReadMore;
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.contains('open') ? closeMobileNav() : openMobileNav();
+    });
+
+    // Close on ESC key
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileNav(); });
+
+    // Update mobile nav auth links based on login state
+    (function() {
+        const token   = localStorage.getItem('hh_token');
+        const profile = JSON.parse(localStorage.getItem('hh_profile') || '{}');
+        const mobileAuthNav = document.getElementById('mobile-auth-nav');
+        if (token && profile.firstName && mobileAuthNav) {
+            mobileAuthNav.innerHTML =
+                `<a href="account.html" class="btn-login">My Account</a>
                  <a href="checkout.html" class="btn-cart" aria-label="Cart">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -326,8 +341,8 @@
                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                     </svg>
                  </a>`;
-            }
-        })();
-    </script>
+        }
+    })();
+</script>
 </body>
 </html>
