@@ -41,6 +41,7 @@
 
 <!-- Mobile Nav Drawer -->
 <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <button class="mobile-nav-close" id="mobile-nav-close" onclick="closeMobileNav()" aria-label="Close menu">✕</button>
     <ul>
         <li><a href="#home"       onclick="closeMobileNav()">Home</a></li>
         <li><a href="#products"   onclick="closeMobileNav()">Products</a></li>
@@ -62,156 +63,156 @@
     </div>
 </nav>
 
-    <!-- ══ HERO ══ -->
-    <section id="home">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-inner">
-            <img src="images/transparent-logo.png" alt="Herbal Harmony with Holistic Healing logo">
-            <p class="hero-tagline">Connecting body, mind, and spirit &mdash; naturally</p>
-            <a href="#products" class="hero-btn">Explore Our Collection</a>
-        </div>
-        <div class="scroll-cue"><span></span></div>
-    </section>
+<!-- ══ HERO ══ -->
+<section id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+        <img src="images/transparent-logo.png" alt="Herbal Harmony with Holistic Healing logo">
+        <p class="hero-tagline">Connecting body, mind, and spirit &mdash; naturally</p>
+        <a href="#products" class="hero-btn">Explore Our Collection</a>
+    </div>
+    <div class="scroll-cue"><span></span></div>
+</section>
 
-    <!-- ══ PRODUCTS ══ -->
-    <section id="products">
-        <p class="section-label">What We Offer</p>
-        <h2>Our Herbal Collection</h2>
-        <h3>Natural wellness, handcrafted with care and love</h3>
-        <div class="scroll-wrapper">
-            <button class="left-btn" aria-label="Scroll left">&#8592;</button>
-            <div id="scroll-track"></div>
-            <button class="right-btn" aria-label="Scroll right">&#8594;</button>
-        </div>
-        <div id="progress-dots"></div>
-        <div style="text-align: center;">
-            <a href="products.html" target="_blank" class="view-more">More Products</a>
-        </div>
-    </section>
+<!-- ══ PRODUCTS ══ -->
+<section id="products">
+    <p class="section-label">What We Offer</p>
+    <h2>Our Herbal Collection</h2>
+    <h3>Natural wellness, handcrafted with care and love</h3>
+    <div class="scroll-wrapper">
+        <button class="left-btn" aria-label="Scroll left">&#8592;</button>
+        <div id="scroll-track"></div>
+        <button class="right-btn" aria-label="Scroll right">&#8594;</button>
+    </div>
+    <div id="progress-dots"></div>
+    <div style="text-align: center;">
+        <a href="products.html" target="_blank" class="view-more">More Products</a>
+    </div>
+</section>
 
-    <!-- ══ ABOUT ══ -->
-    <section id="about-us">
-        <div class="about-inner">
-            <p class="section-label">Our Story</p>
-            <h2>Behind Our Brand</h2>
-            <div class="about-content">
-                <div class="background-image"></div>
-                <div class="about-text">
-                    <p>Each remedy is a blend of time-honored traditions and modern insights, designed to harness the earth's natural gifts.
-                        I remember spending countless hours in our family garden, learning the names and uses of various herbs, and witnessing firsthand how they could soothe, heal, and rejuvenate.
-                        This upbringing instilled in me a profound respect for the environment and a desire to preserve its bountiful resources.
-                        As I ventured further into the world of homeopathy, I was guided by the principle that nature provides everything we need to maintain balance and wellness.
-                        This philosophy is woven into every aspect of my work, from the careful selection of ingredients to the meticulous crafting process.
-                        I strive to ensure that each product not only supports physical health but also nurtures the spirit.
-                        My faith in almighty Yahweh and the prayer over my products adds a deeply personal touch to my work, demonstrating my dedication and belief in the healing power of my creations.
-                        Sharing this passion with others has been one of the most rewarding aspects of my journey.
-                        Whether it's through workshops, community gatherings, or one-on-one consultations, I am continually inspired by the stories of transformation and healing that my clients share.
-                        It is a privilege to contribute to their wellness journeys and to witness the profound impact that nature's remedies can have on their lives.</p>
-                    <button class="read-more-btn" id="read-more-btn" onclick="toggleReadMore()">Read More ↓</button>
-                </div>
+<!-- ══ ABOUT ══ -->
+<section id="about-us">
+    <div class="about-inner">
+        <p class="section-label">Our Story</p>
+        <h2>Behind Our Brand</h2>
+        <div class="about-content">
+            <div class="background-image"></div>
+            <div class="about-text">
+                <p>Each remedy is a blend of time-honored traditions and modern insights, designed to harness the earth's natural gifts.
+                    I remember spending countless hours in our family garden, learning the names and uses of various herbs, and witnessing firsthand how they could soothe, heal, and rejuvenate.
+                    This upbringing instilled in me a profound respect for the environment and a desire to preserve its bountiful resources.
+                    As I ventured further into the world of homeopathy, I was guided by the principle that nature provides everything we need to maintain balance and wellness.
+                    This philosophy is woven into every aspect of my work, from the careful selection of ingredients to the meticulous crafting process.
+                    I strive to ensure that each product not only supports physical health but also nurtures the spirit.
+                    My faith in almighty Yahweh and the prayer over my products adds a deeply personal touch to my work, demonstrating my dedication and belief in the healing power of my creations.
+                    Sharing this passion with others has been one of the most rewarding aspects of my journey.
+                    Whether it's through workshops, community gatherings, or one-on-one consultations, I am continually inspired by the stories of transformation and healing that my clients share.
+                    It is a privilege to contribute to their wellness journeys and to witness the profound impact that nature's remedies can have on their lives.</p>
+                <button class="read-more-btn" id="read-more-btn" onclick="toggleReadMore()">Read More ↓</button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ══ CONTACT ══ -->
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <h4>&#42; At this time we ONLY SELL online.</h4>
-        <div class="contact-grid">
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+    <h2>Contact Us</h2>
+    <h4>&#42; At this time we ONLY SELL online.</h4>
+    <div class="contact-grid">
 
-            <div class="contact-hours">
-                <h3>Business Hours</h3>
-                <p><span>Monday</span>    <span>10:00 AM – 4:00 PM</span></p>
-                <p><span>Tuesday</span>   <span>10:00 AM – 4:00 PM</span></p>
-                <p><span>Wednesday</span> <span>10:00 AM – 4:00 PM</span></p>
-                <p><span>Thursday</span>  <span>10:00 AM – 4:00 PM</span></p>
-                <p><span>Friday</span>    <span>10:00 AM – 4:00 PM</span></p>
-                <p class="closed"><span>Saturday</span> <span>CLOSED</span></p>
-                <p class="closed"><span>Sunday</span>   <span>CLOSED</span></p>
-            </div>
-
-            <div class="review-card">
-                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <h3>Love Our Products?</h3>
-                <p>Your kind words help others discover the healing power of nature. Share your experience with our community!</p>
-                <a href="review.html" class="review-btn">Write a Review</a>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ══ FOOTER ══ -->
-    <footer>
-        <div class="footer-grid">
-
-            <div class="footer-brand">
-                <h2>Herbal Harmony<br><em>with Holistic Healing</em></h2>
-                <p>Rooted in nature, guided by faith, crafted with love. Every product is a prayer and a promise to support your wellness journey.</p>
-                <div class="social-icons">
-                    <a href="#" aria-label="Instagram">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="TikTok">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.85 4.85 0 0 1-1.01-.09z"/>
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="Facebook">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="YouTube">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
-                            <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-contact">
-                <p class="footer-col-title">Get In Touch</p>
-                <ul>
-                    <li><span class="icon">📞</span><span>(509) 596 – 9462</span></li>
-                    <li><span class="icon">✉️</span><span>connect@herbalharmonywithholistichealing.com</span></li>
-                    <li><span class="icon">🛒</span><span>Online sales only &mdash; we ship to your door!</span></li>
-                    <li><span class="icon">🌿</span><span>All products handcrafted &amp; prayed over with love</span></li>
-                </ul>
-            </div>
-
-            <div class="footer-newsletter">
-                <p class="footer-col-title">Stay Connected</p>
-                <p class="newsletter-desc">Join our herbal community for wellness tips, new product arrivals, and exclusive offers delivered straight to your inbox.</p>
-                <div class="newsletter-form">
-                    <input type="email" id="ml-footer-email" placeholder="Your email address" aria-label="Email address">
-                    <button class="newsletter-submit" id="ml-footer-btn">Subscribe 🌿</button>
-                </div>
-                <p class="newsletter-note">🔒 We respect your privacy. No spam, ever. Unsubscribe anytime.</p>
-                <p class="newsletter-note" style="margin-top:0.3rem;">📧 Powered by <a href="https://www.mailerlite.com" target="_blank" style="color:rgba(208,238,208,0.6);text-decoration:underline;">MailerLite</a></p>
-            </div>
-
+        <div class="contact-hours">
+            <h3>Business Hours</h3>
+            <p><span>Monday</span>    <span>10:00 AM – 4:00 PM</span></p>
+            <p><span>Tuesday</span>   <span>10:00 AM – 4:00 PM</span></p>
+            <p><span>Wednesday</span> <span>10:00 AM – 4:00 PM</span></p>
+            <p><span>Thursday</span>  <span>10:00 AM – 4:00 PM</span></p>
+            <p><span>Friday</span>    <span>10:00 AM – 4:00 PM</span></p>
+            <p class="closed"><span>Saturday</span> <span>CLOSED</span></p>
+            <p class="closed"><span>Sunday</span>   <span>CLOSED</span></p>
         </div>
 
-        <div class="footer-bottom">
-            <div class="footer-bottom-left">
-                <p class="footer-copy">&copy; 2026 Herbal Harmony with Holistic Healing. All rights reserved.</p>
-                <div class="footer-bottom-links">
-                    <a href="disclaimer.html">Disclaimer</a>
-                    <a href="terms.html">Terms &amp; Conditions</a>
-                    <a href="returns.html">Refund Policy</a>
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="cookie-policy.html">Cookie Policy</a>
-                </div>
-            </div>
-            <a href="review.html" class="footer-review-link">&#9733; Write a product review</a>
+        <div class="review-card">
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <h3>Love Our Products?</h3>
+            <p>Your kind words help others discover the healing power of nature. Share your experience with our community!</p>
+            <a href="review.html" class="review-btn">Write a Review</a>
         </div>
-    </footer>
+
+    </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+    <div class="footer-grid">
+
+        <div class="footer-brand">
+            <h2>Herbal Harmony<br><em>with Holistic Healing</em></h2>
+            <p>Rooted in nature, guided by faith, crafted with love. Every product is a prayer and a promise to support your wellness journey.</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="#" aria-label="TikTok">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.85 4.85 0 0 1-1.01-.09z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+                        <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-contact">
+            <p class="footer-col-title">Get In Touch</p>
+            <ul>
+                <li><span class="icon">📞</span><span>(509) 596 – 9462</span></li>
+                <li><span class="icon">✉️</span><span>connect@herbalharmonywithholistichealing.com</span></li>
+                <li><span class="icon">🛒</span><span>Online sales only &mdash; we ship to your door!</span></li>
+                <li><span class="icon">🌿</span><span>All products handcrafted &amp; prayed over with love</span></li>
+            </ul>
+        </div>
+
+        <div class="footer-newsletter">
+            <p class="footer-col-title">Stay Connected</p>
+            <p class="newsletter-desc">Join our herbal community for wellness tips, new product arrivals, and exclusive offers delivered straight to your inbox.</p>
+            <div class="newsletter-form">
+                <input type="email" id="ml-footer-email" placeholder="Your email address" aria-label="Email address">
+                <button class="newsletter-submit" id="ml-footer-btn">Subscribe 🌿</button>
+            </div>
+            <p class="newsletter-note">🔒 We respect your privacy. No spam, ever. Unsubscribe anytime.</p>
+            <p class="newsletter-note" style="margin-top:0.3rem;">📧 Powered by <a href="https://www.mailerlite.com" target="_blank" style="color:rgba(208,238,208,0.6);text-decoration:underline;">MailerLite</a></p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-bottom-left">
+            <p class="footer-copy">&copy; 2026 Herbal Harmony with Holistic Healing. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="disclaimer.html">Disclaimer</a>
+                <a href="terms.html">Terms &amp; Conditions</a>
+                <a href="returns.html">Refund Policy</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="cookie-policy.html">Cookie Policy</a>
+            </div>
+        </div>
+        <a href="review.html" class="footer-review-link">&#9733; Write a product review</a>
+    </div>
+</footer>
 
 <script src="cart.js"></script>
 <script src="index.js"></script>

@@ -7,6 +7,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- MailerLite Universal -->
+    <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+            .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+            n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '2349261');
+    </script>
+    <!-- End MailerLite Universal -->
     <style>
         :root {
             --neon:              #528552;
@@ -86,7 +95,21 @@
 
 
         @media (max-width: 900px) { .page-hero { padding: 4rem 1.5rem 2.5rem; } .page-hero h1 { font-size: 2.2rem; } .policy-wrapper { padding: 2.5rem 1.5rem 4rem; } footer { padding: 3rem 1.5rem 1.5rem; } .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1/-1; } }
-        @media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } }
+        @media (max-width: 640px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .policy-wrapper { padding: 2rem 1.25rem 4rem; }
+            .page-hero { padding: 3.5rem 1.25rem 2rem; }
+            .page-hero h1 { font-size: 1.9rem; }
+            .intro-text { padding: 1.25rem; }
+            .toc { padding: 1.25rem; }
+            .contact-block { padding: 1.25rem; }
+            .contact-block a { word-break: break-all; overflow-wrap: break-word; }
+            .policy-section p a { word-break: break-all; overflow-wrap: break-word; }
+            .intro-text a { word-break: break-all; overflow-wrap: break-word; }
+            .footer-contact li { word-break: break-word; overflow-wrap: break-word; }
+            .footer-contact li span { overflow-wrap: break-word; word-break: break-all; }
+        }
 
         /* ── Footer hover styles ── */
         .footer-links a { transition: color 0.3s ease; }

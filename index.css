@@ -941,6 +941,30 @@ footer {
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+.mobile-nav-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: none;
+    border: 2px solid rgba(57,255,216,0.4);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: var(--neon-electric-mint);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 320;
+}
+.mobile-nav-close:hover {
+    background: rgba(57,255,216,0.15);
+    border-color: var(--neon-electric-mint);
+    box-shadow: var(--neon-glow-electric-mint);
+}
+
 /* Mobile nav drawer */
 .mobile-nav {
     display: none;

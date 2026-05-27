@@ -7,6 +7,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- MailerLite Universal -->
+    <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+            .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+            n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '2349261');
+    </script>
+    <!-- End MailerLite Universal -->
     <style>
         :root {
             --neon:              #528552;
@@ -298,7 +307,7 @@
     <div class="footer-bottom">
         <div class="footer-bottom-left">
             <p class="footer-copy">&copy; 2026 Herbal Harmony with Holistic Healing, LLC. All rights reserved.</p>
-            <div class="footer-links">
+            <div class="footer-links" style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:0.4rem;">
                 <a href="disclaimer.html" class="footer-legal-link">Disclaimer</a>
                 <a href="returns.html" class="footer-legal-link">Refund Policy</a>
                 <a href="terms.html" class="footer-legal-link">Terms &amp; Conditions</a>
@@ -310,6 +319,36 @@
         <a href="review.html" class="footer-review-link">&#9733; Write a product review</a>
     </div>
 </footer>
+
+<!-- MailerLite footer form handler -->
+<script>
+    (function() {
+        var btn = document.getElementById('ml-footer-btn');
+        var input = document.getElementById('ml-footer-email');
+        if (!btn || !input) return;
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            var email = input.value.trim();
+            if (!email || !email.includes('@')) {
+                input.style.borderColor = '#e05c5c';
+                input.placeholder = 'Please enter a valid email';
+                return;
+            }
+            input.style.borderColor = '';
+            if (typeof ml !== 'undefined') { ml('webforms', 'show', 'no8Cs2'); }
+            btn.textContent = "You're in! 🌿";
+            btn.style.background = 'var(--neon-frosted-mint, #D0EED0)';
+            btn.style.color = 'var(--neon-forest, #3D5A3D)';
+            input.value = '';
+            input.placeholder = 'Your email address';
+            setTimeout(function() {
+                btn.textContent = 'Subscribe 🌿';
+                btn.style.background = 'transparent';
+                btn.style.color = 'var(--neon-frosted-mint, #D0EED0)';
+            }, 3000);
+        });
+    })();
+</script>
 
 </body>
 </html>
