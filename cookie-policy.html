@@ -59,8 +59,8 @@
         /* ── Cookie detail card ── */
         .cookie-card { background: white; border: 1px solid var(--cream-dark); border-radius: 1rem; padding: 1.25rem 1.5rem; margin: 1rem 0; display: grid; grid-template-columns: 140px 1fr; gap: 0.5rem 1rem; }
         .cookie-card .label { font-size: 0.78rem; font-weight: 600; color: var(--forest); text-transform: uppercase; letter-spacing: 0.08em; }
-        .cookie-card .value { font-size: 0.85rem; color: var(--charcoal); line-height: 1.6; }
-        .cookie-card .value a { color: var(--neon); text-decoration: underline; }
+        .cookie-card .value { font-size: 0.85rem; color: var(--charcoal); line-height: 1.6; word-break: break-word; overflow-wrap: break-word; }
+        .cookie-card .value a { color: var(--neon); text-decoration: underline; word-break: break-all; overflow-wrap: break-word; }
 
         /* ── Contact block ── */
         .contact-block { background: white; border: 1px solid var(--cream-dark); border-radius: 1rem; padding: 1.5rem 1.75rem; margin-top: 1rem; }
@@ -91,7 +91,7 @@
 
 
         @media (max-width: 900px) { .page-hero { padding: 4rem 1.5rem 2.5rem; } .page-hero h1 { font-size: 2.2rem; } .policy-wrapper { padding: 2.5rem 1.5rem 4rem; } footer { padding: 3rem 1.5rem 1.5rem; } .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1/-1; } .data-table { font-size: 0.78rem; } }
-        @media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } .data-table th, .data-table td { padding: 0.5rem 0.6rem; } }
+        @media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } .data-table th, .data-table td { padding: 0.5rem 0.6rem; } .cookie-card { grid-template-columns: 1fr; gap: 0.25rem; } .cookie-card .label { margin-top: 0.5rem; } .policy-wrapper { padding: 2rem 1.25rem 4rem; } .page-hero { padding: 3.5rem 1.25rem 2rem; } .page-hero h1 { font-size: 1.9rem; } }
 
         /* ── Footer ── */
         footer { background:#1a2e1a; color:#D0EED0; padding:4rem 3rem 2rem; }
@@ -149,7 +149,7 @@
     <p class="last-updated">Last updated February 19th, 2026</p>
 
     <div class="intro-text">
-        <p>This Cookie Policy explains how Herbal Harmony with Holistic Healing (<strong>"Company," "we," "us,"</strong> and <strong>"our"</strong>) uses cookies and similar technologies to recognize you when you visit our website at <a href="https://www.herbalharmonywithholistichealing.com" style="color:var(--neon);text-decoration:underline;word-break:break-all;overflow-wrap:break-word;">https://www.herbalharmonywithholistichealing.com</a> (<strong>"Website"</strong>). It explains what these technologies are and why we use them, as well as your rights to control our use of them.</p>
+        <p>This Cookie Policy explains how Herbal Harmony with Holistic Healing (<strong>"Company," "we," "us,"</strong> and <strong>"our"</strong>) uses cookies and similar technologies to recognize you when you visit our website at <a href="https://www.herbalharmonywithholistichealing.com" style="color:var(--neon);text-decoration:underline;">https://www.herbalharmonywithholistichealing.com</a> (<strong>"Website"</strong>). It explains what these technologies are and why we use them, as well as your rights to control our use of them.</p>
         <p>In some cases we may use cookies to collect personal information, or that becomes personal information if we combine it with other information.</p>
     </div>
 
@@ -222,7 +222,7 @@
     <div class="policy-section">
         <h2>Do you use Flash cookies or Local Shared Objects?</h2>
         <p>Websites may also use so-called "Flash Cookies" (also known as Local Shared Objects or "LSOs") to, among other things, collect and store information about your use of our services, fraud prevention, and for other site operations.</p>
-        <p>If you do not want Flash Cookies stored on your computer, you can adjust the settings of your Flash player to block Flash Cookies storage using the tools contained in the <a href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager07.html" target="_blank" style="color:var(--neon);text-decoration:underline;word-break:break-all;overflow-wrap:break-word;">Website Storage Settings Panel</a>. You can also control Flash Cookies by going to the <a href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager03.html" target="_blank" style="color:var(--neon);text-decoration:underline;word-break:break-all;overflow-wrap:break-word;">Global Storage Settings Panel</a> and following the instructions.</p>
+        <p>If you do not want Flash Cookies stored on your computer, you can adjust the settings of your Flash player to block Flash Cookies storage using the tools contained in the <a href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager07.html" target="_blank" style="color:var(--neon);text-decoration:underline;">Website Storage Settings Panel</a>. You can also control Flash Cookies by going to the <a href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager03.html" target="_blank" style="color:var(--neon);text-decoration:underline;">Global Storage Settings Panel</a> and following the instructions.</p>
         <p>Please note that setting the Flash Player to restrict or limit acceptance of Flash Cookies may reduce or impede the functionality of some Flash applications, including, potentially, Flash applications used in connection with our services or online content.</p>
     </div>
 
@@ -249,7 +249,7 @@
             <p>📞 <a href="tel:5095969462">509-596-9462</a></p>
             <p>📧 <a href="mailto:connect@herbalharmonywithholistichealing.com">connect@herbalharmonywithholistichealing.com</a></p>
         </div>
-        <p style="margin-top:1.5rem; font-size:0.78rem; color:var(--sage-dark); font-style:italic;">This Cookie Policy was created using Termly's <a href="https://termly.io/products/cookie-consent-manager/" target="_blank" style="color:var(--neon);text-decoration:underline;word-break:break-all;overflow-wrap:break-word;">Cookie Consent Manager</a>.</p>
+        <p style="margin-top:1.5rem; font-size:0.78rem; color:var(--sage-dark); font-style:italic;">This Cookie Policy was created using Termly's <a href="https://termly.io/products/cookie-consent-manager/" target="_blank" style="color:var(--neon);text-decoration:underline;">Cookie Consent Manager</a>.</p>
     </div>
 
 </main>
