@@ -7,19 +7,19 @@
 //   PRODUCTS DATA
 // ============================================
 const products = [
-    { name:'Pillar Candles', price:'$12.00', image: 'images/2lb_Beeswax_Candle.png', description:'Pure beeswax pillar candles handcrafted with love. Available in multiple sizes.', benefits:'Candle • Pure Beeswax', disclaimer:'Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.', link:'checkout.html', sizes: [{label:'2"', price:'$12.00'},{label:'4"', price:'$15.00'},{label:'6"', price:'$17.00'}] },
-    { name:'Skep Candles', price:'$8.00', image: 'images/Beeswax_Beehive_Skep-Candles.png', description:'10+ hour burn time crafted from pure beeswax.', benefits:'Candle • Pure Beeswax', disclaimer:'Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.', link:'checkout.html' },
-    { name:'Cold/Flu Foot Soak', price:'$15.00', image: 'images/Cold_Flu_Soak.png', description:'Eucalyptus & Camphor base for congestion relief.', benefits:'Soak • External Use Only', disclaimer:'External Use Only. Soak body/feet for ONLY  15 minutes - 30 minutes. Discontinue if irritation occurs.', link:'checkout.html' },
-    { name:'De-Stress Foot Soak', price:'$15.00', image: 'images/Destress_Foot_Soak.png', description:'Ashwagandha root powder for anxiety and muscle tension.', benefits:'Soak • External Use Only', disclaimer:'External Use Only. Soak body/feet for ONLY  15 minutes - 30 minutes. Discontinue if irritation occurs.', link:'checkout.html' },
-    { name:'Breathe Better Balm', price:'$10.00', image: 'images/Breathe_Better_Balm.png', description:'Menthol & Camphor crystals for chest congestion relief.', benefits:'Balm • External Use Only', disclaimer:'External Use Only. Discontinue if irritation occurs.', link:'checkout.html' },
-    { name:'Little Lungs Balm', price:'$6.00', image: 'images/Little_Lungs_Balm.png', description:'Tea Tree, Eucalyptus & Rosemary — gentle for children and sensitive skin.', benefits:'Balm • Kids Friendly', disclaimer:'External Use Only. Discontinue if irritation occurs.', link:'checkout.html' },
-    { name:'Boo Boo Balm', price:'$6.00', image: 'images/BooBoo_Balm.png', description:'Oregano & Blackseed Oil antimicrobial blend for cuts and scrapes.', benefits:'Balm • External Use Only', disclaimer:'External Use Only. Discontinue if irritation occurs.', link:'checkout.html' },
-    { name:'Starter Wrap Set', price:'$20.00', image: 'images/Hello_Kitty_Beeswax_Wrap.png', description:'New Pine Rosin Formula for superior cling. Includes S, M & L.', benefits:'Wrap • Cold Wash Only', disclaimer:'Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.', link:'checkout.html' },
-    { name:'XL Beeswax Wrap', price:'$20.00', image: 'images/Green_Minecraft_Beeswax_Wraps.png', description:'Highest quality seal for large items.', benefits:'Wrap • Cold Wash Only', disclaimer:'Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.', link:'checkout.html' },
-    { name:'Lip Balm • Vanilla', price:'$3.00', image: 'images/Lip_Balm_Vanilla.png', description:'Moisturizing pure beeswax lip balm with a warm sweet Vanilla scent. Buy any 2 lip balms for $5.00!', benefits:'Lip Balm • Pure Beeswax', disclaimer:'External Use Only. For lip use only. Discontinue if irritation occurs. Keep away from children under 3.', link:'checkout.html' },
-    { name:'Lip Balm • Eucalyptus & Mint', price:'$3.00', image: 'images/Lip_Balm_Eucalyptus_Mint.png', description:'Refreshing pure beeswax lip balm with cooling Eucalyptus & Mint. Buy any 2 lip balms for $5.00!', benefits:'Lip Balm • Pure Beeswax', disclaimer:'External Use Only. For lip use only. Discontinue if irritation occurs. Keep away from children under 3.', link:'checkout.html' },
-    { name:'Lip Balm • Unscented', price:'$3.00', image: 'images/Lip_Balm_Unscented.png', description:'Pure beeswax lip balm with no added fragrance — perfect for sensitive lips. Buy any 2 lip balms for $5.00!', benefits:'Lip Balm • Pure Beeswax', disclaimer:'External Use Only. For lip use only. Discontinue if irritation occurs. Keep away from children under 3.', link:'checkout.html' },
-    { name:'DIY Candle Kit', price:'$15.00', image: 'images/DIY_Candle_Kit.png', description:'Easy, non-toxic craft kit with honeycomb wax included.', benefits:'Candle • All Ages', disclaimer:'Safety Warning: Adult supervision required.', link:'checkout.html' }
+    { name:'Pillar Candles', price:'$12.00', image: 'images/2lb-Pillar-Candle.jpeg', description:'Pure beeswax pillar candles handcrafted with love. Available in multiple sizes.', benefits:'Candle • Pure Beeswax', disclaimer:'Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.', link:'checkout.html', sizes: [{label:'2"', price:'$12.00'},{label:'4"', price:'$15.00'},{label:'6"', price:'$17.00'}] },
+    { name:'Skep Candles', price:'$8.00', image: 'images/Skep-Candles.jpeg', description:'10+ hour burn time crafted from pure beeswax.', benefits:'Candle • Pure Beeswax', disclaimer:'Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.', link:'checkout.html' },
+    { name:'Cold/Flu Foot Soak', price:'$15.00', image: 'images/Cold-Flu-Foot-Soak.jpeg', description:'Eucalyptus & Camphor base for congestion relief.', benefits:'Soak • External Use Only', disclaimer:'External Use Only. Soak body/feet for ONLY  15 minutes - 30 minutes. Discontinue if irritation occurs.', link:'checkout.html' },
+    { name:'De-Stress Foot Soak', price:'$15.00', image: 'images/De-stress-Foot-Soak.jpeg', description:'Ashwagandha root powder for anxiety and muscle tension.', benefits:'Soak • External Use Only', disclaimer:'External Use Only. Soak body/feet for ONLY  15 minutes - 30 minutes. Discontinue if irritation occurs.', link:'checkout.html' },
+    { name:'Breathe Better Balm', price:'$10.00', image: 'images/ai-generated/Breathe_Better_Balm.png', description:'Menthol & Camphor crystals for chest congestion relief.', benefits:'Balm • External Use Only', disclaimer:'External Use Only. Discontinue if irritation occurs.', link:'checkout.html' },
+    { name:'Little Lungs Balm', price:'$6.00', image: 'images/ai-generated/Little_Lungs_Balm.png', description:'Tea Tree, Eucalyptus & Rosemary — gentle for children and sensitive skin.', benefits:'Balm • Kids Friendly', disclaimer:'External Use Only. Discontinue if irritation occurs.', link:'checkout.html' },
+    { name:'Boo Boo Balm', price:'$6.00', image: 'images/ai-generated/BooBoo_Balm.png', description:'Oregano & Blackseed Oil antimicrobial blend for cuts and scrapes.', benefits:'Balm • External Use Only', disclaimer:'External Use Only. Discontinue if irritation occurs.', link:'checkout.html' },
+    { name:'Starter Wrap Set', price:'$20.00', image: 'images/ai-generated/Hello_Kitty_Beeswax_Wrap.png', description:'New Pine Rosin Formula for superior cling. Includes S, M & L.', benefits:'Wrap • Cold Wash Only', disclaimer:'Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.', link:'checkout.html' },
+    { name:'XL Beeswax Wrap', price:'$20.00', image: 'images/Large-Beeswax-Wraps.jpeg', description:'Highest quality seal for large items.', benefits:'Wrap • Cold Wash Only', disclaimer:'Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.', link:'checkout.html' },
+    { name:'Lip Balm • Vanilla', price:'$3.00', image: 'images/Lip-Balm-Vanilla.jpeg', description:'Moisturizing pure beeswax lip balm with a warm sweet Vanilla scent. Buy any 2 lip balms for $5.00!', benefits:'Lip Balm • Pure Beeswax', disclaimer:'External Use Only. For lip use only. Discontinue if irritation occurs. Keep away from children under 3.', link:'checkout.html' },
+    { name:'Lip Balm • Eucalyptus & Mint', price:'$3.00', image: 'images/Lip-Balm-Eucalyptus-Mint.jpeg', description:'Refreshing pure beeswax lip balm with cooling Eucalyptus & Mint. Buy any 2 lip balms for $5.00!', benefits:'Lip Balm • Pure Beeswax', disclaimer:'External Use Only. For lip use only. Discontinue if irritation occurs. Keep away from children under 3.', link:'checkout.html' },
+    { name:'Lip Balm • Unscented', price:'$3.00', image: 'images/ai-generated/Lip_Balm_Unscented.png', description:'Pure beeswax lip balm with no added fragrance — perfect for sensitive lips. Buy any 2 lip balms for $5.00!', benefits:'Lip Balm • Pure Beeswax', disclaimer:'External Use Only. For lip use only. Discontinue if irritation occurs. Keep away from children under 3.', link:'checkout.html' },
+    { name:'DIY Candle Kit', price:'$15.00', image: 'images/ai-generated/DIY_Candle_Kit.png', description:'Easy, non-toxic craft kit with honeycomb wax included.', benefits:'Candle • All Ages', disclaimer:'Safety Warning: Adult supervision required.', link:'checkout.html' }
 ];
 
 // ============================================
@@ -263,60 +263,6 @@ window.addEventListener('scroll', () => {
         if (l.getAttribute('href') === `#${current}`) l.classList.add('active');
     });
 });
-
-// ============================================
-//   NEWSLETTER SIGNUP
-// ============================================
-async function handleNewsletterSignup(e) {
-    e.preventDefault();
-    const input = document.querySelector('.newsletter-form input[type="email"]');
-    const btn   = document.querySelector('.newsletter-submit');
-    const email = input.value.trim();
-
-    if (!email || !email.includes('@')) {
-        input.style.borderColor = '#e05c5c';
-        input.style.boxShadow   = '0 0 10px rgba(224,92,92,0.3)';
-        input.placeholder       = 'Please enter a valid email';
-        return;
-    }
-
-    input.style.borderColor = '';
-    input.style.boxShadow   = '';
-    btn.disabled    = true;
-    btn.textContent = 'Subscribing...';
-
-    try {
-        const res  = await fetch('/.netlify/functions/subscribe', {
-            method:  'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body:    JSON.stringify({ email })
-        });
-
-        if (!res.ok) {
-            input.style.borderColor = '#e05c5c';
-            btn.textContent = 'Try again';
-            btn.disabled    = false;
-            return;
-        }
-
-        input.value       = '';
-        input.placeholder = 'Your email address';
-        btn.textContent      = "You're in! 🌿";
-        btn.style.background = '#C8B97A';
-        btn.style.color      = '#000';
-
-        setTimeout(() => {
-            btn.textContent      = 'Subscribe 🌿';
-            btn.style.background = 'transparent';
-            btn.style.color      = '#C8B97A';
-            btn.disabled         = false;
-        }, 3000);
-
-    } catch(err) {
-        btn.textContent = 'Try again';
-        btn.disabled    = false;
-    }
-}
 
 // ============================================
 //   INITIALIZE
