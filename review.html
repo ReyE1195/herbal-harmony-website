@@ -44,9 +44,9 @@
         .footer-contact li { display:flex; align-items:flex-start; gap:0.7rem; font-size:0.85rem; color:rgba(208,238,208,0.75); line-height:1.5; }
         .footer-newsletter p.newsletter-desc { font-size:0.84rem; color:rgba(208,238,208,0.7); line-height:1.7; margin-bottom:1.1rem; }
         .newsletter-form { display:flex; flex-direction:column; gap:0.65rem; }
-        .newsletter-form input[type="email"] { width:100%; padding:0.65rem 0.9rem; border-radius:0.55rem; border:1px solid rgba(208,238,208,0.25); background:rgba(208,238,208,0.08); color:var(--cream); font-family:"Montserrat",sans-serif; font-size:0.82rem; outline:none; transition:border-color 0.3s; }
-        .newsletter-form input[type="email"]::placeholder { color:rgba(208,238,208,0.4); }
-        .newsletter-form input[type="email"]:focus { border-color:var(--neon-frosted-mint); }
+        .newsletter-form input { width:100%; padding:0.65rem 0.9rem; border-radius:0.55rem; border:1px solid rgba(208,238,208,0.25); background:rgba(208,238,208,0.08); color:var(--cream); font-family:"Montserrat",sans-serif; font-size:0.82rem; outline:none; transition:border-color 0.3s; }
+        .newsletter-form input::placeholder { color:rgba(208,238,208,0.4); }
+        .newsletter-form input:focus { border-color:var(--neon-frosted-mint); }
         .newsletter-submit { padding:0.65rem 1.2rem; background:transparent; border:1.5px solid var(--neon-frosted-mint); border-radius:999px; color:var(--neon-frosted-mint); font-family:"Montserrat",sans-serif; font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; transition:all 0.3s ease; width:100%; }
         .newsletter-submit:hover { background:var(--neon-frosted-mint); color:var(--neon-forest); }
         .newsletter-note { font-size:0.71rem; color:rgba(208,238,208,0.45); margin-top:0.2rem; }
@@ -203,6 +203,7 @@
             <p class="footer-col-title">Stay Connected</p>
             <p class="newsletter-desc">Join our herbal community for wellness tips, new product arrivals, and exclusive offers delivered straight to your inbox.</p>
             <div class="newsletter-form" id="ml-footer-form">
+                <input type="text" id="ml-footer-name" placeholder="Your first name" aria-label="First name">
                 <input type="email" id="ml-footer-email" placeholder="Your email address" aria-label="Email address">
                 <button class="newsletter-submit" id="ml-footer-btn">Subscribe 🌿</button>
             </div>
@@ -289,29 +290,59 @@
 <!-- MailerLite footer form handler -->
 <script>
     (function() {
-        var btn = document.getElementById('ml-footer-btn');
-        var input = document.getElementById('ml-footer-email');
-        if (!btn || !input) return;
-        btn.addEventListener('click', function(e) {
+        var btn   = document.getElementById('ml-footer-btn');
+        var email = document.getElementById('ml-footer-email');
+        var name  = document.getElementById('ml-footer-name');
+        if (!btn || !email) return;
+
+        btn.addEventListener('click', async function(e) {
             e.preventDefault();
-            var email = input.value.trim();
-            if (!email || !email.includes('@')) {
-                input.style.borderColor = '#e05c5c';
-                input.placeholder = 'Please enter a valid email';
+            var emailVal = email.value.trim();
+            var nameVal  = name ? name.value.trim() : '';
+
+            if (!emailVal || !emailVal.includes('@')) {
+                email.style.borderColor = '#e05c5c';
+                email.placeholder = 'Please enter a valid email';
                 return;
             }
-            input.style.borderColor = '';
-            if (typeof ml !== 'undefined') { ml('webforms', 'show', 'no8Cs2'); }
-            btn.textContent = "You're in! 🌿";
-            btn.style.background = 'var(--neon-frosted-mint, #D0EED0)';
-            btn.style.color = 'var(--neon-forest, #3D5A3D)';
-            input.value = '';
-            input.placeholder = 'Your email address';
-            setTimeout(function() {
-                btn.textContent = 'Subscribe 🌿';
-                btn.style.background = 'transparent';
-                btn.style.color = 'var(--neon-frosted-mint, #D0EED0)';
-            }, 3000);
+
+            email.style.borderColor = '';
+            btn.disabled = true;
+            btn.textContent = 'Subscribing...';
+
+            try {
+                var res = await fetch('/.netlify/functions/subscribe', {
+                    method:  'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body:    JSON.stringify({ email: emailVal, name: nameVal })
+                });
+                await res.json();
+
+                if (!res.ok) {
+                    email.style.borderColor = '#e05c5c';
+                    btn.textContent = 'Try again';
+                    btn.disabled = false;
+                    return;
+                }
+
+                btn.textContent = "You're in! 🌿";
+                btn.style.background = 'var(--neon-frosted-mint, #D0EED0)';
+                btn.style.color      = 'var(--neon-forest, #3D5A3D)';
+                email.value = '';
+                email.placeholder = 'Your email address';
+                if (name) name.value = '';
+
+                setTimeout(function() {
+                    btn.textContent      = 'Subscribe 🌿';
+                    btn.style.background = 'transparent';
+                    btn.style.color      = 'var(--neon-frosted-mint, #D0EED0)';
+                    btn.disabled         = false;
+                }, 3000);
+
+            } catch (err) {
+                btn.textContent = 'Try again';
+                btn.disabled    = false;
+            }
         });
     })();
 </script>

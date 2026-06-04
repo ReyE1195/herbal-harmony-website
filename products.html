@@ -237,8 +237,8 @@
         .footer-contact li { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.85rem; color: rgba(208,238,208,0.75); line-height: 1.5; }
         .footer-newsletter p.newsletter-desc { font-size: 0.84rem; color: rgba(208,238,208,0.7); line-height: 1.7; margin-bottom: 1.1rem; }
         .newsletter-form { display: flex; flex-direction: column; gap: 0.65rem; }
-        .newsletter-form input[type="email"] { width: 100%; padding: 0.65rem 0.9rem; border-radius: 0.55rem; border: 1px solid rgba(208,238,208,0.25); background: rgba(208,238,208,0.08); color: var(--cream); font-family: "Montserrat", sans-serif; font-size: 0.82rem; outline: none; }
-        .newsletter-form input[type="email"]::placeholder { color: rgba(208,238,208,0.4); }
+        .newsletter-form input { width: 100%; padding: 0.65rem 0.9rem; border-radius: 0.55rem; border: 1px solid rgba(208,238,208,0.25); background: rgba(208,238,208,0.08); color: var(--cream); font-family: "Montserrat", sans-serif; font-size: 0.82rem; outline: none; }
+        .newsletter-form input::placeholder { color: rgba(208,238,208,0.4); }
         .newsletter-submit { padding: 0.65rem 1.2rem; background: transparent; border: 2px solid var(--neon-frosted-mint); border-radius: 999px; color: var(--neon-frosted-mint); font-family: "Montserrat", sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; width: 100%; }
         .newsletter-submit:hover { background: var(--neon-frosted-mint); color: var(--neon-forest); }
         .newsletter-note { font-size: 0.71rem; color: rgba(208,238,208,0.45); margin-top: 0.2rem; }
@@ -272,9 +272,9 @@
         .footer-contact li { font-size:0.85rem; color:rgba(208,238,208,0.75); line-height:1.5; }
         .newsletter-desc { font-size:0.84rem; color:rgba(208,238,208,0.7); line-height:1.7; margin-bottom:1.1rem; }
         .newsletter-form { display:flex; flex-direction:column; gap:0.65rem; }
-        .newsletter-form input[type="email"] { width:100%; padding:0.65rem 0.9rem; border-radius:0.55rem; border:1px solid rgba(208,238,208,0.25); background:rgba(208,238,208,0.08); color:#D0EED0; font-family:"Montserrat",sans-serif; font-size:0.82rem; outline:none; transition:border-color 0.3s; }
-        .newsletter-form input[type="email"]::placeholder { color:rgba(208,238,208,0.4); }
-        .newsletter-form input[type="email"]:focus { border-color:#D0EED0; }
+        .newsletter-form input { width:100%; padding:0.65rem 0.9rem; border-radius:0.55rem; border:1px solid rgba(208,238,208,0.25); background:rgba(208,238,208,0.08); color:#D0EED0; font-family:"Montserrat",sans-serif; font-size:0.82rem; outline:none; transition:border-color 0.3s; }
+        .newsletter-form input::placeholder { color:rgba(208,238,208,0.4); }
+        .newsletter-form input:focus { border-color:#D0EED0; }
         .newsletter-submit { padding:0.65rem 1.2rem; background:transparent; border:2px solid #D0EED0; border-radius:999px; color:#D0EED0; font-family:"Montserrat",sans-serif; font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; transition:all 0.3s ease; width:100%; }
         .newsletter-submit:hover { background:#D0EED0; color:#1a2e1a; }
         .newsletter-note { font-size:0.71rem; color:rgba(208,238,208,0.45); margin-top:0.2rem; }
@@ -355,7 +355,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/2lb_Beeswax_Candle.png" alt="Pillar Candle" class="product-image">
+                <img src="images/2lb-Pillar-Candle.jpeg" alt="Pillar Candle" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -384,7 +384,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Beeswax_Beehive_Skep-Candles.png" alt="Skep Candles" class="product-image">
+                <img src="images/Skep-Candles.jpeg" alt="Skep Candles" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -408,7 +408,7 @@
         <div class="product-card" data-category="soak">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Cold_Flu_Soak.png" alt="Cold/Flu Foot Soak" class="product-image">
+                <img src="images/Cold-Flu-Foot-Soak.jpeg" alt="Cold/Flu Foot Soak" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">External Use Only. Soak body/feet for ONLY 15 minutes – 30 minutes. Discontinue if irritation occurs.</div>
@@ -432,7 +432,7 @@
         <div class="product-card" data-category="soak">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Destress_Foot_Soak.png" alt="De-Stress Foot Soak" class="product-image">
+                <img src="images/De-stress-Foot-Soak.jpeg" alt="De-Stress Foot Soak" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">External Use Only. Soak body/feet for ONLY 15 minutes – 30 minutes. Discontinue if irritation occurs.</div>
@@ -456,7 +456,7 @@
         <div class="product-card" data-category="balm">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Breathe_Better_Balm.png" alt="Breathe Better Balm" class="product-image">
+                <img src="images/ai-generated/Breathe_Better_Balm.png" alt="Breathe Better Balm" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
@@ -483,7 +483,7 @@
         <div class="product-card" data-category="balm">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Little_Lungs_Balm.png" alt="Little Lungs Balm" class="product-image">
+                <img src="images/ai-generated/Little_Lungs_Balm.png" alt="Little Lungs Balm" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
@@ -510,7 +510,7 @@
         <div class="product-card" data-category="balm">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/BooBoo_Balm.png" alt="Boo Boo Balm" class="product-image">
+                <img src="images/Booboo-Balm-0.5OZ.jpeg" alt="Boo Boo Balm" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
@@ -534,7 +534,7 @@
         <div class="product-card" data-category="wrap">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Hello_Kitty_Beeswax_Wrap.png" alt="Starter Wrap Set" class="product-image">
+                <img src="images/ai-generated/Hello_Kitty_Beeswax_Wrap.png" alt="Starter Wrap Set" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.</div>
@@ -558,7 +558,7 @@
         <div class="product-card" data-category="wrap">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Green_Minecraft_Beeswax_Wraps.png" alt="XL Beeswax Wrap" class="product-image">
+                <img src="images/Large-Beeswax-Wraps.jpeg" alt="XL Beeswax Wrap" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.</div>
@@ -582,7 +582,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/DIY_Candle_Kit.png" alt="DIY Candle Kit" class="product-image">
+                <img src="images/ai-generated/DIY_Candle_Kit.png" alt="DIY Candle Kit" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Adult supervision required.</div>
@@ -607,7 +607,7 @@
         <div class="product-card" data-category="balm">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Lip_Balm_Vanilla.png" alt="Lip Balm Vanilla" class="product-image">
+                <img src="images/Lip-Balm-Vanilla.jpeg" alt="Lip Balm Vanilla" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">External Use Only. For lip use only. Discontinue if irritation occurs. Keep away from children under 3.</div>
@@ -627,7 +627,7 @@
         <div class="product-card" data-category="balm">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Lip_Balm_Eucalyptus_Mint.png" alt="Lip Balm Eucalyptus Mint" class="product-image">
+                <img src="images/Lip-Balm-Eucalyptus-Mint.jpeg" alt="Lip Balm Eucalyptus Mint" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">External Use Only. For lip use only. Discontinue if irritation occurs. Keep away from children under 3.</div>
@@ -647,7 +647,7 @@
         <div class="product-card" data-category="balm">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Lip_Balm_Unscented.png" alt="Lip Balm Unscented" class="product-image">
+                <img src="images/ai-generated/Lip_Balm_Unscented.png" alt="Lip Balm Unscented" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">External Use Only. For lip use only. Discontinue if irritation occurs. Keep away from children under 3.</div>
@@ -672,16 +672,16 @@
             <h2>Herbal Harmony<br>with Holistic Healing</h2>
             <p>Rooted in nature, guided by faith, crafted with love. Every product is a prayer and a promise to support your wellness journey.</p>
             <div style="display:flex;gap:0.75rem;margin-top:1rem;">
-                <a href="#" aria-label="Instagram" class="footer-social-icon">
+                <a href="https://www.instagram.com/herbharmholiheali/" target="_blank" aria-label="Instagram" class="footer-social-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </a>
-                <a href="#" aria-label="TikTok" class="footer-social-icon">
+                <a href="https://www.tiktok.com/@herbharmholiheal" target="_blank" aria-label="TikTok" class="footer-social-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.85 4.85 0 0 1-1.01-.09z"/></svg>
                 </a>
-                <a href="#" aria-label="Facebook" class="footer-social-icon">
+                <a href="https://www.facebook.com/profile.php?id=61590642173328" target="_blank" aria-label="Facebook" class="footer-social-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                 </a>
-                <a href="#" aria-label="YouTube" class="footer-social-icon">
+                <a href="https://www.youtube.com/channel/UCU_MrXUx-2TQgyOLhZqDHCQ" target="_blank" aria-label="YouTube" class="footer-social-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
                 </a>
             </div>
@@ -700,6 +700,7 @@
             <p class="footer-col-title">Stay Connected</p>
             <p class="newsletter-desc">Join our herbal community for wellness tips, new product arrivals, and exclusive offers delivered straight to your inbox.</p>
             <div class="newsletter-form" id="ml-footer-form">
+                <input type="text" id="ml-footer-name" placeholder="Your first name" aria-label="First name">
                 <input type="email" id="ml-footer-email" placeholder="Your email address" aria-label="Email address">
                 <button class="newsletter-submit" id="ml-footer-btn">Subscribe 🌿</button>
             </div>
@@ -723,62 +724,6 @@
     </div>
 </footer>
 
-<!-- MailerLite footer form handler -->
-<script>
-    (function() {
-        const btn   = document.getElementById('ml-footer-btn');
-        const input = document.getElementById('ml-footer-email');
-        if (!btn || !input) return;
-
-        btn.addEventListener('click', async function(e) {
-            e.preventDefault();
-            const email = input.value.trim();
-
-            if (!email || !email.includes('@')) {
-                input.style.borderColor = '#e05c5c';
-                input.placeholder = 'Please enter a valid email';
-                return;
-            }
-
-            input.style.borderColor = '';
-            btn.disabled = true;
-            btn.textContent = 'Subscribing...';
-
-            try {
-                const res  = await fetch('/.netlify/functions/subscribe', {
-                    method:  'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body:    JSON.stringify({ email })
-                });
-                const data = await res.json();
-
-                if (!res.ok) {
-                    input.style.borderColor = '#e05c5c';
-                    btn.textContent = 'Try again';
-                    btn.disabled = false;
-                    return;
-                }
-
-                btn.textContent      = "You're in! 🌿";
-                btn.style.background = '#D0EED0';
-                btn.style.color      = '#1a2e1a';
-                input.value       = '';
-                input.placeholder = 'Your email address';
-
-                setTimeout(function() {
-                    btn.textContent      = 'Subscribe 🌿';
-                    btn.style.background = 'transparent';
-                    btn.style.color      = '#D0EED0';
-                    btn.disabled         = false;
-                }, 3000);
-
-            } catch(err) {
-                btn.textContent = 'Try again';
-                btn.disabled    = false;
-            }
-        });
-    })();
-</script>
 
 <script src="cart.js"></script>
 <script>
@@ -924,6 +869,65 @@
 
     // ── Init count ─────────────────────────────────────────────────
     document.getElementById("results-count").textContent = "Showing all " + allCards.length + " products";
+</script>
+<!-- MailerLite footer form handler -->
+<script>
+    (function() {
+        var btn   = document.getElementById('ml-footer-btn');
+        var email = document.getElementById('ml-footer-email');
+        var name  = document.getElementById('ml-footer-name');
+        if (!btn || !email) return;
+
+        btn.addEventListener('click', async function(e) {
+            e.preventDefault();
+            var emailVal = email.value.trim();
+            var nameVal  = name ? name.value.trim() : '';
+
+            if (!emailVal || !emailVal.includes('@')) {
+                email.style.borderColor = '#e05c5c';
+                email.placeholder = 'Please enter a valid email';
+                return;
+            }
+
+            email.style.borderColor = '';
+            btn.disabled = true;
+            btn.textContent = 'Subscribing...';
+
+            try {
+                var res = await fetch('/.netlify/functions/subscribe', {
+                    method:  'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body:    JSON.stringify({ email: emailVal, name: nameVal })
+                });
+                await res.json();
+
+                if (!res.ok) {
+                    email.style.borderColor = '#e05c5c';
+                    btn.textContent = 'Try again';
+                    btn.disabled = false;
+                    return;
+                }
+
+                btn.textContent = "You're in! 🌿";
+                btn.style.background = 'var(--neon-frosted-mint, #D0EED0)';
+                btn.style.color      = 'var(--neon-forest, #3D5A3D)';
+                email.value = '';
+                email.placeholder = 'Your email address';
+                if (name) name.value = '';
+
+                setTimeout(function() {
+                    btn.textContent      = 'Subscribe 🌿';
+                    btn.style.background = 'transparent';
+                    btn.style.color      = 'var(--neon-frosted-mint, #D0EED0)';
+                    btn.disabled         = false;
+                }, 3000);
+
+            } catch (err) {
+                btn.textContent = 'Try again';
+                btn.disabled    = false;
+            }
+        });
+    })();
 </script>
 </body>
 </html>

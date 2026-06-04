@@ -150,24 +150,24 @@
             <h2>Herbal Harmony<br><em>with Holistic Healing</em></h2>
             <p>Rooted in nature, guided by faith, crafted with love. Every product is a prayer and a promise to support your wellness journey.</p>
             <div class="social-icons">
-                <a href="#" aria-label="Instagram">
+                <a href="https://www.instagram.com/herbharmholiheali/" target="_blank" aria-label="Instagram">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                         <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                     </svg>
                 </a>
-                <a href="#" aria-label="TikTok">
+                <a href="https://www.tiktok.com/@herbharmholiheal" target="_blank" aria-label="TikTok">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.85 4.85 0 0 1-1.01-.09z"/>
                     </svg>
                 </a>
-                <a href="#" aria-label="Facebook">
+                <a href="https://www.facebook.com/profile.php?id=61590642173328" target="_blank" aria-label="Facebook">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                     </svg>
                 </a>
-                <a href="#" aria-label="YouTube">
+                <a href="https://www.youtube.com/channel/UCU_MrXUx-2TQgyOLhZqDHCQ" target="_blank" aria-label="YouTube">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
                         <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/>
@@ -190,6 +190,7 @@
             <p class="footer-col-title">Stay Connected</p>
             <p class="newsletter-desc">Join our herbal community for wellness tips, new product arrivals, and exclusive offers delivered straight to your inbox.</p>
             <div class="newsletter-form">
+                <input type="text" id="ml-footer-name" placeholder="Your first name" aria-label="First name">
                 <input type="email" id="ml-footer-email" placeholder="Your email address" aria-label="Email address">
                 <button class="newsletter-submit" id="ml-footer-btn">Subscribe 🌿</button>
             </div>
@@ -226,62 +227,6 @@
             authNav.innerHTML =
                 '<li><a href="account.html" target="_blank">My Account</a></li>';
         }
-    })();
-</script>
-<!-- MailerLite footer form handler -->
-<script>
-    (function() {
-        const btn   = document.getElementById('ml-footer-btn');
-        const input = document.getElementById('ml-footer-email');
-        if (!btn || !input) return;
-
-        btn.addEventListener('click', async function(e) {
-            e.preventDefault();
-            const email = input.value.trim();
-
-            if (!email || !email.includes('@')) {
-                input.style.borderColor = '#e05c5c';
-                input.placeholder = 'Please enter a valid email';
-                return;
-            }
-
-            input.style.borderColor = '';
-            btn.disabled = true;
-            btn.textContent = 'Subscribing...';
-
-            try {
-                const res  = await fetch('/.netlify/functions/subscribe', {
-                    method:  'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body:    JSON.stringify({ email })
-                });
-                await res.json();
-
-                if (!res.ok) {
-                    input.style.borderColor = '#e05c5c';
-                    btn.textContent = 'Try again';
-                    btn.disabled = false;
-                    return;
-                }
-
-                btn.textContent = "You're in! 🌿";
-                btn.style.background = 'var(--neon-frosted-mint, #D0EED0)';
-                btn.style.color      = 'var(--neon-forest, #3D5A3D)';
-                input.value       = '';
-                input.placeholder = 'Your email address';
-
-                setTimeout(function() {
-                    btn.textContent      = 'Subscribe 🌿';
-                    btn.style.background = 'transparent';
-                    btn.style.color      = 'var(--neon-frosted-mint, #D0EED0)';
-                    btn.disabled         = false;
-                }, 3000);
-
-            } catch(err) {
-                btn.textContent = 'Try again';
-                btn.disabled    = false;
-            }
-        });
     })();
 </script>
 
@@ -343,6 +288,65 @@
                     </svg>
                  </a>`;
         }
+    })();
+</script>
+<!-- MailerLite footer form handler -->
+<script>
+    (function() {
+        let btn = document.getElementById('ml-footer-btn');
+        let email = document.getElementById('ml-footer-email');
+        let name = document.getElementById('ml-footer-name');
+        if (!btn || !email) return;
+
+        btn.addEventListener('click', async function(e) {
+            e.preventDefault();
+            let emailVal = email.value.trim();
+            let nameVal = name ? name.value.trim() : '';
+
+            if (!emailVal || !emailVal.includes('@')) {
+                email.style.borderColor = '#e05c5c';
+                email.placeholder = 'Please enter a valid email';
+                return;
+            }
+
+            email.style.borderColor = '';
+            btn.disabled = true;
+            btn.textContent = 'Subscribing...';
+
+            try {
+                let res = await fetch('/.netlify/functions/subscribe', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email: emailVal, name: nameVal})
+                });
+                await res.json();
+
+                if (!res.ok) {
+                    email.style.borderColor = '#e05c5c';
+                    btn.textContent = 'Try again';
+                    btn.disabled = false;
+                    return;
+                }
+
+                btn.textContent = "You're in! 🌿";
+                btn.style.background = 'var(--neon-frosted-mint, #D0EED0)';
+                btn.style.color      = 'var(--neon-forest, #3D5A3D)';
+                email.value = '';
+                email.placeholder = 'Your email address';
+                if (name) name.value = '';
+
+                setTimeout(function() {
+                    btn.textContent      = 'Subscribe 🌿';
+                    btn.style.background = 'transparent';
+                    btn.style.color      = 'var(--neon-frosted-mint, #D0EED0)';
+                    btn.disabled         = false;
+                }, 3000);
+
+            } catch (err) {
+                btn.textContent = 'Try again';
+                btn.disabled    = false;
+            }
+        });
     })();
 </script>
 </body>
