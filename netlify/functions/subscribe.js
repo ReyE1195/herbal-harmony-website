@@ -22,7 +22,7 @@ exports.handler = async (event) => {
     }
 
     try {
-        const { email } = JSON.parse(event.body);
+        const { email, name } = JSON.parse(event.body);
 
         if (!email || !email.includes('@')) {
             return {
@@ -34,7 +34,12 @@ exports.handler = async (event) => {
 
         const GROUP_ID = '187480144327214983';
 
-        // Add subscriber to MailerLite group
+        // Add subscriber to MailerLite group.
+        // 'fields.name' is MailerLite's built-in first-name field — this is what
+        // the welcome email's "Dear {$name}," greeting pulls from. We only send it
+        // when a name was actually provided, so an empty value never overwrites anything.
+        const cleanName = (name || '').trim();
+
         const response = await fetch(`https://connect.mailerlite.com/api/subscribers`, {
             method: 'POST',
             headers: {
@@ -44,6 +49,7 @@ exports.handler = async (event) => {
             },
             body: JSON.stringify({
                 email: email.toLowerCase(),
+                fields: cleanName ? { name: cleanName } : undefined,
                 groups: [GROUP_ID]
             })
         });

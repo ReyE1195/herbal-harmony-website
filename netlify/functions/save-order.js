@@ -6,6 +6,9 @@
 const jwt = require('jsonwebtoken');
 const { connectLambda, getStore } = require('@netlify/blobs');
 
+const FREE_GIFT_LIMIT = 2;        // only the first 2 paid orders get the free gift
+const GIFT_COUNT_KEY  = 'freeGiftClaimed';
+
 exports.handler = async (event) => {
     if (event.httpMethod === 'OPTIONS') {
         return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Content-Type, Authorization', 'Access-Control-Allow-Methods': 'POST, OPTIONS' }, body: '' };
@@ -14,9 +17,38 @@ exports.handler = async (event) => {
 
     try {
         connectLambda(event);
-        const { cart, email, total, paymentIntentId, address } = JSON.parse(event.body);
+        const { cart, email, total, paymentIntentId, address, freeGift } = JSON.parse(event.body);
         const orderNumber = 'HH' + Date.now().toString().slice(-6);
-        const order = { orderNumber, items: cart, total, email, address, paymentIntentId, status: 'Processing', createdAt: new Date().toISOString() };
+
+        // ── Free gift cap ────────────────────────────────────────────
+        // This is the authoritative gate. Even though checkout hides the
+        // gift once it's gone, we re-check the shared count here so two
+        // people can't both grab the "last" one between page-load and pay.
+        let giftAwarded = false;
+        if (freeGift === true) {
+            try {
+                const meta = getStore('hh-meta');
+                const claimed = parseInt(await meta.get(GIFT_COUNT_KEY) || '0', 10) || 0;
+                if (claimed < FREE_GIFT_LIMIT) {
+                    await meta.set(GIFT_COUNT_KEY, String(claimed + 1));
+                    giftAwarded = true;
+                }
+            } catch (e) {
+                console.error('Gift counter error:', e);
+            }
+        }
+
+        const order = {
+            orderNumber,
+            items: cart,
+            total,
+            email,
+            address,
+            paymentIntentId,
+            freeGift: giftAwarded ? 'Honey Lip Balm (free gift)' : null,
+            status: 'Processing',
+            createdAt: new Date().toISOString()
+        };
 
         const authHeader = event.headers.authorization || '';
         const token = authHeader.replace('Bearer ', '');
@@ -31,7 +63,7 @@ exports.handler = async (event) => {
 
         const ordersStore = getStore('hh-orders');
         await ordersStore.setJSON(orderNumber, order);
-        return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ success: true, orderNumber, message: `Thank you for your order! Your order #${orderNumber} is confirmed. 🌿` }) };
+        return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ success: true, orderNumber, giftAwarded, message: `Thank you for your order! Your order #${orderNumber} is confirmed. 🌿` }) };
 
     } catch (err) {
         console.error('Save order error:', err);
