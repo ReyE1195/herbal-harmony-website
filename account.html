@@ -623,42 +623,19 @@
         <p class="empty-state" id="orders-empty">No orders yet. Once you place an order, it will appear here! 🌿</p>
     </div>
 
-    <!-- ── SAVED PAYMENT ── -->
+    <!-- ── SAVED PAYMENT (handled by Stripe) ── -->
     <div class="account-section" id="section-payment">
         <div class="section-header">
             <h2><span class="icon">💳</span> Saved Payment</h2>
         </div>
-        <div id="payment-list"></div>
-        <p class="empty-state" id="payment-empty">No saved payment methods yet. Add one below! 🌿</p>
-        <button class="add-payment-btn" id="add-payment-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            Add Payment Method
-        </button>
-        <!-- Add payment form (hidden) -->
-        <div id="add-payment-form" style="display:none; margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid var(--cream-dark);">
-            <div class="form-group" style="margin-bottom:1rem;">
-                <label>Card Number</label>
-                <label for="new-card-number"></label><input type="text" id="new-card-number" placeholder="1234 5678 9012 3456" maxlength="19">
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Expiration Date</label>
-                    <label for="new-card-expiry"></label><input type="text" id="new-card-expiry" placeholder="MM / YY" maxlength="7">
-                </div>
-                <div class="form-group">
-                    <label>CVV</label>
-                    <label for="new-card-cvv"></label><input type="text" id="new-card-cvv" placeholder="CVV" maxlength="4">
-                </div>
-            </div>
-            <div class="form-group" style="margin-top:1rem;">
-                <label>Name on Card</label>
-                <label for="new-card-name"></label><input type="text" id="new-card-name" placeholder="Jane Smith">
-            </div>
-            <div style="display:flex;gap:0.75rem;margin-top:1.1rem;">
-                <button class="save-btn visible" id="save-card-btn" style="margin-top:0;">Save Card</button>
-                <button class="edit-btn" id="cancel-card-btn">Cancel</button>
-            </div>
-        </div>
+        <p style="font-size:0.85rem;line-height:1.65;color:var(--charcoal);">
+            🔒 Your payment information is handled securely by <strong>Stripe</strong> at checkout.
+            For your safety, Herbal Harmony with Holistic Healing never stores or has access to your card details —
+            they are encrypted and managed entirely by Stripe, a trusted, industry-standard payment processor.
+        </p>
+        <p style="font-size:0.8rem;line-height:1.6;color:var(--sage-dark);margin-top:0.75rem;font-style:italic;">
+            Saved-card management is coming soon. 🌿
+        </p>
     </div>
 
     <!-- ── WISH LIST ── -->
@@ -841,21 +818,56 @@
     loadProfile();
     loadWishlist();
 
-    // ── Avatar upload ──────────────────────────────────────────────
+    // ── Avatar upload (shrinks the image, then saves it to the account) ──
+    // Photos from a camera are huge, so we resize to a small 200x200 avatar and compress
+    // it before saving. Keeps the user record light, and the photo follows the customer
+    // across devices because it's saved to their account (not just this browser).
+    function shrinkImage(dataUrl, size, callback) {
+        const img = new Image();
+        img.onload = function() {
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            // Cover-crop to a square so the circular avatar always looks right
+            const minSide = Math.min(img.width, img.height);
+            const sx = (img.width  - minSide) / 2;
+            const sy = (img.height - minSide) / 2;
+            ctx.drawImage(img, sx, sy, minSide, minSide, 0, 0, size, size);
+            // JPEG at 0.8 quality takes a multi-MB photo down to ~30-50KB
+            callback(canvas.toDataURL('image/jpeg', 0.8));
+        };
+        img.onerror = function() { callback(null); };
+        img.src = dataUrl;
+    }
+
     document.getElementById("avatar-input").addEventListener("change", function() {
         const file = this.files[0];
         if (!file) return;
         const reader = new FileReader();
         reader.onload = function(e) {
-            if (e.target.result && e.target.result.startsWith('data:image/')) {
+            if (!(e.target.result && e.target.result.startsWith('data:image/'))) return;
+            shrinkImage(e.target.result, 200, function(smallDataUrl) {
+                if (!smallDataUrl) { alert("Sorry, that image couldn't be processed. Please try another."); return; }
+                // Show it
                 const avatarImg = document.createElement('img');
-                avatarImg.src = e.target.result;
+                avatarImg.src = smallDataUrl;
                 avatarImg.style.cssText = 'width:90px;height:90px;border-radius:50%;object-fit:cover;';
                 const preview = document.getElementById('avatar-preview');
                 preview.innerHTML = '';
                 preview.appendChild(avatarImg);
-                try { localStorage.setItem('hh_avatar', e.target.result); } catch(err) {}
-            }
+                // Cache locally for instant load next time on this device
+                try { localStorage.setItem('hh_avatar', smallDataUrl); } catch(err) {}
+                // Save to the account so it follows the customer across devices
+                const token = localStorage.getItem('hh_token');
+                if (token) {
+                    fetch('/.netlify/functions/update-profile', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+                        body: JSON.stringify({ avatar: smallDataUrl })
+                    }).catch(function() {});
+                }
+            });
         };
         reader.readAsDataURL(file);
     });
@@ -1075,43 +1087,6 @@
         alert("A verification link has been sent to " + email + " 🌿");
     }
 
-    // ── Add payment ────────────────────────────────────────────────
-    document.getElementById("add-payment-btn").addEventListener("click", function() {
-        document.getElementById("add-payment-form").style.display = "block";
-        this.style.display = "none";
-    });
-
-    document.getElementById("cancel-card-btn").addEventListener("click", function() {
-        document.getElementById("add-payment-form").style.display = "none";
-        document.getElementById("add-payment-btn").style.display = "flex";
-    });
-
-    document.getElementById("save-card-btn").addEventListener("click", function() {
-        const num  = document.getElementById("new-card-number").value.trim();
-        const exp  = document.getElementById("new-card-expiry").value.trim();
-        if (!num || !exp) { alert("Please fill in card number and expiry."); return; }
-        const last4 = num.replace(/\s/g, "").slice(-4);
-        const card = document.createElement("div");
-        card.className = "payment-card";
-        card.innerHTML =
-            "<div class='card-icon'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='1' y='4' width='22' height='16' rx='2' ry='2'></rect><line x1='1' y1='10' x2='23' y2='10'></line></svg></div>" +
-            "<div class='card-details'><p class='card-number'>•••• •••• •••• " + last4 + "</p><p class='card-expiry'>Expires " + exp + "</p></div>" +
-            "<button class='card-remove' onclick='removePayment(this)'>Remove</button>";
-        document.getElementById("payment-list").appendChild(card);
-        document.getElementById("add-payment-form").style.display = "none";
-        document.getElementById("add-payment-btn").style.display = "flex";
-        document.getElementById("new-card-number").value = "";
-        document.getElementById("new-card-expiry").value = "";
-        document.getElementById("new-card-cvv").value = "";
-        document.getElementById("new-card-name").value = "";
-    });
-
-    function removePayment(btn) {
-        if (confirm("Remove this payment method?")) {
-            btn.closest(".payment-card").remove();
-        }
-    }
-
     // ── Wish list — load from localStorage ────────────────────────
     function loadWishlist() {
         try {
@@ -1179,6 +1154,17 @@
             let wishlist = JSON.parse(localStorage.getItem('hh_wishlist') || '[]');
             wishlist = wishlist.filter(function(item) { return item.name !== name; });
             localStorage.setItem('hh_wishlist', JSON.stringify(wishlist));
+            // Sync the removal to the account, the same way the products page saves an add.
+            // Without this, the item is removed locally but the server keeps the old list,
+            // so it reappears after logging out and back in.
+            const token = localStorage.getItem('hh_token');
+            if (token) {
+                fetch('/.netlify/functions/update-profile', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+                    body: JSON.stringify({ wishlist })
+                }).catch(function() {});
+            }
         } catch(e) {}
         const grid = document.getElementById("wishlist-grid");
         if (!grid.children.length) {
@@ -1202,10 +1188,13 @@
 
     // ── Logout ─────────────────────────────────────────────────────
     document.getElementById("logout-btn").addEventListener("click", function() {
+        // Clear ALL stored account data so nothing lingers for the next person on a shared device.
         localStorage.removeItem('hh_token');
         localStorage.removeItem('hh_profile');
         localStorage.removeItem('hh_address');
         localStorage.removeItem('hh_avatar');
+        localStorage.removeItem('hh_wishlist');
+        localStorage.removeItem('hh_cart');
         window.location.href = "login.html";
     });
 </script>

@@ -260,6 +260,10 @@
                 return;
             }
 
+            // Clean slate: clear any previous person's stored data before saving the new login.
+            // Guarantees no leftover profile/wishlist/cart can bleed through on a shared device.
+            ['hh_token','hh_profile','hh_address','hh_wishlist','hh_cart','hh_avatar'].forEach(function(k){ localStorage.removeItem(k); });
+
             // Save token and user info
             localStorage.setItem('hh_token', data.token);
             localStorage.setItem('hh_profile', JSON.stringify({
@@ -271,6 +275,8 @@
             }));
             localStorage.setItem('hh_address', JSON.stringify(data.user.address || {}));
             localStorage.setItem('hh_wishlist', JSON.stringify(data.user.wishlist || []));
+            // Store the saved profile photo (if any) so it shows on this device too
+            if (data.user.avatar) { localStorage.setItem('hh_avatar', data.user.avatar); }
 
             btn.textContent = "Welcome back! 🌿";
             btn.style.background = "var(--neon)";
