@@ -601,12 +601,6 @@
                     <div class="form-group">
                         <label for="prof-email">Email Address</label>
                         <input type="email" id="prof-email" value="janesmith7@outlook.com" disabled>
-                        <p id="verify-email-row" style="margin-top:0.5rem;font-size:0.75rem;color:#c0392b;display:flex;align-items:center;gap:0.4rem;">
-                            ⚠️ Email not verified.
-                            <button id="send-verify-btn" onclick="sendVerificationEmail()" style="background:none;border:none;color:var(--neon);font-size:0.75rem;font-weight:600;cursor:pointer;text-decoration:underline;font-family:'Montserrat',sans-serif;padding:0;">
-                                Send verification link
-                            </button>
-                        </p>
                     </div>
                 </div>
                 <button class="save-btn" id="save-profile">Save Changes</button>
@@ -791,9 +785,6 @@
                 document.getElementById('display-name').textContent  = saved.firstName + ' ' + (saved.lastName || '');
                 document.getElementById('display-email').textContent = saved.email || '';
             }
-            if (saved.emailVerified) {
-                document.getElementById('verify-email-row').style.display = 'none';
-            }
             const savedAddr = JSON.parse(localStorage.getItem('hh_address') || '{}');
             if (savedAddr.street) {
                 document.getElementById('addr-first').value  = savedAddr.firstName || '';
@@ -817,6 +808,43 @@
     }
     loadProfile();
     loadWishlist();
+
+    // ── Refresh from the account (server) so data shows on ANY device/tab ──
+    // loadProfile/loadWishlist above fill the page instantly from this browser's
+    // cache; this then pulls the authoritative copy from the account and updates
+    // the cache. This is what lets the profile photo (and everything else) appear
+    // even on a fresh browser where localStorage is empty.
+    async function syncFromAccount() {
+        const token = localStorage.getItem('hh_token');
+        if (!token) return;
+        try {
+            const res = await fetch('/.netlify/functions/get-profile', {
+                method: 'GET',
+                headers: { 'Authorization': 'Bearer ' + token }
+            });
+            if (!res.ok) return;
+            const data = await res.json();
+            if (!data || !data.user) return;
+            const u = data.user;
+
+            // Update the cache so further loads are instant and correct
+            try {
+                localStorage.setItem('hh_profile', JSON.stringify({
+                    firstName: u.firstName, lastName: u.lastName,
+                    email: u.email, phone: u.phone, emailVerified: u.emailVerified
+                }));
+                localStorage.setItem('hh_address', JSON.stringify(u.address || {}));
+                localStorage.setItem('hh_wishlist', JSON.stringify(u.wishlist || []));
+                if (u.avatar) { localStorage.setItem('hh_avatar', u.avatar); }
+                else { localStorage.removeItem('hh_avatar'); }
+            } catch(e) {}
+
+            // Re-render from the fresh data
+            loadProfile();
+            loadWishlist();
+        } catch(e) { /* offline or error: the cached view still shows */ }
+    }
+    syncFromAccount();
 
     // ── Avatar upload (shrinks the image, then saves it to the account) ──
     // Photos from a camera are huge, so we resize to a small 200x200 avatar and compress
@@ -1059,11 +1087,9 @@
                 try {
                     const profile = JSON.parse(localStorage.getItem('hh_profile') || '{}');
                     profile.email = email;
-                    profile.emailVerified = false;
                     localStorage.setItem('hh_profile', JSON.stringify(profile));
                 } catch(e) {}
-                document.getElementById('verify-email-row').style.display = 'flex';
-                alert("Email updated to " + email + "! Please verify your new email address. 🌿");
+                alert("Email updated to " + email + "! 🌿");
                 document.getElementById("new-email").value = "";
             }
         } catch(e) {
@@ -1072,20 +1098,6 @@
         btn.disabled = false;
         btn.textContent = "Update Email";
     });
-
-    // ── Email verification ─────────────────────────────────────────
-    function sendVerificationEmail() {
-        const email = document.getElementById('prof-email').value.trim();
-        const btn = document.getElementById('send-verify-btn');
-        btn.textContent = 'Verification sent! ✓';
-        btn.style.color = 'var(--neon)';
-        btn.disabled = true;
-        setTimeout(() => {
-            btn.textContent = 'Resend verification link';
-            btn.disabled = false;
-        }, 5000);
-        alert("A verification link has been sent to " + email + " 🌿");
-    }
 
     // ── Wish list — load from localStorage ────────────────────────
     function loadWishlist() {
@@ -1155,7 +1167,7 @@
             wishlist = wishlist.filter(function(item) { return item.name !== name; });
             localStorage.setItem('hh_wishlist', JSON.stringify(wishlist));
             // Sync the removal to the account, the same way the products page saves an add.
-            // Without this, the item is removed locally but the server keeps the old list,
+            // Without this, the item is removed locally, but the server keeps the old list,
             // so it reappears after logging out and back in.
             const token = localStorage.getItem('hh_token');
             if (token) {

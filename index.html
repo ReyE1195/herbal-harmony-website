@@ -20,8 +20,8 @@
         <li class="nav-link"><a href="#contact">Contact</a></li>
     </ul>
     <ul class="sign-up_login" id="auth-nav">
-        <li><a href="signup.html" target="_blank">Sign Up</a></li>
-        <li><a href="login.html" target="_blank">Login</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="login.html">Login</a></li>
         <li>
             <a href="checkout.html" class="cart-icon" aria-label="Checkout">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
@@ -87,7 +87,7 @@
     </div>
     <div id="progress-dots"></div>
     <div style="text-align: center;">
-        <a href="products.html" target="_blank" class="view-more">More Products</a>
+        <a href="products.html" class="view-more">More Products</a>
     </div>
 </section>
 
@@ -190,7 +190,6 @@
             <p class="footer-col-title">Stay Connected</p>
             <p class="newsletter-desc">Join our herbal community for wellness tips, new product arrivals, and exclusive offers delivered straight to your inbox.</p>
             <div class="newsletter-form">
-                <input type="text" id="ml-footer-name" placeholder="Your first name" aria-label="First name">
                 <input type="email" id="ml-footer-email" placeholder="Your email address" aria-label="Email address">
                 <button class="newsletter-submit" id="ml-footer-btn">Subscribe 🌿</button>
             </div>
@@ -225,8 +224,64 @@
         const authNav = document.getElementById('auth-nav');
         if (token && profile.firstName && authNav) {
             authNav.innerHTML =
-                '<li><a href="account.html" target="_blank">My Account</a></li>';
+                '<li><a href="account.html">My Account</a></li>';
         }
+    })();
+</script>
+<!-- MailerLite footer form handler -->
+<script>
+    (function() {
+        const btn   = document.getElementById('ml-footer-btn');
+        const input = document.getElementById('ml-footer-email');
+        if (!btn || !input) return;
+
+        btn.addEventListener('click', async function(e) {
+            e.preventDefault();
+            const email = input.value.trim();
+
+            if (!email || !email.includes('@')) {
+                input.style.borderColor = '#e05c5c';
+                input.placeholder = 'Please enter a valid email';
+                return;
+            }
+
+            input.style.borderColor = '';
+            btn.disabled = true;
+            btn.textContent = 'Subscribing...';
+
+            try {
+                const res  = await fetch('/.netlify/functions/subscribe', {
+                    method:  'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body:    JSON.stringify({ email })
+                });
+                await res.json();
+
+                if (!res.ok) {
+                    input.style.borderColor = '#e05c5c';
+                    btn.textContent = 'Try again';
+                    btn.disabled = false;
+                    return;
+                }
+
+                btn.textContent = "You're in! 🌿";
+                btn.style.background = 'var(--neon-frosted-mint, #D0EED0)';
+                btn.style.color      = 'var(--neon-forest, #3D5A3D)';
+                input.value       = '';
+                input.placeholder = 'Your email address';
+
+                setTimeout(function() {
+                    btn.textContent      = 'Subscribe 🌿';
+                    btn.style.background = 'transparent';
+                    btn.style.color      = 'var(--neon-frosted-mint, #D0EED0)';
+                    btn.disabled         = false;
+                }, 3000);
+
+            } catch(err) {
+                btn.textContent = 'Try again';
+                btn.disabled    = false;
+            }
+        });
     })();
 </script>
 
@@ -288,65 +343,6 @@
                     </svg>
                  </a>`;
         }
-    })();
-</script>
-<!-- MailerLite footer form handler -->
-<script>
-    (function() {
-        let btn = document.getElementById('ml-footer-btn');
-        let email = document.getElementById('ml-footer-email');
-        let name = document.getElementById('ml-footer-name');
-        if (!btn || !email) return;
-
-        btn.addEventListener('click', async function(e) {
-            e.preventDefault();
-            let emailVal = email.value.trim();
-            let nameVal = name ? name.value.trim() : '';
-
-            if (!emailVal || !emailVal.includes('@')) {
-                email.style.borderColor = '#e05c5c';
-                email.placeholder = 'Please enter a valid email';
-                return;
-            }
-
-            email.style.borderColor = '';
-            btn.disabled = true;
-            btn.textContent = 'Subscribing...';
-
-            try {
-                let res = await fetch('/.netlify/functions/subscribe', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({email: emailVal, name: nameVal})
-                });
-                await res.json();
-
-                if (!res.ok) {
-                    email.style.borderColor = '#e05c5c';
-                    btn.textContent = 'Try again';
-                    btn.disabled = false;
-                    return;
-                }
-
-                btn.textContent = "You're in! 🌿";
-                btn.style.background = 'var(--neon-frosted-mint, #D0EED0)';
-                btn.style.color      = 'var(--neon-forest, #3D5A3D)';
-                email.value = '';
-                email.placeholder = 'Your email address';
-                if (name) name.value = '';
-
-                setTimeout(function() {
-                    btn.textContent      = 'Subscribe 🌿';
-                    btn.style.background = 'transparent';
-                    btn.style.color      = 'var(--neon-frosted-mint, #D0EED0)';
-                    btn.disabled         = false;
-                }, 3000);
-
-            } catch (err) {
-                btn.textContent = 'Try again';
-                btn.disabled    = false;
-            }
-        });
     })();
 </script>
 </body>
