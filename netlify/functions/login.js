@@ -26,7 +26,7 @@ exports.handler = async (event) => {
         if (!passwordMatch) return { statusCode: 401, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ error: 'Incorrect password. Please try again.' }) };
 
         const token = jwt.sign({ email: user.email, firstName: user.firstName }, process.env.JWT_SECRET, { expiresIn: '7d' });
-        return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ success: true, message: 'Welcome back! 🌿', token, user: { firstName: user.firstName, lastName: user.lastName, email: user.email, phone: user.phone, emailVerified: user.emailVerified, address: user.address || {}, orders: user.orders || [], wishlist: user.wishlist || [] } }) };
+        return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ success: true, message: 'Welcome back! 🌿', token, user: { firstName: user.firstName, lastName: user.lastName, email: user.email, phone: user.phone, emailVerified: user.emailVerified, address: user.address || {}, orders: user.orders || [], wishlist: user.wishlist || [], avatar: user.avatar || '' } }) };
 
     } catch (err) {
         console.error('Login error:', err);

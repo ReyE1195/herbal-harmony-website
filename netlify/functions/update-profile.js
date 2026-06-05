@@ -29,9 +29,10 @@ exports.handler = async (event) => {
         if (updates.phone !== undefined) user.phone = updates.phone;
         if (updates.address) user.address = updates.address;
         if (updates.wishlist) user.wishlist = updates.wishlist;
+        if (updates.avatar !== undefined) user.avatar = updates.avatar;
 
         await store.setJSON(decoded.email, user);
-        return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ success: true, message: 'Profile updated! 🌿', user: { firstName: user.firstName, lastName: user.lastName, email: user.email, phone: user.phone, emailVerified: user.emailVerified, address: user.address || {}, wishlist: user.wishlist || [] } }) };
+        return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ success: true, message: 'Profile updated! 🌿', user: { firstName: user.firstName, lastName: user.lastName, email: user.email, phone: user.phone, emailVerified: user.emailVerified, address: user.address || {}, wishlist: user.wishlist || [], avatar: user.avatar || '' } }) };
 
     } catch (err) {
         console.error('Update profile error:', err);
