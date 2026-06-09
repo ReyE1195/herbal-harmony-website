@@ -27,6 +27,19 @@ exports.handler = async (event) => {
         const user = { firstName, lastName: lastName || '', email: email.toLowerCase(), phone: phone || '', password: hashedPassword, emailVerified: false, createdAt: new Date().toISOString(), orders: [], wishlist: [], address: {} };
         await store.setJSON(email.toLowerCase(), user);
 
+        // Send a short welcome email (fire-and-forget). This must NEVER block or
+        // undo account creation, so any failure is caught and logged only.
+        try {
+            const base = process.env.SITE_URL || `https://${event.headers.host || ''}`;
+            await fetch(`${base}/.netlify/functions/send-welcome`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: user.email, firstName: user.firstName })
+            });
+        } catch (mailErr) {
+            console.error('Welcome email call failed (account still created):', mailErr);
+        }
+
         const token = jwt.sign({ email: user.email, firstName: user.firstName }, process.env.JWT_SECRET, { expiresIn: '7d' });
         return { statusCode: 201, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ success: true, message: 'Account created successfully! 🌿', token, user: { firstName: user.firstName, lastName: user.lastName, email: user.email, phone: user.phone, emailVerified: user.emailVerified } }) };
 
