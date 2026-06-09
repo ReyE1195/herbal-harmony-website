@@ -1185,16 +1185,46 @@
     }
 
     // ── Delete account ─────────────────────────────────────────────
-    document.getElementById("delete-account-btn").addEventListener("click", function() {
-        if (confirm("Are you sure you want to delete your account? This cannot be undone.")) {
-            try {
-                localStorage.removeItem('hh_profile');
-                localStorage.removeItem('hh_address');
-                localStorage.removeItem('hh_avatar');
-                localStorage.removeItem('hh_cart');
-            } catch(e) {}
+    document.getElementById("delete-account-btn").addEventListener("click", async function() {
+        if (!confirm("Are you sure you want to delete your account? This cannot be undone.")) return;
+
+        const btn = this;
+        btn.disabled = true;
+        btn.textContent = "Deleting...";
+
+        try {
+            // Tell the server to permanently remove this account. The token proves
+            // who we are, so only the logged-in user's own account can be deleted.
+            const res = await fetch('/.netlify/functions/delete-account', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('hh_token')
+                }
+            });
+            const data = await res.json();
+
+            if (!res.ok) {
+                alert(data.error || "We couldn't delete your account. Please try again.");
+                btn.disabled = false;
+                btn.textContent = "Delete Account";
+                return;
+            }
+
+            // Server record is gone — now clear ALL local data (same as logout).
+            localStorage.removeItem('hh_token');
+            localStorage.removeItem('hh_profile');
+            localStorage.removeItem('hh_address');
+            localStorage.removeItem('hh_avatar');
+            localStorage.removeItem('hh_wishlist');
+            localStorage.removeItem('hh_cart');
             alert("Account deleted. We are sad to see you go! 🌿");
             window.location.href = "index.html";
+
+        } catch(err) {
+            alert("Connection error. Please check your internet and try again.");
+            btn.disabled = false;
+            btn.textContent = "Delete Account";
         }
     });
 

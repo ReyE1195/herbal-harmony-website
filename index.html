@@ -234,11 +234,13 @@
     (function() {
         const btn   = document.getElementById('ml-footer-btn');
         const input = document.getElementById('ml-footer-email');
+        const nameInput = document.getElementById('ml-footer-name');
         if (!btn || !input) return;
 
         btn.addEventListener('click', async function(e) {
             e.preventDefault();
             const email = input.value.trim();
+            const name  = nameInput ? nameInput.value.trim() : '';
 
             if (!email || !email.includes('@')) {
                 input.style.borderColor = '#e05c5c';
@@ -254,7 +256,7 @@
                 const res  = await fetch('/.netlify/functions/subscribe', {
                     method:  'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body:    JSON.stringify({ email })
+                    body:    JSON.stringify({ email, name })
                 });
                 await res.json();
 
@@ -270,6 +272,7 @@
                 btn.style.color      = 'var(--neon-forest, #3D5A3D)';
                 input.value       = '';
                 input.placeholder = 'Your email address';
+                if (nameInput) nameInput.value = '';
 
                 setTimeout(function() {
                     btn.textContent      = 'Subscribe 🌿';
