@@ -23,20 +23,24 @@ const products = [
 ];
 
 // ============================================
-//   INFINITE LOOP CAROUSEL — 2 cards at a time
+//   INFINITE LOOP CAROUSEL — responsive (1 card on mobile, 2 on desktop)
 // ============================================
 const scrollTrack   = document.getElementById('scroll-track');
 const btnLeft       = document.querySelector('.left-btn');
 const btnRight      = document.querySelector('.right-btn');
 const dotsContainer = document.getElementById('progress-dots');
 
-const CARDS_PER_VIEW = 2;
-const CARD_WIDTH     = 270;
-const CARD_GAP       = 24;
-const STEP           = (CARD_WIDTH + CARD_GAP) * CARDS_PER_VIEW;
-const TOTAL_GROUPS   = Math.ceil(products.length / CARDS_PER_VIEW); // real groups
+// How many cards make up one "view". The CSS shows ONE card filling the screen
+// at 640px and below, and TWO side-by-side above that. The carousel must step by
+// the same amount, or it skips cards on mobile.
+function cardsPerView() {
+    return window.innerWidth <= 640 ? 1 : 2;
+}
 
-let currentIndex = 0; // tracks real group index (0 to TOTAL_GROUPS-1)
+let CARDS_PER_VIEW = cardsPerView();
+let TOTAL_GROUPS   = Math.ceil(products.length / CARDS_PER_VIEW);
+let STEP           = 0;            // real pixel width of one view — measured from the page
+let currentIndex   = 0;            // current real group (0 ... TOTAL_GROUPS - 1)
 let isTransitioning = false;
 
 // Build a single card element
@@ -86,10 +90,27 @@ function createCard(p, i) {
     return card;
 }
 
+// Measure the true on-screen width of one view straight from the rendered cards,
+// instead of assuming fixed pixels. THIS is the mobile-skip fix: the step now always
+// matches whatever the CSS is actually showing (phone, tablet, desktop, rotated).
+function measureStep() {
+    const cards = scrollTrack.querySelectorAll('.product-card');
+    if (cards.length < 2) return 0;
+    // Measure the REAL distance from one card to the next, straight from their
+    // rendered positions. This already includes the gap, so there's no separate
+    // gap value to parse and get wrong — the step is pixel-exact on every browser,
+    // which is what stops the scattered card-skipping on iPhone Safari.
+    return (cards[1].offsetLeft - cards[0].offsetLeft) * CARDS_PER_VIEW;
+}
+
 function buildCards() {
+    // Recompute cards-per-view in case the screen size/orientation changed
+    CARDS_PER_VIEW = cardsPerView();
+    TOTAL_GROUPS   = Math.ceil(products.length / CARDS_PER_VIEW);
+
     scrollTrack.innerHTML = '';
 
-    // Clone last group at the front (for backward infinite wrap)
+    // Clone the last group at the front (for backward infinite wrap)
     const lastGroupStart = products.length - CARDS_PER_VIEW;
     for (let i = lastGroupStart; i < products.length; i++) {
         const clone = createCard(products[i], i);
@@ -102,16 +123,18 @@ function buildCards() {
         scrollTrack.appendChild(createCard(p, i));
     });
 
-    // Clone first group at the end (for forward infinite wrap)
+    // Clone the first group at the end (for forward infinite wrap)
     for (let i = 0; i < CARDS_PER_VIEW; i++) {
         const clone = createCard(products[i], i);
         clone.setAttribute('data-clone', 'true');
         scrollTrack.appendChild(clone);
     }
 
-    // Start positioned at the first real group (after the leading clones)
-    scrollTrack.style.transition = 'none';
-    scrollTrack.scrollLeft = STEP; // skip the leading clone group
+    // Measure AFTER the cards exist, then jump to the first real group
+    STEP = measureStep();
+    if (currentIndex > TOTAL_GROUPS - 1) currentIndex = 0;
+    scrollTrack.style.scrollBehavior = 'auto';
+    scrollTrack.scrollLeft = (currentIndex + 1) * STEP; // +1 skips the leading clone group
 }
 
 function buildDots() {
@@ -140,17 +163,26 @@ function goToGroup(idx) {
     if (isTransitioning) return;
     currentIndex = ((idx % TOTAL_GROUPS) + TOTAL_GROUPS) % TOTAL_GROUPS;
 
-    // Position: leading clone group occupies slot 0, real groups start at slot 1
-    const targetSlot = currentIndex + 1; // +1 to account for leading clones
+    const targetSlot = currentIndex + 1; // +1 to account for the leading clones
     isTransitioning = true;
 
-    scrollTrack.style.transition = 'scroll-left 0.45s ease';
-    scrollTrack.scrollTo({ left: targetSlot * STEP, behavior: 'smooth' });
+    // Scroll to the target card's ACTUAL position rather than a calculated
+    // multiple of STEP. cards[0] sits at the scroll origin, so the gap between
+    // it and the target card is exactly the scrollLeft we need — no drift, and
+    // no overshooting the last card into the hidden clone.
+    const cards = scrollTrack.querySelectorAll('.product-card');
+    const targetCard = cards[targetSlot * CARDS_PER_VIEW];
+    const targetLeft = targetCard
+        ? targetCard.offsetLeft - cards[0].offsetLeft
+        : targetSlot * STEP; // safety fallback
+
+    scrollTrack.style.scrollBehavior = 'smooth';
+    scrollTrack.scrollTo({ left: targetLeft, behavior: 'smooth' });
 
     updateDots();
 }
 
-// After smooth scroll ends, silently jump if we landed on a clone
+// After the smooth scroll settles, silently jump if we landed on a clone group
 function handleScrollEnd() {
     if (!isTransitioning) return;
     isTransitioning = false;
@@ -159,24 +191,23 @@ function handleScrollEnd() {
     const scrolledSlot = Math.round(scrollTrack.scrollLeft / STEP);
 
     if (scrolledSlot === 0) {
-        // Jumped to leading clone → wrap to last real group
-        scrollTrack.style.transition = 'none';
+        // Landed on the leading clone → wrap to the last real group
+        scrollTrack.style.scrollBehavior = 'auto';
         scrollTrack.scrollLeft = TOTAL_GROUPS * STEP;
         currentIndex = TOTAL_GROUPS - 1;
         updateDots();
     } else if (scrolledSlot === totalSlots - 1) {
-        // Jumped to trailing clone → wrap to first real group
-        scrollTrack.style.transition = 'none';
+        // Landed on the trailing clone → wrap to the first real group
+        scrollTrack.style.scrollBehavior = 'auto';
         scrollTrack.scrollLeft = STEP;
         currentIndex = 0;
         updateDots();
     }
 }
 
-// Listen for scroll end via scrolled event (with fallback timeout)
-scrollTrack.addEventListener('scrolled', handleScrollEnd);
-
-// Fallback for browsers without scrolled
+// 'scrollend' fires once scrolling fully stops (modern browsers).
+scrollTrack.addEventListener('scrollend', handleScrollEnd);
+// Fallback for browsers without 'scrollend': watch 'scroll' and wait for a pause.
 let scrollTimer;
 scrollTrack.addEventListener('scroll', () => {
     clearTimeout(scrollTimer);
@@ -194,6 +225,24 @@ btnRight.addEventListener('click', () => {
 document.addEventListener('keydown', e => {
     if (e.key === 'ArrowLeft')  btnLeft.click();
     if (e.key === 'ArrowRight') btnRight.click();
+});
+
+// Rebuild when the screen crosses the mobile/desktop breakpoint (e.g., phone rotation),
+// and re-measure on any resize, so the step stays accurate.
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        const newCPV = cardsPerView();
+        if (newCPV !== CARDS_PER_VIEW) {
+            buildCards();
+            buildDots();
+        } else {
+            STEP = measureStep();
+            scrollTrack.style.scrollBehavior = 'auto';
+            scrollTrack.scrollLeft = (currentIndex + 1) * STEP;
+        }
+    }, 200);
 });
 
 // Center the "More Products" button and link to products' page
