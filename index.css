@@ -1155,7 +1155,7 @@ footer {
     .left-btn, .right-btn { width: 2.2rem; height: 2.2rem; font-size: 0.85rem; flex-shrink: 0; }
 
     /* Product card sizing */
-    .product-card { width: calc(100vw - 7rem); max-width: 280px; }
+    .product-card { width: 100%; max-width: none; }
     .product-image { height: 200px; object-fit: cover; }
 
     /* View more button */
