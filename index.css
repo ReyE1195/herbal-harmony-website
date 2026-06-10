@@ -1153,6 +1153,7 @@ footer {
     /* Carousel — full width, single card fills screen */
     .scroll-wrapper { width: 100%; gap: 0.3rem; }
     .left-btn, .right-btn { width: 2.2rem; height: 2.2rem; font-size: 0.85rem; flex-shrink: 0; }
+    #scroll-track { padding-left: 0; padding-right: 0;}
 
     /* Product card sizing */
     .product-card { width: calc(100vw - 6rem); max-width: none; }
