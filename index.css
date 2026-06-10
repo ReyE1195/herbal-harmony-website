@@ -306,7 +306,7 @@ img { display: block; max-width: 100%; height: auto; }
     display: flex;
     gap: 1.5rem;
     overflow-x: hidden;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding: 1rem 0.5rem 2rem;
