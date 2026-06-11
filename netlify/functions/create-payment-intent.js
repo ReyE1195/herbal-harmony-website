@@ -4,7 +4,7 @@
 //   Creates a Stripe PaymentIntent to charge a card.
 //
 //   SECURITY: every price is looked up HERE, on the server,
-//   from PRICE_CATALOG below. The price the browser sends is
+//   from the catalog below. The price the browser sends is
 //   ignored entirely — so no one can edit the request and pay
 //   less than the real total.
 // ============================================
@@ -12,18 +12,14 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // --- Trusted price list, in DOLLARS --------------------------------
-// Keys must match EXACTLY the item names the cart sends. That includes
-// the size-suffixed Pillar Candle variants, which the cart stores as
-// the base name + ' ' + the size label (e.g. 'Pillar Candles 4"').
-//
-// ⚠️ KEEP THIS IN SYNC WITH the products' array in index.js. If you ever
-// change a price on the site, change it here too — this list is the one
-// the customer is actually charged from.
-const PRICE_CATALOG = {
+// Edit prices HERE (and in index.js) whenever they change. Names are
+// matched loosely (see normalizeName), so bullets (•), inch-marks ("),
+// spacing, and encoding quirks won't break the lookup.
+const PRICE_CATALOG_RAW = {
     'Pillar Candles': 12.00,
-    'Pillar Candles 2"': 12.00,
-    'Pillar Candles 4"': 15.00,
-    'Pillar Candles 6"': 17.00,
+    'Pillar Candles 2': 12.00,
+    'Pillar Candles 4': 15.00,
+    'Pillar Candles 6': 17.00,
     'Skep Candles': 8.00,
     'Cold/Flu Foot Soak': 15.00,
     'De-Stress Foot Soak': 15.00,
@@ -37,6 +33,19 @@ const PRICE_CATALOG = {
     'Lip Balm Unscented': 3.00,
     'DIY Candle Kit': 15.00
 };
+
+// Normalize a name for matching: lowercase, keep only letters and digits.
+// Makes the lookup immune to bullets, inch-marks, stray spaces, and any
+// character-encoding differences between files.
+function normalizeName(raw) {
+    return String(raw || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+// Build the normalized lookup once at startup.
+const PRICE_CATALOG = {};
+for (const [name, price] of Object.entries(PRICE_CATALOG_RAW)) {
+    PRICE_CATALOG[normalizeName(name)] = price;
+}
 
 // Valid promo codes and their discounts
 const VALID_CODES = { 'WELCOME10': 0.10 };
@@ -75,10 +84,10 @@ exports.handler = async (event) => {
 
         for (const item of cart) {
             const name = (item && item.name ? String(item.name) : '').trim();
-            const unitPrice = PRICE_CATALOG[name];
+            const unitPrice = PRICE_CATALOG[normalizeName(name)];
 
-            // Unknown name = tampered request or a stale cart. Refuse the order
-            // rather than guess at a price.
+            // Unknown name = tampered request or a stale cart. Refuse rather
+            // than guess at a price.
             if (unitPrice === undefined) {
                 return {
                     statusCode: 400,
@@ -130,9 +139,9 @@ exports.handler = async (event) => {
         // Create the PaymentIntent.
         //
         // NOTE: automatic sales tax is intentionally OFF for now. Turning it on
-        // requires Stripe Tax to be configured in the dashboard (your registered
-        // states + origin address) — we'll wire tax up as its own step. Leaving
-        // it off here keeps order totals correct and lets a real order go through.
+        // requires Stripe Tax to be configured in the dashboard (registered
+        // states + origin address) — that's its own step. Leaving it off keeps
+        // order totals correct and lets a real order go through.
         const paymentIntent = await stripe.paymentIntents.create({
             amount: amountInCents,
             currency: 'usd',
