@@ -367,16 +367,16 @@
                     <span class="benefits-tag">Candle</span>
                 </div>
                 <h3 class="card-title">Pillar Candles</h3>
-                <p class="card-description">114+ hour burn time with pure beeswax and warm vanilla spice. Pillar varies in size.</p>
-                <p class="card-size">2 lb (Vanilla Spice)</p>
-                <select class="size-select" onchange="updatePrice(this)" aria-label="Select size">
-                    <option value="12.0">2 inch Poured — $12.00</option>
-                    <option value="15.0">4 inch Poured — $15.00</option>
-                    <option value="17.0">6 inch Poured — $17.00</option>
+                <p class="card-description">320+ hour burn time with pure beeswax. Pillar varies in size.</p>
+                <p class="card-size">3 oz – 2 lb</p>
+                <select class="size-select" id="pillar-size" onchange="updatePrice(this)" aria-label="Select size">
+                    <option value="10.0" data-label='2"'>2 inch Poured — $10.00</option>
+                    <option value="18.0" data-label='4"'>4 inch Poured — $18.00</option>
+                    <option value="28.0" data-label='6"'>6 inch Poured — $28.00</option>
                 </select>
                 <div class="card-footer">
-                    <span class="card-price" id="price-anchor-candle">$12.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Pillar Candle', 'images/2lb-Pillar-Candle.jpeg', 'price-pillar-candle')">Add to Cart</button>
+                    <span class="card-price" id="price-anchor-candle">$10.00</span>
+                    <button class="add-to-cart-btn" onclick="addSizedToCart(this, 'Pillar Candles', 'images/2lb-Pillar-Candle.jpeg', 'pillar-size')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -395,12 +395,15 @@
                     <span>🌿</span>
                     <span class="benefits-tag">Candle</span>
                 </div>
-                <h3 class="card-title">Skep Candles</h3>
+                <h3 class="card-title">Skep with Bees Candles</h3>
                 <p class="card-description">10+ hour burn time crafted from pure beeswax.</p>
-                <p class="card-size">Small (2 for $15)</p>
+                <select class="size-select" id="skep-size" onchange="updatePrice(this)" aria-label="Choose single or bundle">
+                    <option value="6.0" data-label="">Single - $6.00</option>
+                    <option value="5.0" data-label="Bundle">Bundle of 4 - $5.00</option>
+                </select>
                 <div class="card-footer">
-                    <span class="card-price" id="price-skep-candles">$8.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Skep Candles', 'images/Skep-Candles.jpeg', 'price-skep-candles')">Add to Cart</button>
+                    <span class="card-price" id="price-skep-candles">$6.00</span>
+                    <button class="add-to-cart-btn" onclick="addSizedToCart(this, 'Skep Candles', 'images/Skep-Candles.jpeg', 'skep-size')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -470,11 +473,11 @@
                 <h3 class="card-title">Breathe Better Balm</h3>
                 <p class="card-description">Menthol & Camphor crystals for maximum chest congestion relief.</p>
                 <select class="size-select" onchange="updatePrice(this)" aria-label="Select size">
-                    <option value="18.0">2 oz Molded — $18.00</option>
-                    <option value="10.0">1 oz Poured — $10.00</option>
+                    <option value="10.0">2 oz Molded — $10.00</option>
+                    <option value="6.0">1 oz Poured — $6.00</option>
                 </select>
                 <div class="card-footer">
-                    <span class="card-price" id="price-breathe-better-balm">$18.00</span>
+                    <span class="card-price" id="price-breathe-better-balm">$10.00</span>
                     <button class="add-to-cart-btn" onclick="addToCart(this, 'Breathe Better Balm', 'images/ai-generated/Breathe_Better_Balm.png', 'price-breathe-better-balm')">Add to Cart</button>
                 </div>
             </div>
@@ -777,6 +780,20 @@
     function addToCart(btn, name, image, priceId) {
         const priceEl = document.getElementById(priceId);
         const price = priceEl ? priceEl.textContent : '$0.00';
+        HHCart.add(name, price, image);
+        HHCart.flashButton(btn, 'Add to Cart');
+    }
+
+    // ── Add to Cart for products with a size dropdown ──────────────
+    // Sends a size-qualified name (e.g. "Pillar Candles 4"") and the
+    // selected price, so the server's catalog can charge that exact
+    // size instead of everything falling back to the base price.
+    function addSizedToCart(btn, baseName, image, selectId) {
+        const sel   = document.getElementById(selectId);
+        const opt   = sel.options[sel.selectedIndex];
+        const label = opt.getAttribute('data-label') || '';
+        const price = '$' + parseFloat(opt.value).toFixed(2);
+        const name  = label ? baseName + ' ' + label : baseName;
         HHCart.add(name, price, image);
         HHCart.flashButton(btn, 'Add to Cart');
     }
