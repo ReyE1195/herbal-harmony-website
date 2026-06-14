@@ -151,6 +151,9 @@ exports.handler = async (event) => {
         const paymentIntent = await stripe.paymentIntents.create({
             amount: amountInCents,
             currency: 'usd',
+            // Let Stripe offer every method enabled in the Dashboard (cards + wallets
+            // today; redirect methods later). This replaces the old card-only default.
+            automatic_payment_methods: { enabled: true },
             description: `Herbal Harmony Order: ${orderDesc}`,
             receipt_email: email,
             shipping: address ? {
