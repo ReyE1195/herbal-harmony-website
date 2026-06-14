@@ -216,8 +216,8 @@
                 <h2>Payment Details</h2>
                 <p class="payment-note-inline">🔒 Your payment is processed securely through Stripe. We never store your card details.</p>
                 <div class="form-group">
-                    <label>Card Details</label>
-                    <div id="stripe-card-element"></div>
+                    <label>Payment</label>
+                    <div id="payment-element"></div>
                     <div id="card-errors" role="alert" style="font-size:0.78rem;color:#e05c5c;margin-top:0.4rem;min-height:1.2rem;"></div>
                 </div>
                 <div id="payment-processing" style="display:none;text-align:center;padding:0.75rem;font-size:0.84rem;color:var(--forest);font-style:italic;">⏳ Processing your payment, please wait...</div>
@@ -340,39 +340,86 @@
     function initCheckout() {
         // -- Stripe setup (isolated: a failure here must NOT break the cart) --
         // Declared with `let` at function scope so the Place Order handler can see them.
-        let stripe = null, elements = null, cardElement = null;
+        let stripe = null, elements = null, paymentElement = null;
+
+        // Single source of truth for what we charge, in CENTS. Mirrors the server's
+        // pricing (create-payment-intent.js): lip-balm bundle = $1 off per pair, then
+        // the promo %. The Payment Element's amount must equal this, or Stripe rejects
+        // the confirm — so the browser and server always agree on the number.
+        function computeCartTotalCents() {
+            const items = HHCart.get();
+            let subtotal = 0, lipBalms = 0;
+            items.forEach(function(item) {
+                subtotal += parseFloat(String(item.price).replace('$', '')) * item.qty;
+                if (item.name.toLowerCase().includes('lip balm')) lipBalms += item.qty;
+            });
+            if (lipBalms >= 2) subtotal -= Math.floor(lipBalms / 2); // $1 per pair
+            const promo = window.hhPromoDiscount || 0;
+            if (promo > 0) subtotal = subtotal * (1 - promo);
+            return Math.round(subtotal * 100);
+        }
+        window.computeCartTotalCents = computeCartTotalCents;
+
         try {
             stripe = Stripe(window.__STRIPE_KEY__);
-            elements = stripe.elements({
-                fonts: [{ cssSrc: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap' }]
-            });
 
-            cardElement = elements.create('card', {
-                style: {
-                    base: {
+            // Deferred mode: mount the Payment Element now, create the PaymentIntent
+            // on the server only when the customer clicks Place Order. Stripe's minimum
+            // is $0.50, so we floor the *display* amount at 50 so the Element can mount
+            // even when the cart is briefly empty — the server still enforces the real total.
+            let initialAmount = computeCartTotalCents();
+            if (initialAmount < 50) initialAmount = 50;
+
+            elements = stripe.elements({
+                mode: 'payment',
+                amount: initialAmount,
+                currency: 'usd',
+                appearance: {
+                    theme: 'stripe',
+                    variables: {
+                        colorPrimary: '#528552',
+                        colorText: '#3B575A',
                         fontFamily: '"Montserrat", sans-serif',
-                        fontSize: '15px',
-                        color: '#3B575A',
-                        '::placeholder': { color: '#9F9989' }
-                    },
-                    invalid: { color: '#e05c5c', iconColor: '#e05c5c' }
+                        borderRadius: '8px'
+                    }
                 }
             });
 
-            cardElement.mount('#stripe-card-element');
+            // We already collect name / email / phone / address in the form above,
+            // so tell the Element NOT to re-ask — we pass those in at confirm time.
+            paymentElement = elements.create('payment', {
+                layout: 'tabs',
+                fields: { billingDetails: 'never' }
+            });
+            paymentElement.mount('#payment-element');
 
-            cardElement.on('change', function(e) {
-                document.getElementById('card-errors').textContent = e.error ? e.error.message : '';
+            paymentElement.on('change', function(e) {
+                const errEl = document.getElementById('card-errors');
+                if (errEl) errEl.textContent = (e && e.error) ? e.error.message : '';
             });
         } catch (stripeErr) {
             // Stripe couldn't start (e.g. empty/missing key, blocked script).
-            // Show a gentle note in the card box and carry on — the cart still works.
+            // Show a gentle note in the payment box and carry on — the cart still works.
             console.error('Stripe did not initialize:', stripeErr);
-            const cardBox = document.getElementById('stripe-card-element');
-            if (cardBox) {
-                cardBox.innerHTML = '<p style="font-size:0.82rem;color:#b7791f;line-height:1.5;">\u26A0\uFE0F Card payment is temporarily unavailable. Your cart is saved \u2014 please refresh in a moment.</p>';
+            const payBox = document.getElementById('payment-element');
+            if (payBox) {
+                payBox.innerHTML = '<p style="font-size:0.82rem;color:#b7791f;line-height:1.5;">\u26A0\uFE0F Payment is temporarily unavailable. Your cart is saved \u2014 please refresh in a moment.</p>';
             }
         }
+
+        // Keep the Payment Element's amount in lock-step with the cart total, so the
+        // amount Stripe sees always matches what the server will charge.
+        function syncStripeAmount() {
+            if (!elements) return;
+            try {
+                let a = computeCartTotalCents();
+                if (a < 50) a = 50;
+                elements.update({ amount: a });
+            } catch (e) {
+                console.error('Could not update payment amount:', e);
+            }
+        }
+        window.syncStripeAmount = syncStripeAmount;
 
         // ── Free Bonus Gift (first 2 customers — Honey Lip Balm) ─────────
         const FREE_GIFT_KEY   = 'hh_free_gift_removed';
@@ -510,6 +557,9 @@
                 promoRow.style.display = 'none';
                 document.getElementById('total-val').textContent = '$' + subtotal.toFixed(2);
             }
+
+            // Cart/total changed — keep the Payment Element's amount in sync with it.
+            if (window.syncStripeAmount) window.syncStripeAmount();
         }
 
         function removeItem(name) {
@@ -581,7 +631,7 @@
             }
 
             // If Stripe never initialized, payment can't run. Tell the customer kindly.
-            if (!stripe || !cardElement) {
+            if (!stripe || !elements || !paymentElement) {
                 alert('Card payment is temporarily unavailable. Please refresh the page and try again. 🌿');
                 return;
             }
@@ -623,7 +673,18 @@
             errEl.textContent = '';
 
             try {
-                // Step 1 — Create PaymentIntent on backend
+                // Validate & collect payment details. Deferred mode requires
+                // elements.submit() to run BEFORE we create the PaymentIntent.
+                const { error: submitError } = await elements.submit();
+                if (submitError) {
+                    errEl.textContent = submitError.message || 'Please check your payment details.';
+                    btn.disabled = false;
+                    btn.textContent = 'Place Order';
+                    processing.style.display = 'none';
+                    return;
+                }
+
+                // Create PaymentIntent on backend (the server prices the cart).
                 const intentResponse = await fetch('/.netlify/functions/create-payment-intent', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -644,15 +705,21 @@
                     return;
                 }
 
-                // Step 2 — Confirm payment with Stripe using clientSecret
-                const { paymentIntent, error } = await stripe.confirmCardPayment(
-                    intentData.clientSecret,
-                    {
-                        payment_method: {
-                            card: cardElement,
+                // Confirm with the Payment Element. redirect:'if_required' keeps cards,
+                // Apple Pay, Google Pay and Link inline (no page change); only redirect-based
+                // methods would use return_url — and those stay OFF in the Dashboard until
+                // the Mission 2 return page exists.
+                const { paymentIntent, error } = await stripe.confirmPayment({
+                    elements,
+                    clientSecret: intentData.clientSecret,
+                    redirect: 'if_required',
+                    confirmParams: {
+                        return_url: window.location.origin + '/order-complete.html',
+                        payment_method_data: {
                             billing_details: {
                                 name: firstName + ' ' + lastName,
                                 email: email,
+                                phone: phone,
                                 address: {
                                     line1: street,
                                     city: city,
@@ -663,10 +730,21 @@
                             }
                         }
                     }
-                );
+                });
 
                 if (error) {
                     errEl.textContent = error.message;
+                    btn.disabled = false;
+                    btn.textContent = 'Place Order';
+                    processing.style.display = 'none';
+                    return;
+                }
+
+                // With redirect:'if_required', a completed inline payment returns the
+                // PaymentIntent. Anything other than 'succeeded' means we must NOT
+                // record an order.
+                if (!paymentIntent || paymentIntent.status !== 'succeeded') {
+                    errEl.textContent = 'Payment could not be completed. Please try again.';
                     btn.disabled = false;
                     btn.textContent = 'Place Order';
                     processing.style.display = 'none';
