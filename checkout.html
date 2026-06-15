@@ -398,7 +398,7 @@
                 if (errEl) errEl.textContent = (e && e.error) ? e.error.message : '';
             });
         } catch (stripeErr) {
-            // Stripe couldn't start (e.g. empty/missing key, blocked script).
+            // Stripe couldn't start (e.g., empty/missing key, blocked script).
             // Show a gentle note in the payment box and carry on — the cart still works.
             console.error('Stripe did not initialize:', stripeErr);
             const payBox = document.getElementById('payment-element');
@@ -823,10 +823,26 @@
                     return;
                 }
 
+                // For redirect methods (Cash App Pay, Klarna), the browser leaves this page
+                // during confirmPayment and the order is finalized on order-complete.html.
+                // Stash what that page needs BEFORE handing off. (For inline methods — cards,
+                // Apple Pay, Google Pay, Link — this is harmless; we clear it after the
+                // inline save just below.)
+                const giftEl = document.getElementById('free-gift-container');
+                const freeGiftAccepted = giftAvailable && giftEl && giftEl.style.display !== 'none';
+                localStorage.setItem('hh_pendingOrder', JSON.stringify({
+                    cart: cart,
+                    email: email,
+                    firstName: firstName,
+                    lastName: lastName,
+                    total: (intentData.amount / 100).toFixed(2),
+                    address: { street: street, city: city, state: state, zip: zip },
+                    freeGift: freeGiftAccepted
+                }));
+
                 // Confirm with the Payment Element. redirect:'if_required' keeps cards,
-                // Apple Pay, Google Pay and Link inline (no page change); only redirect-based
-                // methods would use return_url — and those stay OFF in the Dashboard until
-                // the Mission 2 return page exists.
+                // Apple Pay, Google Pay and Link inline; Cash App Pay and Klarna redirect to
+                // their approval page and return to return_url (order-complete.html).
                 const { paymentIntent, error } = await stripe.confirmPayment({
                     elements,
                     clientSecret: intentData.clientSecret,
@@ -869,11 +885,8 @@
                     return;
                 }
 
-                // Step 3 — Payment confirmed! Save order to backend
-                // Did the shopper keep the free gift? (available + still showing)
-                const giftEl = document.getElementById('free-gift-container');
-                const freeGiftAccepted = giftAvailable && giftEl && giftEl.style.display !== 'none';
-
+                // Inline payment confirmed (card / wallet / Link). Save the order now.
+                // (Redirect methods never reach this line — they finalize on order-complete.html.)
                 const orderResponse = await fetch('/.netlify/functions/save-order', {
                     method: 'POST',
                     headers: {
@@ -888,6 +901,9 @@
                         freeGift: freeGiftAccepted
                     })
                 });
+
+                // Inline order saved — clear the redirect stash so it can't be reused.
+                localStorage.removeItem('hh_pendingOrder');
 
                 const orderData = await orderResponse.json();
 
