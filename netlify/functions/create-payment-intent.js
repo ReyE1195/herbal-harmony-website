@@ -74,7 +74,7 @@ exports.handler = async (event) => {
     }
 
     try {
-        const { cart, email, firstName, lastName, address, promoCode } = JSON.parse(event.body);
+        const { cart, email, firstName, lastName, address, promoCode, calculateOnly } = JSON.parse(event.body);
 
         if (!cart || !cart.length) {
             return {
@@ -126,6 +126,56 @@ exports.handler = async (event) => {
 
         const amountInCents = Math.round(subtotal * 100);
 
+        // --- Sales tax (Stripe Tax) -------------------------------------
+        // WA sales tax is destination-based, so it depends on the shipping
+        // address. We tax the discounted subtotal (the real sale price).
+        // Everything in the catalog is a physical good -> General-Tangible
+        // Goods (txcd_99999999). The calculation id is linked to the
+        // PaymentIntent below so save-order can record it for filing.
+        let taxAmount = 0;
+        let taxCalculationId = null;
+        const zip5 = String(address && address.zip ? address.zip : '').replace(/\D/g, '').slice(0, 5);
+        if (address && address.state && zip5.length === 5) {
+            const calculation = await stripe.tax.calculations.create({
+                currency: 'usd',
+                line_items: [{
+                    amount: amountInCents,            // discounted, taxable subtotal
+                    reference: 'order-subtotal',
+                    tax_code: 'txcd_99999999'         // General - Tangible Goods
+                }],
+                customer_details: {
+                    address: {
+                        line1: address.street || '',
+                        city: address.city || '',
+                        state: address.state,
+                        postal_code: zip5,
+                        country: 'US'
+                    },
+                    address_source: 'shipping'
+                }
+            });
+            taxAmount = calculation.tax_amount_exclusive;
+            taxCalculationId = calculation.id;
+        }
+
+        const totalInCents = amountInCents + taxAmount;
+
+        // "Calculate-only" mode: the checkout page calls this as the customer
+        // fills in their address to show live tax and keep the Payment Element's
+        // amount in sync. No charge is created in this mode.
+        if (calculateOnly) {
+            return {
+                statusCode: 200,
+                headers: { 'Access-Control-Allow-Origin': '*' },
+                body: JSON.stringify({
+                    success: true,
+                    subtotal: amountInCents,
+                    taxAmount: taxAmount,
+                    total: totalInCents
+                })
+            };
+        }
+
         // Stripe's minimum charge is $0.50.
         if (amountInCents < 50) {
             return {
@@ -142,14 +192,10 @@ exports.handler = async (event) => {
             return `${item.name} x${q}`;
         }).join(', ');
 
-        // Create the PaymentIntent.
-        //
-        // NOTE: automatic sales tax is intentionally OFF for now. Turning it on
-        // requires Stripe Tax to be configured in the dashboard (registered
-        // states + origin address) — that's its own step. Leaving it off keeps
-        // order totals correct and lets a real order go through.
+        // Create the PaymentIntent. We charge subtotal + tax and link the tax
+        // calculation (via metadata) so save-order can record the tax transaction.
         const paymentIntent = await stripe.paymentIntents.create({
-            amount: amountInCents,
+            amount: totalInCents,
             currency: 'usd',
             // Let Stripe offer every method enabled in the Dashboard (cards + wallets
             // today; redirect methods later). This replaces the old card-only default.
@@ -171,7 +217,8 @@ exports.handler = async (event) => {
                 customerEmail: email,
                 orderItems: orderDesc,
                 shippingAddress: address ? `${address.street}, ${address.city}, ${address.state} ${address.zip}` : '',
-                promoCode: appliedPromo
+                promoCode: appliedPromo,
+                taxCalculationId: taxCalculationId || ''
             }
         });
 
@@ -181,8 +228,9 @@ exports.handler = async (event) => {
             body: JSON.stringify({
                 success: true,
                 clientSecret: paymentIntent.client_secret,
-                amount: amountInCents,
-                taxAmount: 0
+                amount: totalInCents,
+                subtotal: amountInCents,
+                taxAmount: taxAmount
             })
         };
 
