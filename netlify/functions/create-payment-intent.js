@@ -56,6 +56,12 @@ for (const [name, price] of Object.entries(PRICE_CATALOG_RAW)) {
 // Valid promo codes and their discounts
 const VALID_CODES = { 'WELCOME10': 0.10 };
 
+// --- Flat-rate shipping, in CENTS -----------------------------------
+// Interim flat $5.00 fee until live USPS rates (EasyPost) are wired in.
+// When that lands, replace this one constant with the per-order rate
+// lookup — the rest of this function reads from it and needs no change.
+const SHIPPING_FLAT_RATE = 500;
+
 exports.handler = async (event) => {
     if (event.httpMethod === 'OPTIONS') {
         return {
@@ -143,6 +149,10 @@ exports.handler = async (event) => {
                     reference: 'order-subtotal',
                     tax_code: 'txcd_99999999'         // General - Tangible Goods
                 }],
+                // Let Stripe tax shipping correctly by jurisdiction (shipping is
+                // taxable in some states, not others). The shipping amount is added
+                // on top (exclusive); its tax is folded into tax_amount_exclusive.
+                shipping_cost: { amount: SHIPPING_FLAT_RATE },
                 customer_details: {
                     address: {
                         line1: address.street || '',
@@ -158,7 +168,7 @@ exports.handler = async (event) => {
             taxCalculationId = calculation.id;
         }
 
-        const totalInCents = amountInCents + taxAmount;
+        const totalInCents = amountInCents + SHIPPING_FLAT_RATE + taxAmount;
 
         // "Calculate-only" mode: the checkout page calls this as the customer
         // fills in their address to show live tax and keep the Payment Element's
@@ -170,6 +180,7 @@ exports.handler = async (event) => {
                 body: JSON.stringify({
                     success: true,
                     subtotal: amountInCents,
+                    shipping: SHIPPING_FLAT_RATE,
                     taxAmount: taxAmount,
                     total: totalInCents
                 })
@@ -217,6 +228,7 @@ exports.handler = async (event) => {
                 customerEmail: email,
                 orderItems: orderDesc,
                 shippingAddress: address ? `${address.street}, ${address.city}, ${address.state} ${address.zip}` : '',
+                shippingFee: (SHIPPING_FLAT_RATE / 100).toFixed(2),
                 promoCode: appliedPromo,
                 taxCalculationId: taxCalculationId || ''
             }
@@ -230,6 +242,7 @@ exports.handler = async (event) => {
                 clientSecret: paymentIntent.client_secret,
                 amount: totalInCents,
                 subtotal: amountInCents,
+                shipping: SHIPPING_FLAT_RATE,
                 taxAmount: taxAmount
             })
         };
