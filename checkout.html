@@ -248,7 +248,7 @@
                 <div class="total-row"><span>Subtotal</span><span id="subtotal-val">$0.00</span></div>
                 <div class="total-row" id="promo-discount-row" style="display:none;color:var(--neon);"><span>Promo discount</span><span id="promo-discount-val">-$0.00</span></div>
                 <div class="total-row"><span>Sales tax</span><span id="tax-val">Calculated at checkout</span></div>
-                <div class="total-row"><span>Shipping</span><span>Calculated at next step</span></div>
+                <div class="total-row"><span>Shipping</span><span id="shipping-val">$5.00</span></div>
                 <div class="total-row grand"><span>Total</span><span id="total-val">$0.00</span></div>
             </div>
             <div id="cart-empty-msg" style="display:none; text-align:center; padding:1.5rem 0; font-size:0.88rem; color:var(--sage-dark);">
@@ -342,6 +342,13 @@
         // Declared with `let` at function scope so the Place Order handler can see them.
         let stripe = null, elements = null, paymentElement = null;
 
+        // Flat-rate shipping in CENTS — mirrors SHIPPING_FLAT_RATE on the server
+        // (create-payment-intent.js). Used ONLY for the pre-address estimate; once
+        // the customer's address is entered, the server's total (which already
+        // includes shipping) takes over. When live USPS rates replace the flat
+        // fee, this just becomes the opening estimate.
+        const SHIPPING_FLAT_CENTS = 500;
+
         // Single source of truth for what we charge, in CENTS. Mirrors the server's
         // pricing (create-payment-intent.js): lip-balm bundle = $1 off per pair, then
         // the promo %. The Payment Element's amount must equal this, or Stripe rejects
@@ -434,7 +441,7 @@
                 if (totalEl) totalEl.textContent = '$' + (window.hhEstimateTotalCents / 100).toFixed(2);
             } else {
                 if (taxEl) taxEl.textContent = 'Calculated at checkout';
-                if (totalEl) totalEl.textContent = '$' + (computeCartTotalCents() / 100).toFixed(2);
+                if (totalEl) totalEl.textContent = '$' + ((computeCartTotalCents() + SHIPPING_FLAT_CENTS) / 100).toFixed(2);
             }
         }
         window.updateTotalsDisplay = updateTotalsDisplay;
@@ -444,7 +451,7 @@
         function syncStripeAmount() {
             if (!elements) return;
             try {
-                let a = (window.hhEstimateTotalCents != null) ? window.hhEstimateTotalCents : computeCartTotalCents();
+                let a = (window.hhEstimateTotalCents != null) ? window.hhEstimateTotalCents : (computeCartTotalCents() + SHIPPING_FLAT_CENTS);
                 if (a < 50) a = 50;
                 elements.update({ amount: a });
             } catch (e) {
