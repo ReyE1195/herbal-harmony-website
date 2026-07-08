@@ -16,28 +16,53 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 // matched loosely (see normalizeName), so bullets (•), inch-marks ("),
 // spacing, and encoding quirks won't break the lookup.
 const PRICE_CATALOG_RAW = {
-    'Pillar Candles': 10.00,
-    'Pillar Candles 2': 10.00,
-    'Pillar Candles 4': 18.00,
-    'Pillar Candles 6': 28.00,
-    'Skep Candles': 6.00,
-    'Skep Candles Single': 6.00,
-    'Skep Candles Bundle': 5.00,
-    'Cold/Flu Foot Soak': 15.00,
-    'De-Stress Foot Soak': 15.00,
-    'Breathe Better Balm': 10.00,
-    'Breathe Better Balm 2oz': 10.00,
-    'Breathe Better Balm 1oz': 6.00,
-    'Little Lungs Balm': 6.00,
-    'Little Lungs Balm 0.5oz': 6.00,
-    'Little Lungs Balm 1oz': 10.00,
-    'Boo Boo Balm': 6.00,
-    'Starter Wrap Set': 20.00,
-    'XL Beeswax Wrap': 20.00,
+    // ── Candles ─────────────────────────────────────────────
+    'Large Round Pillar': 40.00,
+    'Square Collection (Set)': 30.00,
+    'Pillar Candle': 20.00,
+    'Honeycomb with Bees Candle': 15.00,
+    'Round Pillar Candle': 15.00,
+    'Element Stone Pillar Candle': 12.00,
+    'Bubble Hexagon Pillar Candle': 12.00,
+    'Cylinder Pillar Candle': 8.00,
+    'Hexagon Pillar Candle - Small': 8.00,
+    'Bubble Pillar Candle': 12.00,
+    'Bee w/Flowers Candle': 20.00,
+    'Molded Queen Bee Candle': 15.00,
+    'Molded Multi Bees Candle': 15.00,
+    'Votive Candles': 10.00,               // sold as a 4-pack only
+    'Skep w/Bees Beehive Candles': 6.00,
+    'Tea Light - Square': 1.50,
+    'Tea Light - Circle': 1.50,
+    'Travel Candle Jar': 20.00,
+    'DIY Candle Kit': 15.00,
+    // ── Soaks ───────────────────────────────────────────────
+    'Cold/Flu Foot or Bath Soak': 12.00,
+    'De-Stress Foot or Bath Soak': 12.00,
+    // ── Balms ───────────────────────────────────────────────
+    'Breathe Better Balm': 15.00,
+    'Little Lungs Balm': 10.00,
+    'Booboo Balm': 8.00,
+    // ── Lip Balms ───────────────────────────────────────────
     'Lip Balm Vanilla': 3.00,
     'Lip Balm Eucalyptus & Mint': 3.00,
     'Lip Balm Unscented': 3.00,
-    'DIY Candle Kit': 15.00
+    'Lip Balm Honey': 3.00,
+    // ── Lotion Bars ─────────────────────────────────────────
+    'Unscented Moisturizing Lotion Bar - Rectangle': 5.00,
+    'Unscented Moisturizing Lotion Bar - Oval': 5.00,
+    // ── Wellness ────────────────────────────────────────────
+    'Restless Leg Relief': 20.00,
+    'Headache Stick': 8.00,
+    'Face Mask': 5.00,
+    'Filtered Beeswax Pellets': 25.00,
+    // ── Wraps ───────────────────────────────────────────────
+    'XL Beeswax Wrap': 25.00,
+    'Beeswax Starter Wrap Set (S, M, L)': 20.00,
+    'Lunch Box Beeswax Wrap Set (2 Med & 1 Sm)': 20.00,
+    'Large Beeswax Wrap': 12.00,
+    'Medium Beeswax Wrap': 8.00,
+    'Small Beeswax Wrap': 6.00
 };
 
 // Normalize a name for matching: lowercase, keep only letters and digits.
@@ -93,6 +118,9 @@ exports.handler = async (event) => {
         // --- Price the cart from the SERVER's catalog, never the browser ---
         let subtotal = 0;
         let lipBalmQty = 0;
+        let teaLightQty = 0;
+        let diyKitQty = 0;
+        let headacheStickQty = 0;
 
         for (const item of cart) {
             const name = (item && item.name ? String(item.name) : '').trim();
@@ -114,13 +142,39 @@ exports.handler = async (event) => {
             if (!Number.isFinite(qty) || qty < 1) qty = 1;
 
             subtotal += unitPrice * qty;
-            if (name.toLowerCase().includes('lip balm')) lipBalmQty += qty;
+            const lower = name.toLowerCase();
+            if (lower.includes('lip balm')) lipBalmQty += qty;
+            if (lower.includes('tea light')) teaLightQty += qty;
+            if (normalizeName(name) === normalizeName('DIY Candle Kit')) diyKitQty += qty;
+            if (normalizeName(name) === normalizeName('Headache Stick')) headacheStickQty += qty;
         }
 
-        // --- Lip balm bundle: any 2 lip balms → $1 off per pair ($5 a pair) ---
+        // --- Bundle deals (must mirror what the product cards advertise) ---
+
+        // Lip balms: any 2 for $5.00 → $1 off per pair (2 x $3 = $6 → $5)
         if (lipBalmQty >= 2) {
             const pairs = Math.floor(lipBalmQty / 2);
             subtotal -= pairs; // $1 per pair
+        }
+
+        // Tea lights: any 6 for $7.00 — mix & match, squares and circles
+        // combine toward the deal. (6 x $1.50 = $9.00 → $7.00, $2 off per
+        // group of 6.) Singles are always available at $1.50 each.
+        if (teaLightQty >= 6) {
+            const groups = Math.floor(teaLightQty / 6);
+            subtotal -= groups * 2;
+        }
+
+        // DIY Candle Kit: 2 for $25.00 (2 x $15 = $30 → $25, $5 off per pair)
+        if (diyKitQty >= 2) {
+            const pairs = Math.floor(diyKitQty / 2);
+            subtotal -= pairs * 5;
+        }
+
+        // Headache Stick: 2 for $15.00 (2 x $8 = $16 → $15, $1 off per pair)
+        if (headacheStickQty >= 2) {
+            const pairs = Math.floor(headacheStickQty / 2);
+            subtotal -= pairs;
         }
 
         // --- Promo code ---
