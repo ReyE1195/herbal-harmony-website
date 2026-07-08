@@ -7,19 +7,13 @@
 //   PRODUCTS DATA
 // ============================================
 const products = [
-    { name:'Pillar Candles', price:'$10.00', image: 'images/2lb-Pillar-Candle.jpeg', description:'Pure beeswax pillar candles handcrafted with love. Available in multiple sizes.', benefits:'Candle • Pure Beeswax', disclaimer:'Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.', link:'checkout.html', sizes: [{label:'2"', price:'$10.00'},{label:'4"', price:'$18.00'},{label:'6"', price:'$28.00'}] },
-    { name:'Skep Candles', price:'$6.00', image: 'images/Skep-Candles.jpeg', description:'10+ hour burn time crafted from pure beeswax.', benefits:'Candle • Pure Beeswax', disclaimer:'Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.', link:'checkout.html', sizes: [{label:'Single', price:'$6.00'},{label:'Bundle', price:'$5.00'}] },
-    { name:'Cold/Flu Foot Soak', price:'$15.00', image: 'images/Cold-Flu-Foot-Soak.jpeg', description:'Eucalyptus & Camphor base for congestion relief.', benefits:'Soak • External Use Only', disclaimer:'External Use Only. Soak body/feet for ONLY  15 minutes - 30 minutes. Discontinue if irritation occurs.', link:'checkout.html' },
-    { name:'De-Stress Foot Soak', price:'$15.00', image: 'images/De-Stress-Foot-Soak.jpeg', description:'Ashwagandha root powder for anxiety and muscle tension.', benefits:'Soak • External Use Only', disclaimer:'External Use Only. Soak body/feet for ONLY  15 minutes - 30 minutes. Discontinue if irritation occurs.', link:'checkout.html' },
-    { name:'Breathe Better Balm', price:'$10.00', image: 'images/ai-generated/Breathe_Better_Balm.png', description:'Menthol & Camphor crystals for chest congestion relief.', benefits:'Balm • External Use Only', disclaimer:'External Use Only. Discontinue if irritation occurs.', link:'checkout.html', sizes: [{label:'2oz', price:'$10.00'},{label:'1oz', price:'$6.00'}] },
-    { name:'Little Lungs Balm', price:'$6.00', image: 'images/ai-generated/Little_Lungs_Balm.png', description:'Tea Tree, Eucalyptus & Rosemary — gentle for children and sensitive skin.', benefits:'Balm • Kids Friendly', disclaimer:'External Use Only. Discontinue if irritation occurs.', link:'checkout.html', sizes: [{label:'0.5oz', price:'$6.00'},{label:'1oz', price:'$10.00'}] },
-    { name:'Boo Boo Balm', price:'$6.00', image: 'images/ai-generated/BooBoo_Balm.png', description:'Oregano & Blackseed Oil antimicrobial blend for cuts and scrapes.', benefits:'Balm • External Use Only', disclaimer:'External Use Only. Discontinue if irritation occurs.', link:'checkout.html' },
-    { name:'Starter Wrap Set', price:'$20.00', image: 'images/ai-generated/Starter-Beeswax-Wraps.jpeg', description:'Beeswax formula for superior cling — wraps bowls, sandwiches, and jars with ease. Reusable and washable. Set includes small, medium, and large for whatever the kitchen throws at you.', benefits:'Wrap • Cold Wash Only', disclaimer:'Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.', link:'checkout.html' },
-    { name:'XL Beeswax Wrap', price:'$20.00', image: 'images/Large-Beeswax-Wraps.jpeg', description:'Our largest single wrap, made for the big jobs — drape it over a salad bowl, cover a dinner platter, or wrap half a melon. The warmth of your hands molds the beeswax into a snug, plastic-free seal, and a quick rinse in cool water has it ready to use again.', benefits:'Wrap • Cold Wash Only', disclaimer:'Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.', link:'checkout.html' },
-    { name:'Lip Balm Vanilla', price:'$3.00', image: 'images/Lip-Balm-Vanilla.jpeg', description:'Moisturizing pure beeswax lip balm with a warm sweet Vanilla scent. Buy any 2 lip balms for $5.00!', benefits:'Lip Balm • Pure Beeswax', disclaimer:'External Use Only. For lip use only. Discontinue if irritation occurs. Keep away from children under 3.', link:'checkout.html' },
-    { name:'Lip Balm Eucalyptus & Mint', price:'$3.00', image: 'images/Lip-Balm-Eucalyptus-Mint.jpeg', description:'Refreshing pure beeswax lip balm with cooling Eucalyptus & Mint. Buy any 2 lip balms for $5.00!', benefits:'Lip Balm • Pure Beeswax', disclaimer:'External Use Only. For lip use only. Discontinue if irritation occurs. Keep away from children under 3.', link:'checkout.html' },
-    { name:'Lip Balm Unscented', price:'$3.00', image: 'images/ai-generated/Lip_Balm_Unscented.png', description:'Pure beeswax lip balm with no added fragrance — perfect for sensitive lips. Buy any 2 lip balms for $5.00!', benefits:'Lip Balm • Pure Beeswax', disclaimer:'External Use Only. For lip use only. Discontinue if irritation occurs. Keep away from children under 3.', link:'checkout.html' },
-    { name:'DIY Candle Kit', price:'$15.00', image: 'images/ai-generated/DIY_Candle_Kit.png', description:'Easy, non-toxic craft kit with honeycomb wax included.', benefits:'Candle • All Ages', disclaimer:'Safety Warning: Adult supervision required.', link:'checkout.html' }
+    { name:'Large Round Pillar', price:'$40.00', image: 'images/2lb-Pillar-Candle.jpeg', description:'10+ hour burn time per oz, finely crafted from pure beeswax. 6" x 3".', benefits:'Candle \u2022 Pure Beeswax', disclaimer:'Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.', link:'checkout.html' },
+    { name:'Skep w/Bees Beehive Candles', price:'$6.00', image: 'images/Skep-Candles.jpeg', description:'10+ hour burn time crafted from pure beeswax. 2" x 1.75".', benefits:'Candle \u2022 Pure Beeswax', disclaimer:'Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.', link:'checkout.html' },
+    { name:'DIY Candle Kit', price:'$15.00', image: 'images/ai-generated/DIY_Candle_Kit.png', description:'Easy, non-toxic craft kit with honeycomb wax, tea light molds, and wick included. 2 for $25.00!', benefits:'Candle \u2022 All Ages', disclaimer:'Safety Warning: Adult supervision required.', link:'checkout.html' },
+    { name:'Breathe Better Balm', price:'$15.00', image: 'images/ai-generated/Breathe_Better_Balm.png', description:'Menthol & Camphor crystals for chest congestion relief. 2.5oz.', benefits:'Balm \u2022 External Use Only', disclaimer:'External Use Only. Discontinue if irritation occurs.', link:'checkout.html' },
+    { name:'Cold/Flu Foot or Bath Soak', price:'$12.00', image: 'images/Cold-Flu-Foot-Soak.jpeg', description:'Eucalyptus & Camphor base for congestion relief. Soak feet/body for 15-30 minutes.', benefits:'Soak \u2022 External Use Only', disclaimer:'External Use Only. Soak body/feet for ONLY 15 minutes - 30 minutes. Discontinue if irritation occurs.', link:'checkout.html' },
+    { name:'Lip Balm Vanilla', price:'$3.00', image: 'images/Lip-Balm-Vanilla.jpeg', description:'Moisturizing pure beeswax lip balm with a warm sweet Vanilla scent. Buy any 2 lip balms for $5.00!', benefits:'Lip Balm \u2022 Pure Beeswax', disclaimer:'External Use Only. For lip use only. Discontinue if irritation occurs. Keep away from children under 3.', link:'checkout.html' },
+    { name:'Beeswax Starter Wrap Set (S, M, L)', price:'$20.00', image: 'images/Beeswax-Starter-Wrap-Set.jpeg', description:'1 large, 1 medium, 1 small \u2014 hand-cut with decorative edging. Superior cling for bowls, sandwiches, and jars.', benefits:'Wrap \u2022 Cold Wash Only', disclaimer:'Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.', link:'checkout.html' }
 ];
 
 // ============================================
@@ -49,19 +43,6 @@ function createCard(p, i) {
     card.className = 'product-card';
     card.style.animationDelay = `${i * 0.08}s`;
 
-    // Build size buttons if product has sizes
-    const sizeHTML = p.sizes ? `
-        <div class="size-btns" style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.6rem;">
-            ${p.sizes.map((s, idx) => `
-                <button class="size-btn${idx === 0 ? ' size-btn-active' : ''}"
-                    data-price="${s.price}"
-                    data-label="${s.label}"
-                    onclick="event.preventDefault(); selectSize(this)"
-                    style="padding:0.3rem 0.65rem;border-radius:999px;border:1.5px solid ${idx === 0 ? '#3D5A3D' : '#CDCFC0'};background:${idx === 0 ? '#3D5A3D' : 'transparent'};color:${idx === 0 ? '#D0EED0' : '#3B575A'};font-family:Montserrat,sans-serif;font-size:0.72rem;font-weight:600;cursor:pointer;transition:all 0.2s ease;">
-                    ${s.label} — ${s.price}
-                </button>`).join('')}
-        </div>` : '';
-
     card.innerHTML = `
       <a href="${p.link}" style="text-decoration:none;display:block;">
         <div class="card-img-wrap" style="position:relative;overflow:hidden;border-radius:1rem 1rem 0 0;">
@@ -78,7 +59,6 @@ function createCard(p, i) {
           </div>
           <h3 class="card-title">${p.name}</h3>
           <p class="card-description">${p.description}</p>
-          ${sizeHTML}
           <div class="card-footer">
             <span class="card-price">${p.price}</span>
             <button class="add-to-cart-btn" data-name="${p.name}" onclick="event.preventDefault(); addToCart(this, '${p.name.replace(/'/g, "\\'")}', '${p.price}', '${p.image}')">
@@ -253,39 +233,6 @@ if (viewMoreBtn) {
     viewMoreBtn.addEventListener('click', () => {
         window.location.href = 'products.html';
     });
-}
-
-// ============================================
-//   SIZE SELECTION — for products with sizes
-// ============================================
-function selectSize(btn) {
-    // Update active button styles
-    const siblings = btn.closest('.size-btns').querySelectorAll('.size-btn');
-    siblings.forEach(b => {
-        b.style.background = 'transparent';
-        b.style.borderColor = '#CDCFC0';
-        b.style.color = '#3B575A';
-        b.classList.remove('size-btn-active');
-    });
-    btn.style.background = '#3D5A3D';
-    btn.style.borderColor = '#3D5A3D';
-    btn.style.color = '#D0EED0';
-    btn.classList.add('size-btn-active');
-
-    // Update displayed price
-    const card = btn.closest('.card-body');
-    const priceEl = card.querySelector('.card-price');
-    const cartBtn = card.querySelector('.add-to-cart-btn');
-    if (priceEl) priceEl.textContent = btn.dataset.price;
-
-    // Update cart button with new price
-    const name = cartBtn.dataset.name;
-    const image = btn.closest('.product-card') ?
-        btn.closest('.product-card').querySelector('.product-image').src : '';
-    cartBtn.onclick = (e) => {
-        e.preventDefault();
-        addToCart(cartBtn, name + ' ' + btn.dataset.label, btn.dataset.price, image);
-    };
 }
 
 // ============================================

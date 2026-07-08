@@ -92,7 +92,7 @@
             background: white;
             border-bottom: 1px solid var(--cream-dark);
             padding: 1.4rem 3rem;
-            position: sticky; top: 0; z-index: 100;
+            position: static;
             box-shadow: 0 4px 20px rgba(61,90,61,0.06);
         }
         .filter-inner {
@@ -200,27 +200,6 @@
         .benefits-tag { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--neon-forest); }
         .card-title { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-weight: 600; color: var(--forest); margin-bottom: 0.35rem; }
         .card-description { font-size: 0.82rem; color: var(--sage-dark); line-height: 1.6; margin-bottom: 0.85rem; }
-
-        /* ── Size dropdown ── */
-        .size-select {
-            width: 100%;
-            padding: 0.5rem 0.85rem;
-            border: 2px solid var(--cream-dark);
-            border-radius: 0.5rem;
-            background: var(--cream);
-            font-family: "Montserrat", sans-serif;
-            font-size: 0.8rem;
-            color: var(--charcoal);
-            outline: none;
-            cursor: pointer;
-            margin-bottom: 0.85rem;
-            transition: border-color 0.3s;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239F9989' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 0.75rem center;
-        }
-        .size-select:focus { border-color: var(--neon); }
 
         .card-size {
             font-size: 0.78rem;
@@ -352,7 +331,10 @@
             <button class="pill" data-filter="candle">Candles</button>
             <button class="pill" data-filter="soak">Soaks</button>
             <button class="pill" data-filter="balm">Balms</button>
+            <button class="pill" data-filter="lip-balm">Lip Balms</button>
+            <button class="pill" data-filter="lotion">Lotion Bars</button>
             <button class="pill" data-filter="wrap">Wraps</button>
+            <button class="pill" data-filter="wellness">Wellness</button>
         </div>
         <div class="sort-wrap">
             <label for="sort-select"></label><select id="sort-select">
@@ -370,12 +352,11 @@
 
 <section class="products-grid-section">
     <div id="products-grid">
-
-        <!-- Pillar Candles -->
+        <!-- Large Round Pillar -->
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/2lb-Pillar-Candle.jpeg" alt="Pillar Candle" class="product-image">
+                <img src="images/2lb-Pillar-Candle.jpeg" alt="Large Round Pillar" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -386,25 +367,20 @@
                     <span>🌿</span>
                     <span class="benefits-tag">Candle</span>
                 </div>
-                <h3 class="card-title">Pillar Candles</h3>
-                <p class="card-description">320+ hour burn time with pure beeswax. Pillar varies in size.</p>
-                <p class="card-size">3 oz – 2 lb</p>
-                <select class="size-select" id="pillar-size" onchange="updatePrice(this)" aria-label="Select size">
-                    <option value="10.0" data-label='2"'>2 inch Poured — $10.00</option>
-                    <option value="18.0" data-label='4"'>4 inch Poured — $18.00</option>
-                    <option value="28.0" data-label='6"'>6 inch Poured — $28.00</option>
-                </select>
+                <h3 class="card-title">Large Round Pillar</h3>
+                <p class="card-description">10+ hour burn time per oz, finely crafted from pure beeswax.</p>
+                <p class="card-size">6" x 3"</p>
                 <div class="card-footer">
-                    <span class="card-price" id="price-anchor-candle">$10.00</span>
-                    <button class="add-to-cart-btn" onclick="addSizedToCart(this, 'Pillar Candles', 'images/2lb-Pillar-Candle.jpeg', 'pillar-size')">Add to Cart</button>
+                    <span class="card-price" id="price-large-round-pillar">$40.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Large Round Pillar', 'images/2lb-Pillar-Candle.jpeg', 'price-large-round-pillar')">Add to Cart</button>
                 </div>
             </div>
         </div>
-        <!-- Skep Candles -->
+        <!-- Square Collection (Set) -->
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Skep-Candles.jpeg" alt="Skep Candles" class="product-image">
+                <img src="images/B%26W-logo.png" alt="Square Collection (Set)" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -415,26 +391,459 @@
                     <span>🌿</span>
                     <span class="benefits-tag">Candle</span>
                 </div>
-                <h3 class="card-title">Skep with Bees Candles</h3>
-                <p class="card-description">10+ hour burn time crafted from pure beeswax.</p>
-                <select class="size-select" id="skep-size" onchange="updatePrice(this)" aria-label="Choose single or bundle">
-                    <option value="6.0" data-label="">Single - $6.00</option>
-                    <option value="5.0" data-label="Bundle">Bundle of 4 - $5.00</option>
-                </select>
+                <h3 class="card-title">Square Collection (Set)</h3>
+                <p class="card-description">10+ hours burn time per 1oz. Set of 4 square cube beeswax candles.</p>
+                <p class="card-size">Set of 4: XL 3"x3", L 2.5"x2.5", M 1"x1", S .5"x.5"</p>
                 <div class="card-footer">
-                    <span class="card-price" id="price-skep-candles">$6.00</span>
-                    <button class="add-to-cart-btn" onclick="addSizedToCart(this, 'Skep Candles', 'images/Skep-Candles.jpeg', 'skep-size')">Add to Cart</button>
+                    <span class="card-price" id="price-square-collection-set">$30.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Square Collection (Set)', 'images/B%26W-logo.png', 'price-square-collection-set')">Add to Cart</button>
                 </div>
             </div>
         </div>
-        <!-- Cold/Flu Foot Soak -->
+        <!-- Pillar Candle -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Pillar Candle" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">Pillar Candle</h3>
+                <p class="card-description">10+ hour burn time per oz, finely crafted from pure beeswax.</p>
+                <p class="card-size">4" x 2.75"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-pillar-candle-1">$20.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Pillar Candle', 'images/B%26W-logo.png', 'price-pillar-candle-1')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Honeycomb with Bees Candle -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Honeycomb with Bees Candle" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">Honeycomb with Bees Candle</h3>
+                <p class="card-description">10+ hour burn time per oz, finely crafted from pure beeswax.</p>
+                <p class="card-size">3.5" x 2"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-honeycomb-with-bees-candle">$15.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Honeycomb with Bees Candle', 'images/B%26W-logo.png', 'price-honeycomb-with-bees-candle')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Round Pillar Candle -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Round Pillar Candle" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">Round Pillar Candle</h3>
+                <p class="card-description">10+ hour burn time per oz, finely crafted from pure beeswax.</p>
+                <p class="card-size">3.5" x 2"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-round-pillar-candle">$15.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Round Pillar Candle', 'images/B%26W-logo.png', 'price-round-pillar-candle')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Element Stone Pillar Candle -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Element Stone Pillar Candle" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">Element Stone Pillar Candle</h3>
+                <p class="card-description">10+ hour burn time per oz, finely crafted from pure beeswax.</p>
+                <p class="card-size">3.25" x 1.75"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-element-stone-pillar-candle">$12.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Element Stone Pillar Candle', 'images/B%26W-logo.png', 'price-element-stone-pillar-candle')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Bubble Hexagon Pillar Candle -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Bubble Hexagon Pillar Candle" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">Bubble Hexagon Pillar Candle</h3>
+                <p class="card-description">10+ hour burn time per oz, finely crafted from pure beeswax.</p>
+                <p class="card-size">3" x 2"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-bubble-hexagon-pillar-candle">$12.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Bubble Hexagon Pillar Candle', 'images/B%26W-logo.png', 'price-bubble-hexagon-pillar-candle')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Cylinder Pillar Candle -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Cylinder Pillar Candle" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">Cylinder Pillar Candle</h3>
+                <p class="card-description">10+ hour burn time per oz, finely crafted from pure beeswax.</p>
+                <p class="card-size">3" x 1.5"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-cylinder-pillar-candle">$8.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Cylinder Pillar Candle', 'images/B%26W-logo.png', 'price-cylinder-pillar-candle')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Hexagon Pillar Candle - Small -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Hexagon Pillar Candle - Small" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">Hexagon Pillar Candle - Small</h3>
+                <p class="card-description">10+ hour burn time per oz, finely crafted from pure beeswax.</p>
+                <p class="card-size">2.75" x 2"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-hexagon-pillar-candle-small">$8.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Hexagon Pillar Candle - Small', 'images/B%26W-logo.png', 'price-hexagon-pillar-candle-small')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Bubble Pillar Candle -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Bubble Pillar Candle" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">Bubble Pillar Candle</h3>
+                <p class="card-description">10+ hour burn time per oz, finely crafted from pure beeswax.</p>
+                <p class="card-size">2.5" x 2.5"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-bubble-pillar-candle">$12.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Bubble Pillar Candle', 'images/B%26W-logo.png', 'price-bubble-pillar-candle')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Bee w/Flowers Candle -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Bee w/Flowers Candle" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">Bee w/Flowers Candle</h3>
+                <p class="card-description">10+ hour burn time per oz, finely crafted from pure beeswax.</p>
+                <p class="card-size">2.5" x 2.5"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-bee-w-flowers-candle">$20.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Bee w/Flowers Candle', 'images/B%26W-logo.png', 'price-bee-w-flowers-candle')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Molded Queen Bee Candle -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Molded Queen Bee Candle" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">Molded Queen Bee Candle</h3>
+                <p class="card-description">10+ hour burn time per oz, finely crafted from pure beeswax.</p>
+                <p class="card-size">2.5" x 2.5"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-molded-queen-bee-candle">$15.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Molded Queen Bee Candle', 'images/B%26W-logo.png', 'price-molded-queen-bee-candle')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Molded Multi Bees Candle -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Molded Multi Bees Candle" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">Molded Multi Bees Candle</h3>
+                <p class="card-description">10+ hour burn time per oz, finely crafted from pure beeswax.</p>
+                <p class="card-size">2.5" x 2.5"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-molded-multi-bees-candle">$15.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Molded Multi Bees Candle', 'images/B%26W-logo.png', 'price-molded-multi-bees-candle')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Votive Candles -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Votive Candles" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">Votive Candles</h3>
+                <p class="card-description">10+ hour burn time per oz, finely crafted from pure beeswax.</p>
+                <p class="card-size">2" x 2"</p>
+                <p class="card-size">4-pack only</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-votive-candles">$10.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Votive Candles', 'images/B%26W-logo.png', 'price-votive-candles')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Skep w/Bees Beehive Candles -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/Skep-Candles.jpeg" alt="Skep w/Bees Beehive Candles" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">Skep w/Bees Beehive Candles</h3>
+                <p class="card-description">10+ hour burn time per oz, finely crafted from pure beeswax.</p>
+                <p class="card-size">2" x 1.75"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-skep-w-bees-beehive-candles">$6.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Skep w/Bees Beehive Candles', 'images/Skep-Candles.jpeg', 'price-skep-w-bees-beehive-candles')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Tea Light - Square -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Tea Light - Square" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">Tea Light - Square</h3>
+                <p class="card-description">No casing — bare candle.</p>
+                <p class="card-size">1.5" x .5"</p>
+                <p class="card-size">6 for $7.00</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-tea-light-square">$1.50</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Tea Light - Square', 'images/B%26W-logo.png', 'price-tea-light-square')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Tea Light - Circle -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Tea Light - Circle" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">Tea Light - Circle</h3>
+                <p class="card-description">No casing — bare candle.</p>
+                <p class="card-size">1.5" x .5"</p>
+                <p class="card-size">6 for $7.00</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-tea-light-circle">$1.50</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Tea Light - Circle', 'images/B%26W-logo.png', 'price-tea-light-circle')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Travel Candle Jar -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/Travel-Candle.jpeg" alt="Travel Candle Jar" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">Travel Candle Jar</h3>
+                <p class="card-description">Packaged in a 1-pint design Ball jelly jar with decorative lid.</p>
+                <p class="card-size">2.5" x 2.75"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-travel-candle-jar">$20.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Travel Candle Jar', 'images/B%26W-logo.png', 'price-travel-candle-jar')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- DIY Candle Kit -->
+        <div class="product-card" data-category="candle">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/ai-generated/DIY_Candle_Kit.png" alt="DIY Candle Kit" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Candle</span>
+                </div>
+                <h3 class="card-title">DIY Candle Kit</h3>
+                <p class="card-description">Easy, non-toxic craft kit with honeycomb wax, tea light molds, and wick included.</p>
+                <p class="card-size">10" x 7"</p>
+                <p class="card-size">2 for $25.00</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-diy-candle-kit">$15.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'DIY Candle Kit', 'images/ai-generated/DIY_Candle_Kit.png', 'price-diy-candle-kit')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Filtered Beeswax Pellets -->
+        <div class="product-card" data-category="wellness">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Filtered Beeswax Pellets" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">For candle-making & DIY use only. Store away from open flame.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Wellness</span>
+                </div>
+                <h3 class="card-title">Filtered Beeswax Pellets</h3>
+                <p class="card-description">Hexagon-shaped filtered beeswax ready to use in homemade products.</p>
+                <p class="card-size">10" x 7" (1lb)</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-filtered-beeswax-pellets">$25.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Filtered Beeswax Pellets', 'images/B%26W-logo.png', 'price-filtered-beeswax-pellets')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Cold/Flu Foot or Bath Soak -->
         <div class="product-card" data-category="soak">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Cold-Flu-Foot-Soak.jpeg" alt="Cold/Flu Foot Soak" class="product-image">
+                <img src="images/Cold-Flu-Foot-Soak.jpeg" alt="Cold/Flu Foot or Bath Soak" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
-                    <div class="disclaimer-text">External Use Only. Soak body/feet for ONLY 15 minutes – 30 minutes. Discontinue if irritation occurs.</div>
+                    <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
                 </div>
             </div>
             <div class="card-body">
@@ -442,23 +851,23 @@
                     <span>🌿</span>
                     <span class="benefits-tag">Soak</span>
                 </div>
-                <h3 class="card-title">Cold/Flu Foot Soak</h3>
-                <p class="card-description">Eucalyptus & Camphor base for powerful congestion relief.</p>
-                <p class="card-size">Small Jar</p>
+                <h3 class="card-title">Cold/Flu Foot or Bath Soak</h3>
+                <p class="card-description">Eucalyptus & Camphor base for congestion relief. Soak feet/body for 15-30 minutes.</p>
+                <p class="card-size">3.9" x 5.9"</p>
                 <div class="card-footer">
-                    <span class="card-price" id="price-coldflu-foot-soak">$15.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Cold/Flu Foot Soak', 'images/Cold-Flu-Foot-Soak.jpeg', 'price-coldflu-foot-soak')">Add to Cart</button>
+                    <span class="card-price" id="price-cold-flu-foot-or-bath-soak">$12.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Cold/Flu Foot or Bath Soak', 'images/Cold-Flu-Foot-Soak.jpeg', 'price-cold-flu-foot-or-bath-soak')">Add to Cart</button>
                 </div>
             </div>
         </div>
-        <!-- De-Stress Foot Soak -->
+        <!-- De-Stress Foot or Bath Soak -->
         <div class="product-card" data-category="soak">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/De-Stress-Foot-Soak.jpeg" alt="De-Stress Foot Soak" class="product-image">
+                <img src="images/De-Stress-Foot-Soak.jpeg" alt="De-Stress Foot or Bath Soak" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
-                    <div class="disclaimer-text">External Use Only. Soak body/feet for ONLY 15 minutes – 30 minutes. Discontinue if irritation occurs.</div>
+                    <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
                 </div>
             </div>
             <div class="card-body">
@@ -466,12 +875,12 @@
                     <span>🌿</span>
                     <span class="benefits-tag">Soak</span>
                 </div>
-                <h3 class="card-title">De-Stress Foot Soak</h3>
-                <p class="card-description">Ashwagandha root powder blend for anxiety and muscle tension relief.</p>
-                <p class="card-size">Small Jar</p>
+                <h3 class="card-title">De-Stress Foot or Bath Soak</h3>
+                <p class="card-description">Ashwagandha root powder for anxiety and muscle tension. Soak feet/body for 15-30 minutes.</p>
+                <p class="card-size">3.9" x 5.9"</p>
                 <div class="card-footer">
-                    <span class="card-price" id="price-destress-foot-soak">$15.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'De-Stress Foot Soak', 'images/De-Stress-Foot-Soak.jpeg', 'price-destress-foot-soak')">Add to Cart</button>
+                    <span class="card-price" id="price-de-stress-foot-or-bath-soak">$12.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'De-Stress Foot or Bath Soak', 'images/De-Stress-Foot-Soak.jpeg', 'price-de-stress-foot-or-bath-soak')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -479,7 +888,7 @@
         <div class="product-card" data-category="balm">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/ai-generated/Breathe_Better_Balm.png" alt="Breathe Better Balm" class="product-image">
+                <img src="images/Brethe-Better-Balm-Blue.jpeg" alt="Breathe Better Balm" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
@@ -491,13 +900,10 @@
                     <span class="benefits-tag">Balm</span>
                 </div>
                 <h3 class="card-title">Breathe Better Balm</h3>
-                <p class="card-description">Menthol & Camphor crystals for maximum chest congestion relief.</p>
-                <select class="size-select" onchange="updatePrice(this)" aria-label="Select size">
-                    <option value="10.0">2 oz Molded — $10.00</option>
-                    <option value="6.0">1 oz Poured — $6.00</option>
-                </select>
+                <p class="card-description">Menthol & Camphor crystals for chest congestion relief.</p>
+                <p class="card-size">2.5oz</p>
                 <div class="card-footer">
-                    <span class="card-price" id="price-breathe-better-balm">$10.00</span>
+                    <span class="card-price" id="price-breathe-better-balm">$15.00</span>
                     <button class="add-to-cart-btn" onclick="addToCart(this, 'Breathe Better Balm', 'images/ai-generated/Breathe_Better_Balm.png', 'price-breathe-better-balm')">Add to Cart</button>
                 </div>
             </div>
@@ -506,7 +912,7 @@
         <div class="product-card" data-category="balm">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/ai-generated/Little_Lungs_Balm.png" alt="Little Lungs Balm" class="product-image">
+                <img src="images/Little-Lungs-Balm-Yellow.jpeg" alt="Little Lungs Balm" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
@@ -518,22 +924,19 @@
                     <span class="benefits-tag">Balm</span>
                 </div>
                 <h3 class="card-title">Little Lungs Balm</h3>
-                <p class="card-description">Tea Tree, Eucalyptus & Rosemary oils — gentle decongestant for children and sensitive skin.</p>
-                <select class="size-select" onchange="updatePrice(this)" aria-label="Select size">
-                    <option value="6.0">0.5 oz Poured — $6.00</option>
-                    <option value="10.0">1 oz Molded — $10.00</option>
-                </select>
+                <p class="card-description">Tea Tree, Eucalyptus & Rosemary — gentle for children and sensitive skin.</p>
+                <p class="card-size">1.6oz</p>
                 <div class="card-footer">
-                    <span class="card-price" id="price-little-lungs-balm">$6.00</span>
+                    <span class="card-price" id="price-little-lungs-balm">$10.00</span>
                     <button class="add-to-cart-btn" onclick="addToCart(this, 'Little Lungs Balm', 'images/ai-generated/Little_Lungs_Balm.png', 'price-little-lungs-balm')">Add to Cart</button>
                 </div>
             </div>
         </div>
-        <!-- Boo Boo Balm -->
+        <!-- Booboo Balm -->
         <div class="product-card" data-category="balm">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/ai-generated/BooBoo_Balm.png" alt="Boo Boo Balm" class="product-image">
+                <img src="images/Booboo-Balm-0.5OZ.jpeg" alt="Booboo Balm" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
@@ -544,36 +947,202 @@
                     <span>🌿</span>
                     <span class="benefits-tag">Balm</span>
                 </div>
-                <h3 class="card-title">Boo Boo Balm</h3>
-                <p class="card-description">Oregano & Blackseed Oil — nature's powerful antimicrobial blend for cuts and scrapes.</p>
-                <p class="card-size">0.5 oz Poured</p>
+                <h3 class="card-title">Booboo Balm</h3>
+                <p class="card-description">Oregano & Blackseed Oil antimicrobial blend for cuts and scrapes.</p>
+                <p class="card-size">1.5" x .75"</p>
                 <div class="card-footer">
-                    <span class="card-price" id="price-boo-boo-balm">$6.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Boo Boo Balm', 'images/ai-generated/BooBoo_Balm.png', 'price-boo-boo-balm')">Add to Cart</button>
+                    <span class="card-price" id="price-booboo-balm">$8.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Booboo Balm', 'images/Booboo-Balm-0.5OZ.jpeg', 'price-booboo-balm')">Add to Cart</button>
                 </div>
             </div>
         </div>
-        <!-- Starter Wrap Set -->
-        <div class="product-card" data-category="wrap">
+        <!-- Lip Balm Eucalyptus & Mint -->
+        <div class="product-card" data-category="lip-balm">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/ai-generated/Starter-Beeswax-Wraps.jpeg" alt="Starter Wrap Set" class="product-image">
+                <img src="images/Lip-Balm-Eucalyptus-Mint.jpeg" alt="Lip Balm Eucalyptus & Mint" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
-                    <div class="disclaimer-text">Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.</div>
+                    <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
                 </div>
             </div>
             <div class="card-body">
                 <div class="benefits-row">
                     <span>🌿</span>
-                    <span class="benefits-tag">Wrap</span>
+                    <span class="benefits-tag">Lip Balm</span>
                 </div>
-                <h3 class="card-title">Starter Wrap Set</h3>
-                <p class="card-description">Beeswax formula for superior cling — wraps bowls, sandwiches, and jars with ease. Reusable and washable. Set includes small, medium, and large for whatever the kitchen throws at you.</p>
-                <p class="card-size">3-Pack (S, M, L)</p>
+                <h3 class="card-title">Lip Balm Eucalyptus & Mint</h3>
+                <p class="card-description">Refreshing pure beeswax lip balm with cooling Eucalyptus & Mint.</p>
                 <div class="card-footer">
-                    <span class="card-price" id="price-starter-wrap-set">$20.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Starter Wrap Set', 'images/ai-generated/Starter-Beeswax-Wraps.jpeg', 'price-starter-wrap-set')">Add to Cart</button>
+                    <span class="card-price" id="price-lip-balm-eucalyptus-mint">$3.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Lip Balm Eucalyptus & Mint', 'images/Lip-Balm-Eucalyptus-Mint.jpeg', 'price-lip-balm-eucalyptus-mint')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Lip Balm Vanilla -->
+        <div class="product-card" data-category="lip-balm">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/Lip-Balm-Vanilla.jpeg" alt="Lip Balm Vanilla" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Lip Balm</span>
+                </div>
+                <h3 class="card-title">Lip Balm Vanilla</h3>
+                <p class="card-description">Moisturizing pure beeswax lip balm with warm sweet Vanilla scent.</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-lip-balm-vanilla">$3.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Lip Balm Vanilla', 'images/Lip-Balm-Vanilla.jpeg', 'price-lip-balm-vanilla')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Lip Balm Unscented -->
+        <div class="product-card" data-category="lip-balm">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/Unscented-Lip-Balm-White.jpeg" alt="Lip Balm Unscented" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Lip Balm</span>
+                </div>
+                <h3 class="card-title">Lip Balm Unscented</h3>
+                <p class="card-description">Pure beeswax lip balm with no added fragrance — perfect for sensitive lips.</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-lip-balm-unscented">$3.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Lip Balm Unscented', 'images/ai-generated/Lip_Balm_Unscented.png', 'price-lip-balm-unscented')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Unscented Moisturizing Lotion Bar - Rectangle -->
+        <div class="product-card" data-category="lotion">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/Square-Moisturizing-Lotion-Bars-Trio-2.jpeg" alt="Unscented Moisturizing Lotion Bar - Rectangle" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Lotion Bar</span>
+                </div>
+                <h3 class="card-title">Unscented Moisturizing Lotion Bar - Rectangle</h3>
+                <p class="card-description">Gentle, unscented moisturizing lotion bar — solid, mess-free, and long-lasting.</p>
+                <p class="card-size">3.5" x 2.5"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-unscented-moisturizing-lotion-bar-rectangle">$5.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Unscented Moisturizing Lotion Bar - Rectangle', 'images/Square-Moisturizing-Lotion-Bars-Trio-2.jpeg', 'price-unscented-moisturizing-lotion-bar-rectangle')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Unscented Moisturizing Lotion Bar - Oval -->
+        <div class="product-card" data-category="lotion">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/Circle-Moisturizing-Lotion-Bars-Trio-2.jpeg" alt="Unscented Moisturizing Lotion Bar - Oval" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Lotion Bar</span>
+                </div>
+                <h3 class="card-title">Unscented Moisturizing Lotion Bar - Oval</h3>
+                <p class="card-description">Gentle, unscented moisturizing lotion bar — solid, mess-free, and long-lasting.</p>
+                <p class="card-size">3.5" x 2.5"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-unscented-moisturizing-lotion-bar-oval">$5.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Unscented Moisturizing Lotion Bar - Oval', 'images/Circle-Moisturizing-Lotion-Bars-Trio-2.jpeg', 'price-unscented-moisturizing-lotion-bar-oval')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Restless Leg Relief -->
+        <div class="product-card" data-category="wellness">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Restless Leg Relief" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Wellness</span>
+                </div>
+                <h3 class="card-title">Restless Leg Relief</h3>
+                <p class="card-description">Soothing balm blend to help ease restless leg discomfort.</p>
+                <p class="card-size">4.75" x 1.5"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-restless-leg-relief">$20.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Restless Leg Relief', 'images/B%26W-logo.png', 'price-restless-leg-relief')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Headache Stick -->
+        <div class="product-card" data-category="wellness">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Headache Stick" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Wellness</span>
+                </div>
+                <h3 class="card-title">Headache Stick</h3>
+                <p class="card-description">Roll-on relief stick for tension headaches.</p>
+                <p class="card-size">2.75" x .5"</p>
+                <p class="card-size">2 for $15.00</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-headache-stick">$8.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Headache Stick', 'images/B%26W-logo.png', 'price-headache-stick')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Face Mask -->
+        <div class="product-card" data-category="wellness">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/B%26W-logo.png" alt="Face Mask" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Wellness</span>
+                </div>
+                <h3 class="card-title">Face Mask</h3>
+                <p class="card-description">Add filtered or distilled water to activate.</p>
+                <p class="card-size">5.75" x 4"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-face-mask">$5.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Face Mask', 'images/B%26W-logo.png', 'price-face-mask')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -581,7 +1150,7 @@
         <div class="product-card" data-category="wrap">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Large-Beeswax-Wraps.jpeg" alt="XL Beeswax Wrap" class="product-image">
+                <img src="images/XL-Beeswax-Wrap-Flower-2.jpeg" alt="XL Beeswax Wrap" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.</div>
@@ -593,96 +1162,131 @@
                     <span class="benefits-tag">Wrap</span>
                 </div>
                 <h3 class="card-title">XL Beeswax Wrap</h3>
-                <p class="card-description">Our largest single wrap, made for the big jobs — drape it over a salad bowl, cover a dinner platter, or wrap half a melon. The warmth of your hands molds the beeswax into a snug, plastic-free seal, and a quick rinse in cool water has it ready to use again.</p>
-                <p class="card-size">Largest Size</p>
+                <p class="card-description">XXL for a loaf of bread or a supersize container.</p>
+                <p class="card-size">22.5" x 17" (folds down for storage)</p>
                 <div class="card-footer">
-                    <span class="card-price" id="price-xl-beeswax-wrap">$20.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'XL Beeswax Wrap', 'images/Large-Beeswax-Wraps.jpeg', 'price-xl-beeswax-wrap')">Add to Cart</button>
+                    <span class="card-price" id="price-xl-beeswax-wrap">$25.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'XL Beeswax Wrap', 'images/XL-Beeswax-Wrap-Flower.jpeg', 'price-xl-beeswax-wrap')">Add to Cart</button>
                 </div>
             </div>
         </div>
-        <!-- DIY Candle Kit -->
-        <div class="product-card" data-category="candle">
+        <!-- Beeswax Starter Wrap Set (S, M, L) -->
+        <div class="product-card" data-category="wrap">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/ai-generated/DIY_Candle_Kit.png" alt="DIY Candle Kit" class="product-image">
+                <img src="images/Beeswax-Starter-Wrap-Set.jpeg" alt="Beeswax Starter Wrap Set (S, M, L)" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
-                    <div class="disclaimer-text">Safety Warning: Adult supervision required.</div>
+                    <div class="disclaimer-text">Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.</div>
                 </div>
             </div>
             <div class="card-body">
                 <div class="benefits-row">
                     <span>🌿</span>
-                    <span class="benefits-tag">Candle</span>
+                    <span class="benefits-tag">Wrap</span>
                 </div>
-                <h3 class="card-title">DIY Candle Kit</h3>
-                <p class="card-description">Easy, non-toxic craft kit with honeycomb wax included. Great for all ages!</p>
-                <p class="card-size">Kit with Honeycomb Wax</p>
+                <h3 class="card-title">Beeswax Starter Wrap Set (S, M, L)</h3>
+                <p class="card-description">1 large, 1 medium, 1 small — hand-cut with decorative edging.</p>
+                <p class="card-size">Lg 12", Md 10", Sm 8"</p>
                 <div class="card-footer">
-                    <span class="card-price" id="price-diy-candle-kit">$15.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'DIY Candle Kit', 'images/ai-generated/DIY_Candle_Kit.png', 'price-diy-candle-kit')">Add to Cart</button>
+                    <span class="card-price" id="price-beeswax-starter-wrap-set-s-m-l">$20.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Beeswax Starter Wrap Set (S, M, L)', 'images/Beeswax-Starter-Wrap-Set.jpeg', 'price-beeswax-starter-wrap-set-s-m-l')">Add to Cart</button>
                 </div>
             </div>
         </div>
-
-        <!-- Lip Balm • Vanilla -->
-        <div class="product-card" data-category="balm">
+        <!-- Lunch Box Beeswax Wrap Set (2 Med & 1 Sm) -->
+        <div class="product-card" data-category="wrap">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Lip-Balm-Vanilla.jpeg" alt="Lip Balm Vanilla" class="product-image">
+                <img src="images/B%26W-logo.png" alt="Lunch Box Beeswax Wrap Set (2 Med & 1 Sm)" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
-                    <div class="disclaimer-text">External Use Only. For lip use only. Discontinue if irritation occurs. Keep away from children under 3.</div>
+                    <div class="disclaimer-text">Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.</div>
                 </div>
             </div>
             <div class="card-body">
-                <div class="benefits-row"><span>🌿</span><span class="benefits-tag">Lip Balm • Pure Beeswax</span></div>
-                <h3 class="card-title">Lip Balm • Vanilla</h3>
-                <p class="card-description">Moisturizing pure beeswax lip balm with a warm sweet Vanilla scent. Buy any 2 lip balms for $5.00!</p>
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Wrap</span>
+                </div>
+                <h3 class="card-title">Lunch Box Beeswax Wrap Set (2 Med & 1 Sm)</h3>
+                <p class="card-description">Perfectly sized set for packing lunches — 2 medium, 1 small.</p>
+                <p class="card-size">2 Md 10", 1 Sm 8"</p>
                 <div class="card-footer">
-                    <span class="card-price" id="price-lip-balm-vanilla">$3.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Lip Balm • Vanilla', 'images/Lip-Balm-Vanilla.jpeg', 'price-lip-balm-vanilla')">Add to Cart</button>
+                    <span class="card-price" id="price-lunch-box-beeswax-wrap-set-2-med-1-sm">$20.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Lunch Box Beeswax Wrap Set (2 Med & 1 Sm)', 'images/B%26W-logo.png', 'price-lunch-box-beeswax-wrap-set-2-med-1-sm')">Add to Cart</button>
                 </div>
             </div>
         </div>
-        <!-- Lip Balm • Eucalyptus & Mint -->
-        <div class="product-card" data-category="balm">
+        <!-- Large Beeswax Wrap -->
+        <div class="product-card" data-category="wrap">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Lip-Balm-Eucalyptus-Mint.jpeg" alt="Lip Balm Eucalyptus Mint" class="product-image">
+                <img src="images/Large-Beeswax-Wraps.jpeg" alt="Large Beeswax Wrap" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
-                    <div class="disclaimer-text">External Use Only. For lip use only. Discontinue if irritation occurs. Keep away from children under 3.</div>
+                    <div class="disclaimer-text">Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.</div>
                 </div>
             </div>
             <div class="card-body">
-                <div class="benefits-row"><span>🌿</span><span class="benefits-tag">Lip Balm • Pure Beeswax</span></div>
-                <h3 class="card-title">Lip Balm • Eucalyptus & Mint</h3>
-                <p class="card-description">Refreshing pure beeswax lip balm with cooling Eucalyptus & Mint. Buy any 2 lip balms for $5.00!</p>
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Wrap</span>
+                </div>
+                <h3 class="card-title">Large Beeswax Wrap</h3>
+                <p class="card-description">Hand-cut with decorative edging beeswax wrap.</p>
+                <p class="card-size">12" x 12"</p>
                 <div class="card-footer">
-                    <span class="card-price" id="price-lip-balm-eucalyptus-mint">$3.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Lip Balm • Eucalyptus &amp; Mint', 'images/Lip-Balm-Eucalyptus-Mint.jpeg', 'price-lip-balm-eucalyptus-mint')">Add to Cart</button>
+                    <span class="card-price" id="price-large-beeswax-wrap">$12.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Large Beeswax Wrap', 'images/Large-Beeswax-Wraps.jpeg', 'price-large-beeswax-wrap')">Add to Cart</button>
                 </div>
             </div>
         </div>
-        <!-- Lip Balm • Unscented -->
-        <div class="product-card" data-category="balm">
+        <!-- Medium Beeswax Wrap -->
+        <div class="product-card" data-category="wrap">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/ai-generated/Lip_Balm_Unscented.png" alt="Lip Balm Unscented" class="product-image">
+                <img src="images/ai-generated/Medium-Beeswax-Wrap-Bontanical.png" alt="Medium Beeswax Wrap" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
-                    <div class="disclaimer-text">External Use Only. For lip use only. Discontinue if irritation occurs. Keep away from children under 3.</div>
+                    <div class="disclaimer-text">Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.</div>
                 </div>
             </div>
             <div class="card-body">
-                <div class="benefits-row"><span>🌿</span><span class="benefits-tag">Lip Balm • Pure Beeswax</span></div>
-                <h3 class="card-title">Lip Balm • Unscented</h3>
-                <p class="card-description">Pure beeswax lip balm with no added fragrance — perfect for sensitive lips. Buy any 2 lip balms for $5.00!</p>
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Wrap</span>
+                </div>
+                <h3 class="card-title">Medium Beeswax Wrap</h3>
+                <p class="card-description">Hand-cut with decorative edging beeswax wrap.</p>
+                <p class="card-size">10" x 10"</p>
                 <div class="card-footer">
-                    <span class="card-price" id="price-lip-balm-unscented">$3.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Lip Balm • Unscented', 'images/ai-generated/Lip_Balm_Unscented.png', 'price-lip-balm-unscented')">Add to Cart</button>
+                    <span class="card-price" id="price-medium-beeswax-wrap">$8.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Medium Beeswax Wrap', 'images/Medium-Beeswax-Wrap-Wildflower.png', 'price-medium-beeswax-wrap')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Small Beeswax Wrap -->
+        <div class="product-card" data-category="wrap">
+            <div class="card-img-wrap">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="images/ai-generated/Small-Honeycomb-Bee-Wrap.png" alt="Small Beeswax Wrap" class="product-image">
+                <div class="disclaimer-tooltip">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <div class="disclaimer-text">Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="benefits-row">
+                    <span>🌿</span>
+                    <span class="benefits-tag">Wrap</span>
+                </div>
+                <h3 class="card-title">Small Beeswax Wrap</h3>
+                <p class="card-description">Hand-cut with decorative edging beeswax wrap.</p>
+                <p class="card-size">8" x 8"</p>
+                <div class="card-footer">
+                    <span class="card-price" id="price-small-beeswax-wrap">$6.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Small Beeswax Wrap', 'images/Small-Beeswax-Wrap-Honeycomb.png', 'price-small-beeswax-wrap')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -787,33 +1391,10 @@
         btn.title = isWishlisted ? 'Saved to Wish List ❤️' : 'Save to Wish List';
     }
 
-    // ── Size dropdown price update ─────────────────────────────────
-    function updatePrice(select) {
-        const card = select.closest(".product-card");
-        const priceEl = card.querySelector(".card-price");
-        if (priceEl) {
-            priceEl.textContent = "$" + parseFloat(select.value).toFixed(2);
-        }
-    }
-
     // ── Add to Cart ────────────────────────────────────────────────
     function addToCart(btn, name, image, priceId) {
         const priceEl = document.getElementById(priceId);
         const price = priceEl ? priceEl.textContent : '$0.00';
-        HHCart.add(name, price, image);
-        HHCart.flashButton(btn, 'Add to Cart');
-    }
-
-    // ── Add to Cart for products with a size dropdown ──────────────
-    // Sends a size-qualified name (e.g. "Pillar Candles 4"") and the
-    // selected price, so the server's catalog can charge that exact
-    // size instead of everything falling back to the base price.
-    function addSizedToCart(btn, baseName, image, selectId) {
-        const sel   = document.getElementById(selectId);
-        const opt   = sel.options[sel.selectedIndex];
-        const label = opt.getAttribute('data-label') || '';
-        const price = '$' + parseFloat(opt.value).toFixed(2);
-        const name  = label ? baseName + ' ' + label : baseName;
         HHCart.add(name, price, image);
         HHCart.flashButton(btn, 'Add to Cart');
     }
