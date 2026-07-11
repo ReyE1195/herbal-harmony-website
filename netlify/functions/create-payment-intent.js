@@ -35,6 +35,8 @@ const PRICE_CATALOG_RAW = {
     'Tea Light - Square': 1.50,
     'Tea Light - Circle': 1.50,
     'Tea Light Mix & Match Bundle': 7.00,  // 3 Square + 3 Circle, sold as one item
+    'Tea Light - Square 6-Pack Bundle': 7.00,  // 6 Square, sold as one item
+    'Tea Light - Circle 6-Pack Bundle': 7.00,  // 6 Circle, sold as one item
     'Travel Candle Jar': 20.00,
     'DIY Candle Kit': 15.00,
     // ── Soaks ───────────────────────────────────────────────
