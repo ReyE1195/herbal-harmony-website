@@ -7,7 +7,7 @@
 //   PRODUCTS DATA
 // ============================================
 const products = [
-    { name:'Large Round Pillar', price:'$40.00', image: 'images/2lb-Pillar-Candle.jpeg', description:'10+ hour burn time per oz, finely crafted from pure beeswax. 6" x 3".', benefits:'Candle \u2022 Pure Beeswax', disclaimer:'Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.', link:'checkout.html' },
+    { name:'Large Round Pillar', price:'$40.00', image: 'images/LargePillar.jpeg', description:'10+ hour burn time per oz, finely crafted from pure beeswax. 6" x 3".', benefits:'Candle \u2022 Pure Beeswax', disclaimer:'Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.', link:'checkout.html' },
     { name:'Skep w/Bees Beehive Candles', price:'$6.00', image: 'images/Skep-Candles.jpeg', description:'10+ hour burn time crafted from pure beeswax. 2" x 1.75".', benefits:'Candle \u2022 Pure Beeswax', disclaimer:'Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.', link:'checkout.html' },
     { name:'DIY Candle Kit', price:'$15.00', image: 'images/ai-generated/DIY_Candle_Kit.png', description:'Easy, non-toxic craft kit with honeycomb wax, tea light molds, and wick included. 2 for $25.00!', benefits:'Candle \u2022 All Ages', disclaimer:'Safety Warning: Adult supervision required.', link:'checkout.html' },
     { name:'Breathe Better Balm', price:'$15.00', image: 'images/ai-generated/Breathe_Better_Balm.png', description:'Menthol & Camphor crystals for chest congestion relief. 2.5oz.', benefits:'Balm \u2022 External Use Only', disclaimer:'External Use Only. Discontinue if irritation occurs.', link:'checkout.html' },

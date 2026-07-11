@@ -120,6 +120,24 @@
         }
         .pill:hover { border-color: var(--neon); color: var(--forest); background: rgba(82,133,82,0.08); }
         .pill.active { background: var(--neon-forest); border-color: var(--neon-forest); color: var(--neon-frosted-mint); }
+        .qty-pill-row { display: flex; gap: 0.4rem; margin: 0.5rem 0; flex-wrap: wrap; }
+        .qty-pill {
+            padding: 0.3rem 0.7rem; border-radius: 999px;
+            border: 2px solid var(--cream-dark); background: white;
+            font-family: "Montserrat", sans-serif; font-size: 0.68rem; font-weight: 600;
+            color: var(--charcoal); cursor: pointer; transition: all 0.25s ease; white-space: nowrap;
+        }
+        .qty-pill:hover { border-color: var(--neon); color: var(--forest); background: rgba(82,133,82,0.08); }
+        .qty-pill.active { background: var(--neon-forest); border-color: var(--neon-forest); color: var(--neon-frosted-mint); }
+        .bundle-sub-row { display: none; gap: 0.35rem; margin: -0.15rem 0 0.5rem 0; flex-wrap: wrap; padding-left: 0.5rem; }
+        .bundle-sub {
+            padding: 0.24rem 0.6rem; border-radius: 999px;
+            border: 1.5px dashed var(--cream-dark); background: transparent;
+            font-family: "Montserrat", sans-serif; font-size: 0.62rem; font-weight: 500;
+            color: var(--sage-dark); cursor: pointer; transition: all 0.25s ease; white-space: nowrap;
+        }
+        .bundle-sub:hover { border-color: var(--neon); color: var(--forest); }
+        .bundle-sub.active { background: var(--forest); border-style: solid; border-color: var(--forest); color: white; }
         .sort-wrap { position: relative; margin-left: auto; }
         #sort-select {
             appearance: none; padding: 0.52rem 2.1rem 0.52rem 0.95rem;
@@ -356,7 +374,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/2lb-Pillar-Candle.jpeg" alt="Large Round Pillar" class="product-image">
+                <img src="images/LargePillar.jpeg" alt="Large Round Pillar" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -372,7 +390,7 @@
                 <p class="card-size">6" x 3"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-large-round-pillar">$40.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Large Round Pillar', 'images/2lb-Pillar-Candle.jpeg', 'price-large-round-pillar')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Large Round Pillar', 'images/LargePillar.jpeg', 'price-large-round-pillar')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -380,7 +398,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Square Collection (Set)" class="product-image">
+                <img src="images/SquareCollection-Set.jpeg" alt="Square Collection (Set)" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -396,7 +414,7 @@
                 <p class="card-size">Set of 4: XL 3"x3", L 2.5"x2.5", M 1"x1", S .5"x.5"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-square-collection-set">$30.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Square Collection (Set)', 'images/B%26W-logo.png', 'price-square-collection-set')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Square Collection (Set)', 'images/SquareCollection-Set.jpeg', 'price-square-collection-set')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -404,7 +422,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Pillar Candle" class="product-image">
+                <img src="images/PillarCandle.jpeg" alt="Pillar Candle" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -420,7 +438,7 @@
                 <p class="card-size">4" x 2.75"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-pillar-candle-1">$20.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Pillar Candle', 'images/B%26W-logo.png', 'price-pillar-candle-1')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Pillar Candle', 'images/PillarCandle.jpeg', 'price-pillar-candle-1')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -428,7 +446,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Honeycomb with Bees Candle" class="product-image">
+                <img src="images/HoneycombwBees.jpeg" alt="Honeycomb with Bees Candle" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -444,7 +462,7 @@
                 <p class="card-size">3.5" x 2"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-honeycomb-with-bees-candle">$15.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Honeycomb with Bees Candle', 'images/B%26W-logo.png', 'price-honeycomb-with-bees-candle')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Honeycomb with Bees Candle', 'images/HoneycombwBees.jpeg', 'price-honeycomb-with-bees-candle')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -452,7 +470,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Round Pillar Candle" class="product-image">
+                <img src="images/RoundPillar.jpeg" alt="Round Pillar Candle" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -468,15 +486,15 @@
                 <p class="card-size">3.5" x 2"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-round-pillar-candle">$15.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Round Pillar Candle', 'images/B%26W-logo.png', 'price-round-pillar-candle')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Round Pillar Candle', 'images/RoundPillar.jpeg', 'price-round-pillar-candle')">Add to Cart</button>
                 </div>
             </div>
         </div>
-        <!-- Element Stone Pillar Candle -->
+        <!-- Textured Square Pillar Candle -->
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Element Stone Pillar Candle" class="product-image">
+                <img src="images/TexturedPillar.jpeg" alt="Textured Square Pillar Candle" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -487,12 +505,12 @@
                     <span>🌿</span>
                     <span class="benefits-tag">Candle</span>
                 </div>
-                <h3 class="card-title">Element Stone Pillar Candle</h3>
+                <h3 class="card-title">Textured Square Pillar Candle</h3>
                 <p class="card-description">10+ hour burn time per oz, finely crafted from pure beeswax.</p>
                 <p class="card-size">3.25" x 1.75"</p>
                 <div class="card-footer">
-                    <span class="card-price" id="price-element-stone-pillar-candle">$12.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Element Stone Pillar Candle', 'images/B%26W-logo.png', 'price-element-stone-pillar-candle')">Add to Cart</button>
+                    <span class="card-price" id="price-textured-square-pillar-candle">$12.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Textured Square Pillar Candle', 'images/TexturedPillar.jpeg', 'price-textured-square-pillar-candle')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -500,7 +518,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Bubble Hexagon Pillar Candle" class="product-image">
+                <img src="images/BubbleHexagon.jpeg" alt="Bubble Hexagon Pillar Candle" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -516,7 +534,7 @@
                 <p class="card-size">3" x 2"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-bubble-hexagon-pillar-candle">$12.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Bubble Hexagon Pillar Candle', 'images/B%26W-logo.png', 'price-bubble-hexagon-pillar-candle')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Bubble Hexagon Pillar Candle', 'images/BubbleHexagon.jpeg', 'price-bubble-hexagon-pillar-candle')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -524,7 +542,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Cylinder Pillar Candle" class="product-image">
+                <img src="images/CylinderPillar.jpeg" alt="Cylinder Pillar Candle" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -540,7 +558,7 @@
                 <p class="card-size">3" x 1.5"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-cylinder-pillar-candle">$8.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Cylinder Pillar Candle', 'images/B%26W-logo.png', 'price-cylinder-pillar-candle')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Cylinder Pillar Candle', 'images/ClyinderPillar.jpeg', 'price-cylinder-pillar-candle')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -548,7 +566,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Hexagon Pillar Candle - Small" class="product-image">
+                <img src="images/ai-generated/HexagonPillarSmall.png" alt="Hexagon Pillar Candle - Small" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -564,7 +582,7 @@
                 <p class="card-size">2.75" x 2"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-hexagon-pillar-candle-small">$8.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Hexagon Pillar Candle - Small', 'images/B%26W-logo.png', 'price-hexagon-pillar-candle-small')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Hexagon Pillar Candle - Small', 'images/ai-generated/HexagonPillarSmall.png', 'price-hexagon-pillar-candle-small')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -572,7 +590,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Bubble Pillar Candle" class="product-image">
+                <img src="images/BubblePillar.jpeg" alt="Bubble Pillar Candle" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -588,7 +606,7 @@
                 <p class="card-size">2.5" x 2.5"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-bubble-pillar-candle">$12.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Bubble Pillar Candle', 'images/B%26W-logo.png', 'price-bubble-pillar-candle')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Bubble Pillar Candle', 'images/BubblePillar.jpeg', 'price-bubble-pillar-candle')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -596,7 +614,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Bee w/Flowers Candle" class="product-image">
+                <img src="images/BeewFlowers.jpeg" alt="Bee w/Flowers Candle" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -612,7 +630,7 @@
                 <p class="card-size">2.5" x 2.5"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-bee-w-flowers-candle">$20.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Bee w/Flowers Candle', 'images/B%26W-logo.png', 'price-bee-w-flowers-candle')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Bee w/Flowers Candle', 'images/BeewFlowers.jpeg', 'price-bee-w-flowers-candle')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -620,7 +638,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Molded Queen Bee Candle" class="product-image">
+                <img src="images/MoldedQueenBee.jpeg" alt="Molded Queen Bee Candle" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -636,7 +654,7 @@
                 <p class="card-size">2.5" x 2.5"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-molded-queen-bee-candle">$15.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Molded Queen Bee Candle', 'images/B%26W-logo.png', 'price-molded-queen-bee-candle')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Molded Queen Bee Candle', 'images/MoldedQueenBee.jpeg', 'price-molded-queen-bee-candle')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -644,7 +662,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Molded Multi Bees Candle" class="product-image">
+                <img src="images/MoldedMultipleBees.jpeg" alt="Molded Multi Bees Candle" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -660,7 +678,7 @@
                 <p class="card-size">2.5" x 2.5"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-molded-multi-bees-candle">$15.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Molded Multi Bees Candle', 'images/B%26W-logo.png', 'price-molded-multi-bees-candle')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Molded Multi Bees Candle', 'images/MoldedMultipleBees.jpeg', 'price-molded-multi-bees-candle')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -668,7 +686,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Votive Candles" class="product-image">
+                <img src="images/Votive4Pack.jpeg" alt="Votive Candles" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -685,7 +703,7 @@
                 <p class="card-size">4-pack only</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-votive-candles">$10.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Votive Candles', 'images/B%26W-logo.png', 'price-votive-candles')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Votive Candles', 'images/Votive4Pack.jpeg', 'price-votive-candles')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -693,7 +711,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Skep-Candles.jpeg" alt="Skep w/Bees Beehive Candles" class="product-image">
+                <img src="images/SkepwBees.jpeg" alt="Skep w/Bees Beehive Candles" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -709,7 +727,7 @@
                 <p class="card-size">2" x 1.75"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-skep-w-bees-beehive-candles">$6.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Skep w/Bees Beehive Candles', 'images/Skep-Candles.jpeg', 'price-skep-w-bees-beehive-candles')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Skep w/Bees Beehive Candles', 'images/SkepWBees.jpeg', 'price-skep-w-bees-beehive-candles')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -731,10 +749,17 @@
                 <h3 class="card-title">Tea Light - Square</h3>
                 <p class="card-description">No casing — bare candle.</p>
                 <p class="card-size">1.5" x .5"</p>
-                <p class="card-size">6 for $7.00</p>
+                <div class="qty-pill-row">
+                    <button class="qty-pill active" data-mode="single" onclick="selectTeaMode(this)">Single – $1.50</button>
+                    <button class="qty-pill" data-mode="bundle" onclick="selectTeaMode(this)">Bundle – $7.00</button>
+                </div>
+                <div class="bundle-sub-row">
+                    <button class="bundle-sub active" data-bundle="mix" onclick="selectBundleSub(this)">3 Square + 3 Circle</button>
+                    <button class="bundle-sub" data-bundle="same" onclick="selectBundleSub(this)">6 Square</button>
+                </div>
                 <div class="card-footer">
                     <span class="card-price" id="price-tea-light-square">$1.50</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Tea Light - Square', 'images/B%26W-logo.png', 'price-tea-light-square')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addTeaLightToCart(this, 'square')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -742,7 +767,7 @@
         <div class="product-card" data-category="candle">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Tea Light - Circle" class="product-image">
+                <img src="images/TeaLight-Circle.jpeg" alt="Tea Light - Circle" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Safety Warning: Keep away from children and pets. Never leave a burning candle unattended.</div>
@@ -756,10 +781,17 @@
                 <h3 class="card-title">Tea Light - Circle</h3>
                 <p class="card-description">No casing — bare candle.</p>
                 <p class="card-size">1.5" x .5"</p>
-                <p class="card-size">6 for $7.00</p>
+                <div class="qty-pill-row">
+                    <button class="qty-pill active" data-mode="single" onclick="selectTeaMode(this)">Single – $1.50</button>
+                    <button class="qty-pill" data-mode="bundle" onclick="selectTeaMode(this)">Bundle – $7.00</button>
+                </div>
+                <div class="bundle-sub-row">
+                    <button class="bundle-sub active" data-bundle="mix" onclick="selectBundleSub(this)">3 Square + 3 Circle</button>
+                    <button class="bundle-sub" data-bundle="same" onclick="selectBundleSub(this)">6 Circle</button>
+                </div>
                 <div class="card-footer">
                     <span class="card-price" id="price-tea-light-circle">$1.50</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Tea Light - Circle', 'images/B%26W-logo.png', 'price-tea-light-circle')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addTeaLightToCart(this, 'circle')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -783,7 +815,7 @@
                 <p class="card-size">2.5" x 2.75"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-travel-candle-jar">$20.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Travel Candle Jar', 'images/B%26W-logo.png', 'price-travel-candle-jar')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Travel Candle Jar', 'images/Travel-Candle.jpeg', 'price-travel-candle-jar')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -816,7 +848,7 @@
         <div class="product-card" data-category="wellness">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Filtered Beeswax Pellets" class="product-image">
+                <img src="images/FilteredBeeswaxPellets.jpeg" alt="Filtered Beeswax Pellets" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">For candle-making & DIY use only. Store away from open flame.</div>
@@ -832,7 +864,7 @@
                 <p class="card-size">10" x 7" (1lb)</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-filtered-beeswax-pellets">$25.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Filtered Beeswax Pellets', 'images/B%26W-logo.png', 'price-filtered-beeswax-pellets')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Filtered Beeswax Pellets', 'images/FilteredBeeswaxPellets.jpeg', 'price-filtered-beeswax-pellets')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -888,7 +920,7 @@
         <div class="product-card" data-category="balm">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/Brethe-Better-Balm-Blue.jpeg" alt="Breathe Better Balm" class="product-image">
+                <img src="images/Breathe-Better-Balm-Blue.jpeg" alt="Breathe Better Balm" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
@@ -904,7 +936,7 @@
                 <p class="card-size">2.5oz</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-breathe-better-balm">$15.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Breathe Better Balm', 'images/ai-generated/Breathe_Better_Balm.png', 'price-breathe-better-balm')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Breathe Better Balm', 'images/Breathe-Better-Balm-Blue.jpeg', 'price-breathe-better-balm')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -928,7 +960,7 @@
                 <p class="card-size">1.6oz</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-little-lungs-balm">$10.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Little Lungs Balm', 'images/ai-generated/Little_Lungs_Balm.png', 'price-little-lungs-balm')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Little Lungs Balm', 'images/Little-Lungs-Balm-Yellow.jpeg', 'price-little-lungs-balm')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -1021,7 +1053,7 @@
                 <p class="card-description">Pure beeswax lip balm with no added fragrance — perfect for sensitive lips.</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-lip-balm-unscented">$3.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Lip Balm Unscented', 'images/ai-generated/Lip_Balm_Unscented.png', 'price-lip-balm-unscented')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Lip Balm Unscented', 'images/Unscented-Lip-Balm-White.jpeg', 'price-lip-balm-unscented')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -1077,7 +1109,7 @@
         <div class="product-card" data-category="wellness">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Restless Leg Relief" class="product-image">
+                <img src="images/RestlessLegRelief.jpeg" alt="Restless Leg Relief" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
@@ -1093,7 +1125,7 @@
                 <p class="card-size">4.75" x 1.5"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-restless-leg-relief">$20.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Restless Leg Relief', 'images/B%26W-logo.png', 'price-restless-leg-relief')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Restless Leg Relief', 'images/RestlessLegRelief.jpeg', 'price-restless-leg-relief')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -1122,11 +1154,11 @@
                 </div>
             </div>
         </div>
-        <!-- Face Mask -->
+        <!-- Detoxifying Face Mask -->
         <div class="product-card" data-category="wellness">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Face Mask" class="product-image">
+                <img src="images/Detoxifying-Face-Mask.jpeg" alt="Detoxifying Face Mask" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">External Use Only. Discontinue if irritation occurs.</div>
@@ -1137,12 +1169,12 @@
                     <span>🌿</span>
                     <span class="benefits-tag">Wellness</span>
                 </div>
-                <h3 class="card-title">Face Mask</h3>
+                <h3 class="card-title">Detoxifying Face Mask</h3>
                 <p class="card-description">Add filtered or distilled water to activate.</p>
                 <p class="card-size">5.75" x 4"</p>
                 <div class="card-footer">
-                    <span class="card-price" id="price-face-mask">$5.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Face Mask', 'images/B%26W-logo.png', 'price-face-mask')">Add to Cart</button>
+                    <span class="card-price" id="price-detoxifying-face-mask">$5.00</span>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Detoxifying Face Mask', 'images/Detoxifying-Face-Mask,jpeg', 'price-detoxifying-face-mask')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -1150,7 +1182,7 @@
         <div class="product-card" data-category="wrap">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/XL-Beeswax-Wrap-Flower-2.jpeg" alt="XL Beeswax Wrap" class="product-image">
+                <img src="images/XL-BeeswaxWrap.jpeg" alt="XL Beeswax Wrap" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.</div>
@@ -1163,10 +1195,10 @@
                 </div>
                 <h3 class="card-title">XL Beeswax Wrap</h3>
                 <p class="card-description">XXL for a loaf of bread or a supersize container. Prints vary — each wrap is one of a kind!</p>
-                <p class="card-size">22.5" x 17" (folds down for storage)</p>
+                <p class="card-size">22.5" x 17"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-xl-beeswax-wrap">$25.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'XL Beeswax Wrap', 'images/XL-Beeswax-Wrap-Flower.jpeg', 'price-xl-beeswax-wrap')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'XL Beeswax Wrap', 'images/XL-BeeswaxWrap.jpeg', 'price-xl-beeswax-wrap')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -1198,7 +1230,7 @@
         <div class="product-card" data-category="wrap">
             <div class="card-img-wrap">
                 <button class="wishlist-btn" onclick="toggleWishlist(this)" title="Save to Wish List"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="images/B%26W-logo.png" alt="Lunch Box Beeswax Wrap Set (2 Med & 1 Sm)" class="product-image">
+                <img src="images/ai-generated/LunchBoxBeeswaxWrapSet.png" alt="Lunch Box Beeswax Wrap Set (2 Med & 1 Sm)" class="product-image">
                 <div class="disclaimer-tooltip">
                     <span class="disclaimer-icon">⚠️</span>
                     <div class="disclaimer-text">Care Instructions: Use cold water with a damp cloth and gently wash. Hang to dry.</div>
@@ -1214,7 +1246,7 @@
                 <p class="card-size">2 Md 10", 1 Sm 8"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-lunch-box-beeswax-wrap-set-2-med-1-sm">$20.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Lunch Box Beeswax Wrap Set (2 Med & 1 Sm)', 'images/B%26W-logo.png', 'price-lunch-box-beeswax-wrap-set-2-med-1-sm')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Lunch Box Beeswax Wrap Set (2 Med & 1 Sm)', 'images/ai-generated/LunchBoxBeeswaxWrapSet.png', 'price-lunch-box-beeswax-wrap-set-2-med-1-sm')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -1397,6 +1429,77 @@
         const price = priceEl ? priceEl.textContent : '$0.00';
         HHCart.add(name, price, image);
         HHCart.flashButton(btn, 'Add to Cart');
+    }
+
+    // ── Tea Light Single / Bundle toggle ──────────────────────────
+    const TEA_LIGHT = {
+        square: { name: 'Tea Light - Square', image: 'images/TeaLight-Square.jpeg', priceId: 'price-tea-light-square' },
+        circle: { name: 'Tea Light - Circle', image: 'images/TeaLight-Circle.jpeg', priceId: 'price-tea-light-circle' }
+    };
+
+    function teaLightPrice(shape) {
+        const el = document.getElementById(TEA_LIGHT[shape].priceId);
+        return el ? el.textContent : '$1.50';
+    }
+
+    function selectTeaMode(pillBtn) {
+        const row = pillBtn.closest('.qty-pill-row');
+        row.querySelectorAll('.qty-pill').forEach(function(p) { p.classList.remove('active'); });
+        pillBtn.classList.add('active');
+
+        const card = pillBtn.closest('.product-card');
+        const subRow = card.querySelector('.bundle-sub-row');
+        const cartBtn = card.querySelector('.add-to-cart-btn');
+        const mode = pillBtn.dataset.mode;
+
+        if (mode === 'bundle') {
+            subRow.style.display = 'flex';
+            const activeSub = subRow.querySelector('.bundle-sub.active') || subRow.querySelector('.bundle-sub');
+            if (activeSub) activeSub.classList.add('active');
+            updateTeaCartLabel(cartBtn, activeSub);
+        } else {
+            subRow.style.display = 'none';
+            if (!cartBtn.disabled) cartBtn.textContent = 'Add to Cart';
+        }
+    }
+
+    function selectBundleSub(subBtn) {
+        const row = subBtn.closest('.bundle-sub-row');
+        row.querySelectorAll('.bundle-sub').forEach(function(p) { p.classList.remove('active'); });
+        subBtn.classList.add('active');
+        const card = subBtn.closest('.product-card');
+        const cartBtn = card.querySelector('.add-to-cart-btn');
+        updateTeaCartLabel(cartBtn, subBtn);
+    }
+
+    function updateTeaCartLabel(cartBtn, subBtn) {
+        if (!cartBtn || cartBtn.disabled) return;
+        cartBtn.textContent = (subBtn && subBtn.dataset.bundle === 'mix') ? 'Add 3+3 Bundle to Cart' : 'Add 6-Pack to Cart';
+    }
+
+    function addTeaLightToCart(btn, shape) {
+        const card = btn.closest('.product-card');
+        const modeBtn = card.querySelector('.qty-pill.active');
+        const mode = modeBtn ? modeBtn.dataset.mode : 'single';
+        const self = TEA_LIGHT[shape];
+
+        if (mode !== 'bundle') {
+            HHCart.add(self.name, teaLightPrice(shape), self.image);
+            HHCart.flashButton(btn, 'Add to Cart');
+            return;
+        }
+
+        const subBtn = card.querySelector('.bundle-sub.active');
+        const bundleType = subBtn ? subBtn.dataset.bundle : 'mix';
+
+        if (bundleType === 'mix') {
+            for (let i = 0; i < 3; i++) HHCart.add(TEA_LIGHT.square.name, teaLightPrice('square'), TEA_LIGHT.square.image);
+            for (let i = 0; i < 3; i++) HHCart.add(TEA_LIGHT.circle.name, teaLightPrice('circle'), TEA_LIGHT.circle.image);
+            HHCart.flashButton(btn, 'Add 3+3 Bundle to Cart');
+        } else {
+            for (let i = 0; i < 6; i++) HHCart.add(self.name, teaLightPrice(shape), self.image);
+            HHCart.flashButton(btn, 'Add 6-Pack to Cart');
+        }
     }
 
     // ── Search & Filter ────────────────────────────────────────────

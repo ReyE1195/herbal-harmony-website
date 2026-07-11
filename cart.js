@@ -24,20 +24,28 @@ const HHCart = {
     },
 
     // ── Add item ──────────────────────────────
-    add(name, price, image) {
+    // `variant` is an optional label (e.g. "Single", "3+3 Mix Bundle",
+    // "6-Pack") used ONLY for display in the cart/checkout. It never
+    // touches `name`, which stays the exact product name the server
+    // uses to look up the trusted price — so pricing is unaffected.
+    add(name, price, image, variant) {
+        variant = variant || '';
         const cart = this.get();
-        const existing = cart.find(item => item.name === name);
+        const existing = cart.find(item => item.name === name && (item.variant || '') === variant);
         if (existing) {
             existing.qty += 1;
         } else {
-            cart.push({ name, price, image, qty: 1 });
+            const entry = { name, price, image, qty: 1 };
+            if (variant) entry.variant = variant;
+            cart.push(entry);
         }
         this.save(cart);
     },
 
     // ── Remove item ───────────────────────────
-    remove(name) {
-        const cart = this.get().filter(item => item.name !== name);
+    remove(name, variant) {
+        variant = variant || '';
+        const cart = this.get().filter(item => !(item.name === name && (item.variant || '') === variant));
         this.save(cart);
     },
 
