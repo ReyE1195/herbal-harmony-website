@@ -1484,7 +1484,7 @@
         const self = TEA_LIGHT[shape];
 
         if (mode !== 'bundle') {
-            HHCart.add(self.name, teaLightPrice(shape), self.image);
+            HHCart.add(self.name, teaLightPrice(shape), self.image, 'Single');
             HHCart.flashButton(btn, 'Add to Cart');
             return;
         }
@@ -1493,11 +1493,11 @@
         const bundleType = subBtn ? subBtn.dataset.bundle : 'mix';
 
         if (bundleType === 'mix') {
-            for (let i = 0; i < 3; i++) HHCart.add(TEA_LIGHT.square.name, teaLightPrice('square'), TEA_LIGHT.square.image);
-            for (let i = 0; i < 3; i++) HHCart.add(TEA_LIGHT.circle.name, teaLightPrice('circle'), TEA_LIGHT.circle.image);
+            for (let i = 0; i < 3; i++) HHCart.add(TEA_LIGHT.square.name, teaLightPrice('square'), TEA_LIGHT.square.image, '3+3 Mix Bundle');
+            for (let i = 0; i < 3; i++) HHCart.add(TEA_LIGHT.circle.name, teaLightPrice('circle'), TEA_LIGHT.circle.image, '3+3 Mix Bundle');
             HHCart.flashButton(btn, 'Add 3+3 Bundle to Cart');
         } else {
-            for (let i = 0; i < 6; i++) HHCart.add(self.name, teaLightPrice(shape), self.image);
+            for (let i = 0; i < 6; i++) HHCart.add(self.name, teaLightPrice(shape), self.image, '6-Pack Bundle');
             HHCart.flashButton(btn, 'Add 6-Pack to Cart');
         }
     }
