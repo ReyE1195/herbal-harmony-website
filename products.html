@@ -861,7 +861,7 @@
                 </div>
                 <h3 class="card-title">Filtered Beeswax Pellets</h3>
                 <p class="card-description">Hexagon-shaped filtered beeswax ready to use in homemade products.</p>
-                <p class="card-size">10" x 7" (1lb)</p>
+                <p class="card-size">10" x 7" (1 lb)</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-filtered-beeswax-pellets">$25.00</span>
                     <button class="add-to-cart-btn" onclick="addToCart(this, 'Filtered Beeswax Pellets', 'images/FilteredBeeswaxPellets.jpeg', 'price-filtered-beeswax-pellets')">Add to Cart</button>
@@ -1498,7 +1498,11 @@
             HHCart.add('Tea Light Mix & Match Bundle', '$7.00', TEA_LIGHT.square.image, '3 Square + 3 Circle');
             HHCart.flashButton(btn, 'Add 3+3 Bundle to Cart');
         } else {
-            for (let i = 0; i < 6; i++) HHCart.add(self.name, teaLightPrice(shape), self.image, '6-Pack Bundle');
+            // Same-shape 6-pack: also one combined line item at the flat
+            // bundle price. Name must match the server catalog.
+            const packName = shape === 'square' ? 'Tea Light - Square 6-Pack Bundle' : 'Tea Light - Circle 6-Pack Bundle';
+            const packLabel = shape === 'square' ? '6 Square' : '6 Circle';
+            HHCart.add(packName, '$7.00', self.image, packLabel);
             HHCart.flashButton(btn, 'Add 6-Pack to Cart');
         }
     }
