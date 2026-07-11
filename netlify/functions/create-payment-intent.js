@@ -25,7 +25,7 @@ const PRICE_CATALOG_RAW = {
     'Element Stone Pillar Candle': 12.00,
     'Bubble Hexagon Pillar Candle': 12.00,
     'Cylinder Pillar Candle': 8.00,
-    'Hexagon Pillar Candle - Small': 8.00,
+    'Hexagon Pillar Candle': 8.00,
     'Bubble Pillar Candle': 12.00,
     'Bee w/Flowers Candle': 20.00,
     'Molded Queen Bee Candle': 15.00,
@@ -34,6 +34,7 @@ const PRICE_CATALOG_RAW = {
     'Skep w/Bees Beehive Candles': 6.00,
     'Tea Light - Square': 1.50,
     'Tea Light - Circle': 1.50,
+    'Tea Light Mix & Match Bundle': 7.00,  // 3 Square + 3 Circle, sold as one item
     'Travel Candle Jar': 20.00,
     'DIY Candle Kit': 15.00,
     // ── Soaks ───────────────────────────────────────────────
@@ -144,7 +145,10 @@ exports.handler = async (event) => {
             subtotal += unitPrice * qty;
             const lower = name.toLowerCase();
             if (lower.includes('lip balm')) lipBalmQty += qty;
-            if (lower.includes('tea light')) teaLightQty += qty;
+            // Loose tea lights count toward the 6-for-$7 group deal. The
+            // Mix & Match Bundle is EXCLUDED — it's already a flat $7.00,
+            // so letting it count too would double-discount.
+            if (lower.includes('tea light') && !lower.includes('bundle')) teaLightQty += qty;
             if (normalizeName(name) === normalizeName('DIY Candle Kit')) diyKitQty += qty;
             if (normalizeName(name) === normalizeName('Headache Stick')) headacheStickQty += qty;
         }
