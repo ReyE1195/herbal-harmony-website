@@ -627,7 +627,7 @@
             <div style="flex:1;">
                 <p class="order-item-name">${item.name}</p>
                 ${variantLine}
-                <p class="order-item-price">${item.price} each</p>
+                <p class="order-item-price">${item.price} ${item.name.toLowerCase().includes('bundle') ? 'per bundle' : 'each'}</p>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty('${nameAttr}', '${variantAttr}', -1)" title="Decrease">&#8722;</button>
                     <span class="qty-display">${item.qty}</span>
