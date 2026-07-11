@@ -577,12 +577,12 @@
                     <span>🌿</span>
                     <span class="benefits-tag">Candle</span>
                 </div>
-                <h3 class="card-title">Hexagon Pillar Candle - Small</h3>
+                <h3 class="card-title">Hexagon Pillar Candle</h3>
                 <p class="card-description">10+ hour burn time per oz, finely crafted from pure beeswax.</p>
                 <p class="card-size">2.75" x 2"</p>
                 <div class="card-footer">
                     <span class="card-price" id="price-hexagon-pillar-candle-small">$8.00</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Hexagon Pillar Candle - Small', 'images/ai-generated/HexagonPillarSmall.png', 'price-hexagon-pillar-candle-small')">Add to Cart</button>
+                    <button class="add-to-cart-btn" onclick="addToCart(this, 'Hexagon Pillar Candle', 'images/ai-generated/HexagonPillarSmall.png', 'price-hexagon-pillar-candle-small')">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -1493,8 +1493,9 @@
         const bundleType = subBtn ? subBtn.dataset.bundle : 'mix';
 
         if (bundleType === 'mix') {
-            for (let i = 0; i < 3; i++) HHCart.add(TEA_LIGHT.square.name, teaLightPrice('square'), TEA_LIGHT.square.image, '3+3 Mix Bundle');
-            for (let i = 0; i < 3; i++) HHCart.add(TEA_LIGHT.circle.name, teaLightPrice('circle'), TEA_LIGHT.circle.image, '3+3 Mix Bundle');
+            // One combined line item at the flat bundle price. The name must
+            // match the server catalog entry in create-payment-intent.js.
+            HHCart.add('Tea Light Mix & Match Bundle', '$7.00', TEA_LIGHT.square.image, '3 Square + 3 Circle');
             HHCart.flashButton(btn, 'Add 3+3 Bundle to Cart');
         } else {
             for (let i = 0; i < 6; i++) HHCart.add(self.name, teaLightPrice(shape), self.image, '6-Pack Bundle');
@@ -1594,15 +1595,15 @@
 <!-- MailerLite footer form handler -->
 <script>
     (function() {
-        var btn   = document.getElementById('ml-footer-btn');
-        var email = document.getElementById('ml-footer-email');
-        var name  = document.getElementById('ml-footer-name');
+        let btn = document.getElementById('ml-footer-btn');
+        let email = document.getElementById('ml-footer-email');
+        let name = document.getElementById('ml-footer-name');
         if (!btn || !email) return;
 
         btn.addEventListener('click', async function(e) {
             e.preventDefault();
-            var emailVal = email.value.trim();
-            var nameVal  = name ? name.value.trim() : '';
+            let emailVal = email.value.trim();
+            let nameVal = name ? name.value.trim() : '';
 
             if (!emailVal || !emailVal.includes('@')) {
                 email.style.borderColor = '#e05c5c';
@@ -1615,10 +1616,10 @@
             btn.textContent = 'Subscribing...';
 
             try {
-                var res = await fetch('/.netlify/functions/subscribe', {
-                    method:  'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body:    JSON.stringify({ email: emailVal, name: nameVal })
+                let res = await fetch('/.netlify/functions/subscribe', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email: emailVal, name: nameVal})
                 });
                 await res.json();
 
