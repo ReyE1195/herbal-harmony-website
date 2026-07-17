@@ -55,7 +55,7 @@ const PRICE_CATALOG_RAW = {
     'Unscented Moisturizing Lotion Bar - Rectangle': 5.00,
     'Unscented Moisturizing Lotion Bar - Oval': 5.00,
     // ── Wellness ────────────────────────────────────────────
-    'Restless Leg Relief': 20.00,
+    'Restless Leg Relief Oil': 20.00,
     'Headache Stick': 8.00,
     'Face Mask': 5.00,
     'Filtered Beeswax Pellets': 25.00,
