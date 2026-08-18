@@ -48,6 +48,8 @@
         .footer-bottom { display:flex; justify-content:space-between; align-items:center; padding-top:1.75rem; max-width:1100px; margin:0 auto; flex-wrap:wrap; gap:0.75rem; }
         .footer-copy { font-size:0.76rem; color:rgba(208,238,208,0.45); }
         .footer-review-link { font-size:0.82rem; color:var(--neon-frosted-mint); text-decoration:underline; text-underline-offset:3px; }
+        .footer-bottom-right { display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
+        .footer-review-divider { color:rgba(208,238,208,0.35); font-size:0.76rem; }
 
         /* Checkout layout */
         .checkout-page { padding:4.5rem 3rem 5rem; max-width:1100px; margin:0 auto; }
@@ -88,13 +90,13 @@
         .checkout-submit:hover { background:var(--neon); border-color:var(--neon); box-shadow:var(--neon-glow); transform:translateY(-2px); }
         /* ── Quantity buttons ── */
         .qty-control { display:flex; align-items:center; gap:0.4rem; margin-top:0.35rem; }
-        .qty-btn { width:26px; height:26px; border-radius:50%; border:1.5px solid var(--cream-dark); background:var(--cream); color:var(--charcoal); font-size:1rem; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s ease; line-height:1; padding:0; }
+        .qty-btn { width:26px; height:26px; border-radius:50%; border:2px solid var(--cream-dark); background:var(--cream); color:var(--charcoal); font-size:1rem; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s ease; line-height:1; padding:0; }
         .qty-btn:hover { border-color:var(--neon); color:var(--neon); background:white; }
         .qty-display { min-width:28px; text-align:center; font-size:0.85rem; font-weight:600; color:var(--charcoal); font-family:"Montserrat",sans-serif; }
         .secure-note { display:flex; align-items:center; gap:0.45rem; font-size:0.73rem; color:var(--sage-dark); margin-top:1rem; padding-top:0.9rem; border-top:1px solid var(--cream-dark); }
 
         /* ── Free bonus gift ── */
-        .free-gift-row { background:linear-gradient(135deg,rgba(61,90,61,0.08),rgba(82,133,82,0.12)); border:1.5px dashed var(--neon); border-radius:0.75rem; padding:0.75rem 1rem; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.85rem; }
+        .free-gift-row { background:linear-gradient(135deg,rgba(61,90,61,0.08),rgba(82,133,82,0.12)); border:2px dashed var(--neon); border-radius:0.75rem; padding:0.75rem 1rem; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.85rem; }
         .free-gift-row img { width:48px; height:48px; border-radius:0.4rem; object-fit:cover; flex-shrink:0; }
         .free-gift-badge { font-size:0.62rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:white; background:var(--neon-forest); border-radius:999px; padding:0.18rem 0.6rem; display:inline-block; margin-bottom:0.2rem; }
         .free-gift-name { font-size:0.84rem; font-weight:600; color:var(--charcoal); }
@@ -127,13 +129,17 @@
         .footer-bottom-links a { font-size: 0.76rem; color: rgba(208,238,208,0.55); transition: color 0.3s ease; }
         .footer-bottom-links a:hover { color: #D0EED0; }
         .footer-review-link { color: rgba(208,238,208,0.8); text-decoration: underline; text-underline-offset: 3px; transition: color 0.3s ease, text-shadow 0.3s ease; }
+        .footer-bottom-right { display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
+        .footer-review-divider { color:rgba(208,238,208,0.35); font-size:0.76rem; }
         .footer-review-link:hover { color: #D0EED0; text-shadow: 0 0 8px rgba(208,238,208,0.4); }
         .newsletter-submit:hover { background: #D0EED0 !important; color: #000000 !important; }
 
         /* ── Footer hover styles ── */
-        .footer-social-icon { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1.5px solid rgba(208,238,208,0.3); color:rgba(208,238,208,0.8); transition:all 0.3s ease; text-decoration:none; }
+        .footer-social-icon { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:2px solid rgba(208,238,208,0.3); color:rgba(208,238,208,0.8); transition:all 0.3s ease; text-decoration:none; }
         .footer-social-icon:hover { background:rgba(208,238,208,0.15); border-color:#D0EED0; color:#D0EED0; transform:translateY(-3px); box-shadow:0 4px 16px rgba(208,238,208,0.2); }
         .footer-review-link { font-size:0.76rem; color:#D0EED0; text-decoration:underline; text-underline-offset:3px; transition:color 0.3s ease, text-shadow 0.3s ease; }
+        .footer-bottom-right { display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
+        .footer-review-divider { color:rgba(208,238,208,0.35); font-size:0.76rem; }
         .footer-review-link:hover { color:#D0EED0; text-shadow:0 0 8px rgba(208,238,208,0.4); opacity:1; }
         .footer-legal-link { font-size:0.76rem; color:rgba(208,238,208,0.55); text-decoration:none; transition:color 0.3s ease; }
         .footer-legal-link:hover { color:#D0EED0; }
@@ -315,7 +321,11 @@
                 <a href="index.html" class="footer-legal-link">Home</a>
             </div>
         </div>
-        <a href="review.html" class="footer-review-link">&#9733; Write a product review</a>
+        <div class="footer-bottom-right">
+            <a href="review.html" class="footer-review-link">&#9733; Write a Review</a>
+            <span class="footer-review-divider">/</span>
+            <a href="reviews.html" class="footer-review-link">&#128214; Read Reviews</a>
+        </div>
     </div>
 </footer>
 <script src="cart.js"></script>

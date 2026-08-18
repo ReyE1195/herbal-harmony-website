@@ -188,6 +188,8 @@
         .footer-bottom-links a { font-size: 0.76rem; color: rgba(208,238,208,0.55); transition: color 0.3s ease; }
         .footer-bottom-links a:hover { color: #D0EED0; }
         .footer-review-link { color: rgba(208,238,208,0.8); text-decoration: underline; text-underline-offset: 3px; transition: color 0.3s ease, text-shadow 0.3s ease; }
+        .footer-bottom-right { display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
+        .footer-review-divider { color:rgba(208,238,208,0.35); font-size:0.76rem; }
         .footer-review-link:hover { color: #D0EED0; text-shadow: 0 0 8px rgba(208,238,208,0.4); }
         .newsletter-submit:hover { background: #D0EED0 !important; color: #000000 !important; }
 
@@ -195,6 +197,8 @@
         .footer-social-icon { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1.5px solid rgba(208,238,208,0.3); color:rgba(208,238,208,0.8); transition:all 0.3s ease; text-decoration:none; }
         .footer-social-icon:hover { background:rgba(208,238,208,0.15); border-color:#D0EED0; color:#D0EED0; transform:translateY(-3px); box-shadow:0 4px 16px rgba(208,238,208,0.2); }
         .footer-review-link { font-size:0.76rem; color:#D0EED0; text-decoration:underline; text-underline-offset:3px; transition:color 0.3s ease, text-shadow 0.3s ease; }
+        .footer-bottom-right { display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
+        .footer-review-divider { color:rgba(208,238,208,0.35); font-size:0.76rem; }
         .footer-review-link:hover { color:#D0EED0; text-shadow:0 0 8px rgba(208,238,208,0.4); opacity:1; }
         .footer-legal-link { font-size:0.76rem; color:rgba(208,238,208,0.55); text-decoration:none; transition:color 0.3s ease; }
         .footer-legal-link:hover { color:#D0EED0; }
@@ -309,7 +313,11 @@
                 <a href="index.html" class="footer-legal-link">Home</a>
             </div>
         </div>
-        <a href="review.html" class="footer-review-link">&#9733; Write a product review</a>
+        <div class="footer-bottom-right">
+            <a href="review.html" class="footer-review-link">&#9733; Write a Review</a>
+            <span class="footer-review-divider">/</span>
+            <a href="reviews.html" class="footer-review-link">&#128214; Read Reviews</a>
+        </div>
     </div>
 </footer>
 

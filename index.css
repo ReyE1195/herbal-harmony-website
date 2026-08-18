@@ -869,6 +869,9 @@ footer {
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
+.footer-bottom-right { display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
+.footer-review-divider { color:rgba(208,238,208,0.35); font-size:0.76rem; }
+
 .footer-review-link:hover {
     color: var(--neon-electric-mint);
     text-shadow: 0 0 8px rgba(57,255,216,0.4);
