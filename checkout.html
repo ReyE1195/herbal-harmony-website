@@ -48,6 +48,8 @@
         .footer-bottom { display:flex; justify-content:space-between; align-items:center; padding-top:1.75rem; max-width:1100px; margin:0 auto; flex-wrap:wrap; gap:0.75rem; }
         .footer-copy { font-size:0.76rem; color:rgba(208,238,208,0.45); }
         .footer-review-link { font-size:0.82rem; color:var(--neon-frosted-mint); text-decoration:underline; text-underline-offset:3px; }
+        .footer-bottom-right { display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
+        .footer-review-divider { color:rgba(208,238,208,0.35); font-size:0.76rem; }
 
         /* Checkout layout */
         .checkout-page { padding:4.5rem 3rem 5rem; max-width:1100px; margin:0 auto; }
@@ -88,13 +90,13 @@
         .checkout-submit:hover { background:var(--neon); border-color:var(--neon); box-shadow:var(--neon-glow); transform:translateY(-2px); }
         /* ── Quantity buttons ── */
         .qty-control { display:flex; align-items:center; gap:0.4rem; margin-top:0.35rem; }
-        .qty-btn { width:26px; height:26px; border-radius:50%; border:1.5px solid var(--cream-dark); background:var(--cream); color:var(--charcoal); font-size:1rem; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s ease; line-height:1; padding:0; }
+        .qty-btn { width:26px; height:26px; border-radius:50%; border:2px solid var(--cream-dark); background:var(--cream); color:var(--charcoal); font-size:1rem; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s ease; line-height:1; padding:0; }
         .qty-btn:hover { border-color:var(--neon); color:var(--neon); background:white; }
         .qty-display { min-width:28px; text-align:center; font-size:0.85rem; font-weight:600; color:var(--charcoal); font-family:"Montserrat",sans-serif; }
         .secure-note { display:flex; align-items:center; gap:0.45rem; font-size:0.73rem; color:var(--sage-dark); margin-top:1rem; padding-top:0.9rem; border-top:1px solid var(--cream-dark); }
 
         /* ── Free bonus gift ── */
-        .free-gift-row { background:linear-gradient(135deg,rgba(61,90,61,0.08),rgba(82,133,82,0.12)); border:1.5px dashed var(--neon); border-radius:0.75rem; padding:0.75rem 1rem; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.85rem; }
+        .free-gift-row { background:linear-gradient(135deg,rgba(61,90,61,0.08),rgba(82,133,82,0.12)); border:2px dashed var(--neon); border-radius:0.75rem; padding:0.75rem 1rem; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.85rem; }
         .free-gift-row img { width:48px; height:48px; border-radius:0.4rem; object-fit:cover; flex-shrink:0; }
         .free-gift-badge { font-size:0.62rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:white; background:var(--neon-forest); border-radius:999px; padding:0.18rem 0.6rem; display:inline-block; margin-bottom:0.2rem; }
         .free-gift-name { font-size:0.84rem; font-weight:600; color:var(--charcoal); }
@@ -127,13 +129,17 @@
         .footer-bottom-links a { font-size: 0.76rem; color: rgba(208,238,208,0.55); transition: color 0.3s ease; }
         .footer-bottom-links a:hover { color: #D0EED0; }
         .footer-review-link { color: rgba(208,238,208,0.8); text-decoration: underline; text-underline-offset: 3px; transition: color 0.3s ease, text-shadow 0.3s ease; }
+        .footer-bottom-right { display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
+        .footer-review-divider { color:rgba(208,238,208,0.35); font-size:0.76rem; }
         .footer-review-link:hover { color: #D0EED0; text-shadow: 0 0 8px rgba(208,238,208,0.4); }
         .newsletter-submit:hover { background: #D0EED0 !important; color: #000000 !important; }
 
         /* ── Footer hover styles ── */
-        .footer-social-icon { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1.5px solid rgba(208,238,208,0.3); color:rgba(208,238,208,0.8); transition:all 0.3s ease; text-decoration:none; }
+        .footer-social-icon { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:2px solid rgba(208,238,208,0.3); color:rgba(208,238,208,0.8); transition:all 0.3s ease; text-decoration:none; }
         .footer-social-icon:hover { background:rgba(208,238,208,0.15); border-color:#D0EED0; color:#D0EED0; transform:translateY(-3px); box-shadow:0 4px 16px rgba(208,238,208,0.2); }
         .footer-review-link { font-size:0.76rem; color:#D0EED0; text-decoration:underline; text-underline-offset:3px; transition:color 0.3s ease, text-shadow 0.3s ease; }
+        .footer-bottom-right { display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
+        .footer-review-divider { color:rgba(208,238,208,0.35); font-size:0.76rem; }
         .footer-review-link:hover { color:#D0EED0; text-shadow:0 0 8px rgba(208,238,208,0.4); opacity:1; }
         .footer-legal-link { font-size:0.76rem; color:rgba(208,238,208,0.55); text-decoration:none; transition:color 0.3s ease; }
         .footer-legal-link:hover { color:#D0EED0; }
@@ -216,8 +222,8 @@
                 <h2>Payment Details</h2>
                 <p class="payment-note-inline">🔒 Your payment is processed securely through Stripe. We never store your card details.</p>
                 <div class="form-group">
-                    <label>Card Details</label>
-                    <div id="stripe-card-element"></div>
+                    <label>Payment</label>
+                    <div id="payment-element"></div>
                     <div id="card-errors" role="alert" style="font-size:0.78rem;color:#e05c5c;margin-top:0.4rem;min-height:1.2rem;"></div>
                 </div>
                 <div id="payment-processing" style="display:none;text-align:center;padding:0.75rem;font-size:0.84rem;color:var(--forest);font-style:italic;">⏳ Processing your payment, please wait...</div>
@@ -240,7 +246,7 @@
             <div id="free-gift-container" style="display:none;"></div>
             <!-- Promo Code -->
             <div class="promo-row" id="promo-section" style="display:none;">
-                <label for="promo-input"><input type="text" class="promo-input" id="promo-input" placeholder="Promo code (e.g. WELCOME10)" maxlength="20"></label>
+                <label for="promo-input"><input type="text" class="promo-input" id="promo-input" placeholder="Promo code" maxlength="20"></label>
                 <button class="promo-btn" id="promo-btn">Apply</button>
             </div>
             <p class="promo-msg" id="promo-msg"></p>
@@ -248,7 +254,7 @@
                 <div class="total-row"><span>Subtotal</span><span id="subtotal-val">$0.00</span></div>
                 <div class="total-row" id="promo-discount-row" style="display:none;color:var(--neon);"><span>Promo discount</span><span id="promo-discount-val">-$0.00</span></div>
                 <div class="total-row"><span>Sales tax</span><span id="tax-val">Calculated at checkout</span></div>
-                <div class="total-row"><span>Shipping</span><span>Calculated at next step</span></div>
+                <div class="total-row"><span>Shipping</span><span id="shipping-val">$5.00</span></div>
                 <div class="total-row grand"><span>Total</span><span id="total-val">$0.00</span></div>
             </div>
             <div id="cart-empty-msg" style="display:none; text-align:center; padding:1.5rem 0; font-size:0.88rem; color:var(--sage-dark);">
@@ -315,7 +321,11 @@
                 <a href="index.html" class="footer-legal-link">Home</a>
             </div>
         </div>
-        <a href="review.html" class="footer-review-link">&#9733; Write a product review</a>
+        <div class="footer-bottom-right">
+            <a href="review.html" class="footer-review-link">&#9733; Write a Review</a>
+            <span class="footer-review-divider">/</span>
+            <a href="reviews.html" class="footer-review-link">&#128214; Read Reviews</a>
+        </div>
     </div>
 </footer>
 <script src="cart.js"></script>
@@ -340,39 +350,190 @@
     function initCheckout() {
         // -- Stripe setup (isolated: a failure here must NOT break the cart) --
         // Declared with `let` at function scope so the Place Order handler can see them.
-        let stripe = null, elements = null, cardElement = null;
+        let stripe = null, elements = null, paymentElement = null;
+
+        // Flat-rate shipping in CENTS — mirrors SHIPPING_FLAT_RATE on the server
+        // (create-payment-intent.js). Used ONLY for the pre-address estimate; once
+        // the customer's address is entered, the server's total (which already
+        // includes shipping) takes over. When live USPS rates replace the flat
+        // fee, this just becomes the opening estimate.
+        const SHIPPING_FLAT_CENTS = 500;
+
+        // Single source of truth for what we charge, in CENTS. Mirrors the server's
+        // pricing (create-payment-intent.js): lip-balm bundle = $1 off per pair, then
+        // the promo %. The Payment Element's amount must equal this, or Stripe rejects
+        // the confirmation — so the browser and server always agree on the number.
+        function computeCartTotalCents() {
+            const items = HHCart.get();
+            let subtotal = 0, lipBalms = 0;
+            items.forEach(function(item) {
+                subtotal += parseFloat(String(item.price).replace('$', '')) * item.qty;
+                if (item.name.toLowerCase().includes('lip balm')) lipBalms += item.qty;
+            });
+            if (lipBalms >= 2) subtotal -= Math.floor(lipBalms / 2); // $1 per pair
+            const promo = window.hhPromoDiscount || 0;
+            if (promo > 0) subtotal = subtotal * (1 - promo);
+            return Math.round(subtotal * 100);
+        }
+        window.computeCartTotalCents = computeCartTotalCents;
+
         try {
             stripe = Stripe(window.__STRIPE_KEY__);
-            elements = stripe.elements({
-                fonts: [{ cssSrc: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap' }]
-            });
 
-            cardElement = elements.create('card', {
-                style: {
-                    base: {
+            // Deferred mode: mount the Payment Element now, create the PaymentIntent
+            // on the server only when the customer clicks Place Order. Stripe's minimum
+            // is $0.50, so we floor the *display* amount at 50 so the Element can mount
+            // even when the cart is briefly empty — the server still enforces the real total.
+            let initialAmount = computeCartTotalCents();
+            if (initialAmount < 50) initialAmount = 50;
+
+            elements = stripe.elements({
+                mode: 'payment',
+                amount: initialAmount,
+                currency: 'usd',
+                appearance: {
+                    theme: 'stripe',
+                    variables: {
+                        colorPrimary: '#528552',
+                        colorText: '#3B575A',
                         fontFamily: '"Montserrat", sans-serif',
-                        fontSize: '15px',
-                        color: '#3B575A',
-                        '::placeholder': { color: '#9F9989' }
-                    },
-                    invalid: { color: '#e05c5c', iconColor: '#e05c5c' }
+                        borderRadius: '8px'
+                    }
                 }
             });
 
-            cardElement.mount('#stripe-card-element');
+            // We already collect name / email / phone / address in the form above,
+            // so tell the Element NOT to re-ask — we pass those in at confirmation time.
+            paymentElement = elements.create('payment', {
+                layout: 'tabs',
+                fields: { billingDetails: 'never' }
+            });
+            paymentElement.mount('#payment-element');
 
-            cardElement.on('change', function(e) {
-                document.getElementById('card-errors').textContent = e.error ? e.error.message : '';
+            paymentElement.on('change', function(e) {
+                const errEl = document.getElementById('card-errors');
+                if (errEl) errEl.textContent = (e && e.error) ? e.error.message : '';
             });
         } catch (stripeErr) {
-            // Stripe couldn't start (e.g. empty/missing key, blocked script).
-            // Show a gentle note in the card box and carry on — the cart still works.
+            // Stripe couldn't start (e.g., empty/missing key, blocked script).
+            // Show a gentle note in the payment box and carry on — the cart still works.
             console.error('Stripe did not initialize:', stripeErr);
-            const cardBox = document.getElementById('stripe-card-element');
-            if (cardBox) {
-                cardBox.innerHTML = '<p style="font-size:0.82rem;color:#b7791f;line-height:1.5;">\u26A0\uFE0F Card payment is temporarily unavailable. Your cart is saved \u2014 please refresh in a moment.</p>';
+            const payBox = document.getElementById('payment-element');
+            if (payBox) {
+                payBox.innerHTML = '<p style="font-size:0.82rem;color:#b7791f;line-height:1.5;">\u26A0\uFE0F Payment is temporarily unavailable. Your cart is saved \u2014 please refresh in a moment.</p>';
             }
         }
+
+        // ── Sales-tax state ──────────────────────────────────────────
+        // hhEstimateTotalCents is the server-authoritative total (subtotal + tax)
+        // once we know the address; null means "not known yet" (show subtotal only).
+        window.hhTaxCents = 0;
+        window.hhEstimateTotalCents = null;
+
+        function getCheckoutAddress() {
+            return {
+                street: (document.getElementById('co-address').value || '').trim(),
+                city:   (document.getElementById('co-city').value || '').trim(),
+                state:  (document.getElementById('co-state').value || ''),
+                zip:    (document.getElementById('co-zip').value || '').trim()
+            };
+        }
+        function zipFive(z) { return String(z || '').replace(/\D/g, '').slice(0, 5); }
+        function addressReadyForTax(a) { return !!a.state && zipFive(a.zip).length === 5; }
+
+        // Draw the Sales tax + Total rows. Uses the server total when we have it,
+        // otherwise the pre-tax subtotal with a placeholder.
+        function updateTotalsDisplay() {
+            const taxEl = document.getElementById('tax-val');
+            const totalEl = document.getElementById('total-val');
+            if (window.hhEstimateTotalCents != null) {
+                if (taxEl) taxEl.textContent = '$' + ((window.hhTaxCents || 0) / 100).toFixed(2);
+                if (totalEl) totalEl.textContent = '$' + (window.hhEstimateTotalCents / 100).toFixed(2);
+            } else {
+                if (taxEl) taxEl.textContent = 'Calculated at checkout';
+                if (totalEl) totalEl.textContent = '$' + ((computeCartTotalCents() + SHIPPING_FLAT_CENTS) / 100).toFixed(2);
+            }
+        }
+        window.updateTotalsDisplay = updateTotalsDisplay;
+
+        // Keep the Payment Element's amount in lock-step with what the server will
+        // charge: the server total once tax is known, the subtotal before that.
+        function syncStripeAmount() {
+            if (!elements) return;
+            try {
+                let a = (window.hhEstimateTotalCents != null) ? window.hhEstimateTotalCents : (computeCartTotalCents() + SHIPPING_FLAT_CENTS);
+                if (a < 50) a = 50;
+                elements.update({ amount: a });
+            } catch (e) {
+                console.error('Could not update payment amount:', e);
+            }
+        }
+        window.syncStripeAmount = syncStripeAmount;
+
+        // Ask the server for tax on the current cart + address (calculate-only mode),
+        // then refresh the summary and the Element's amount. Returns true once a server
+        // total is in hand. Cached, so we don't call it on every keystroke.
+        let lastTaxKey = '';
+        async function refreshTax(force) {
+            const cart = HHCart.get();
+            const addr = getCheckoutAddress();
+
+            // Can't tax an empty cart or an incomplete address — show the placeholder.
+            if (!cart.length || !addressReadyForTax(addr)) {
+                window.hhTaxCents = 0;
+                window.hhEstimateTotalCents = null;
+                lastTaxKey = '';
+                updateTotalsDisplay();
+                syncStripeAmount();
+                return false;
+            }
+
+            const key = JSON.stringify({ cart: cart, addr: addr, promo: window.hhPromoCode || '' });
+            if (!force && key === lastTaxKey) return window.hhEstimateTotalCents != null;
+
+            try {
+                const res = await fetch('/.netlify/functions/create-payment-intent', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        cart: cart,
+                        address: addr,
+                        promoCode: window.hhPromoCode || null,
+                        calculateOnly: true
+                    })
+                });
+                const data = await res.json();
+                if (res.ok && typeof data.total === 'number') {
+                    window.hhTaxCents = data.taxAmount || 0;
+                    window.hhEstimateTotalCents = data.total;
+                    lastTaxKey = key;
+                    updateTotalsDisplay();
+                    syncStripeAmount();
+                    return true;
+                }
+            } catch (e) {
+                console.error('Tax lookup failed:', e);
+            }
+            return false;
+        }
+        window.refreshTax = refreshTax;
+
+        // Debounced version for live typing in the address fields.
+        let taxTimer = null;
+        function scheduleTaxRefresh() {
+            clearTimeout(taxTimer);
+            taxTimer = setTimeout(function () { refreshTax(false); }, 500);
+        }
+        window.scheduleTaxRefresh = scheduleTaxRefresh;
+
+        // Re-tax whenever the shipping address changes.
+        ['co-address', 'co-city', 'co-state', 'co-zip'].forEach(function (id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('change', scheduleTaxRefresh);
+                el.addEventListener('blur', scheduleTaxRefresh);
+            }
+        });
 
         // ── Free Bonus Gift (first 2 customers — Honey Lip Balm) ─────────
         const FREE_GIFT_KEY   = 'hh_free_gift_removed';
@@ -463,20 +624,27 @@
                 const price = parseFloat(item.price.replace('$', ''));
                 subtotal += price * item.qty;
 
+                const variantAttr = (item.variant || '').replace(/'/g, "\\'");
+                const nameAttr = item.name.replace(/'/g, "\\'");
+                const variantLine = item.variant
+                    ? `<p class="order-item-price" style="color:var(--sage-dark);font-style:italic;">${item.variant}</p>`
+                    : '';
+
                 const div = document.createElement('div');
                 div.className = 'order-item';
                 div.innerHTML = `
             <img src="${item.image}" alt="${item.name}" onerror="this.src='images/transparent-logo.png'">
             <div style="flex:1;">
                 <p class="order-item-name">${item.name}</p>
-                <p class="order-item-price">${item.price} each</p>
+                ${variantLine}
+                <p class="order-item-price">${item.price} ${item.name.toLowerCase().includes('bundle') ? 'per bundle' : 'each'}</p>
                 <div class="qty-control">
-                    <button class="qty-btn" onclick="changeQty('${item.name.replace(/'/g, "\\'")}', -1)" title="Decrease">&#8722;</button>
+                    <button class="qty-btn" onclick="changeQty('${nameAttr}', '${variantAttr}', -1)" title="Decrease">&#8722;</button>
                     <span class="qty-display">${item.qty}</span>
-                    <button class="qty-btn" onclick="changeQty('${item.name.replace(/'/g, "\\'")}', 1)" title="Increase">&#43;</button>
+                    <button class="qty-btn" onclick="changeQty('${nameAttr}', '${variantAttr}', 1)" title="Increase">&#43;</button>
                 </div>
             </div>
-            <button onclick="removeItem('${item.name.replace(/'/g, "\\'")}')"
+            <button onclick="removeItem('${nameAttr}', '${variantAttr}')"
             style="background:none;border:none;cursor:pointer;color:var(--sage-dark);font-size:1rem;padding:0.25rem;align-self:flex-start;"
             title="Remove">✕</button>`;
                 container.appendChild(div);
@@ -510,10 +678,17 @@
                 promoRow.style.display = 'none';
                 document.getElementById('total-val').textContent = '$' + subtotal.toFixed(2);
             }
+
+            // Cart changed -> any prior tax estimate is now stale. Clear it, redraw the
+            // tax/total rows, resync the Element, then re-fetch tax for the new cart.
+            window.hhEstimateTotalCents = null;
+            if (window.updateTotalsDisplay) window.updateTotalsDisplay();
+            if (window.syncStripeAmount) window.syncStripeAmount();
+            if (window.scheduleTaxRefresh) window.scheduleTaxRefresh();
         }
 
-        function removeItem(name) {
-            HHCart.remove(name);
+        function removeItem(name, variant) {
+            HHCart.remove(name, variant);
             loadCart();
         }
 
@@ -547,9 +722,9 @@
             }
         });
 
-        function changeQty(name, delta) {
+        function changeQty(name, variant, delta) {
             const cart = HHCart.get();
-            const item = cart.find(i => i.name === name);
+            const item = cart.find(i => i.name === name && (i.variant || '') === (variant || ''));
             if (!item) return;
             item.qty += delta;
             if (item.qty < 1) item.qty = 1; // minimum 1
@@ -560,7 +735,7 @@
         // ── Add bundle lip balm ────────────────────────────────────────
         function addBundleLipBalm() {
             // Add the unscented lip balm as the bundle partner
-            HHCart.add('Lip Balm • Unscented', '$3.00', 'images/Lip_Balm_Unscented.png');
+            HHCart.add('Lip Balm • Unscented', '$3.00', 'images/ai-generated/Lip_Balm_Unscented.png');
             loadCart();
         }
 
@@ -581,7 +756,7 @@
             }
 
             // If Stripe never initialized, payment can't run. Tell the customer kindly.
-            if (!stripe || !cardElement) {
+            if (!stripe || !elements || !paymentElement) {
                 alert('Card payment is temporarily unavailable. Please refresh the page and try again. 🌿');
                 return;
             }
@@ -612,6 +787,12 @@
                 alert('Please fill in all shipping address fields.');
                 return;
             }
+            if (zip.replace(/\D/g, '').length < 5) {
+                document.getElementById('co-zip').style.borderColor = '#e05c5c';
+                document.getElementById('co-zip').focus();
+                alert('Please enter a valid 5-digit ZIP code so we can calculate sales tax.');
+                return;
+            }
 
             const btn        = document.getElementById('place-order-btn');
             const processing = document.getElementById('payment-processing');
@@ -623,7 +804,29 @@
             errEl.textContent = '';
 
             try {
-                // Step 1 — Create PaymentIntent on backend
+                // Lock in tax for THIS address before anything else, so the Payment
+                // Element's amount already includes tax and matches the server charge.
+                const taxReady = await refreshTax(true);
+                if (!taxReady) {
+                    errEl.textContent = 'We could not calculate sales tax. Please check your address and try again.';
+                    btn.disabled = false;
+                    btn.textContent = 'Place Order';
+                    processing.style.display = 'none';
+                    return;
+                }
+
+                // Validate & collect payment details. Deferred mode requires
+                // elements.submit() to run BEFORE we create the PaymentIntent.
+                const { error: submitError } = await elements.submit();
+                if (submitError) {
+                    errEl.textContent = submitError.message || 'Please check your payment details.';
+                    btn.disabled = false;
+                    btn.textContent = 'Place Order';
+                    processing.style.display = 'none';
+                    return;
+                }
+
+                // Create PaymentIntent on backend (the server prices the cart).
                 const intentResponse = await fetch('/.netlify/functions/create-payment-intent', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -644,15 +847,37 @@
                     return;
                 }
 
-                // Step 2 — Confirm payment with Stripe using clientSecret
-                const { paymentIntent, error } = await stripe.confirmCardPayment(
-                    intentData.clientSecret,
-                    {
-                        payment_method: {
-                            card: cardElement,
+                // For redirect methods (Cash App Pay, Klarna), the browser leaves this page
+                // during confirmPayment and the order is finalized on order-complete.html.
+                // Stash what that page needs BEFORE handing off. (For inline methods — cards,
+                // Apple Pay, Google Pay, Link — this is harmless; we clear it after the
+                // inline save just below.)
+                const giftEl = document.getElementById('free-gift-container');
+                const freeGiftAccepted = giftAvailable && giftEl && giftEl.style.display !== 'none';
+                localStorage.setItem('hh_pendingOrder', JSON.stringify({
+                    cart: cart,
+                    email: email,
+                    firstName: firstName,
+                    lastName: lastName,
+                    total: (intentData.amount / 100).toFixed(2),
+                    address: { street: street, city: city, state: state, zip: zip },
+                    freeGift: freeGiftAccepted
+                }));
+
+                // Confirm with the Payment Element. redirect:'if_required' keeps cards,
+                // Apple Pay, Google Pay and Link inline; Cash App Pay and Klarna redirect to
+                // their approval page and return to return_url (order-complete.html).
+                const { paymentIntent, error } = await stripe.confirmPayment({
+                    elements,
+                    clientSecret: intentData.clientSecret,
+                    redirect: 'if_required',
+                    confirmParams: {
+                        return_url: window.location.origin + '/order-complete.html',
+                        payment_method_data: {
                             billing_details: {
                                 name: firstName + ' ' + lastName,
                                 email: email,
+                                phone: phone,
                                 address: {
                                     line1: street,
                                     city: city,
@@ -663,7 +888,7 @@
                             }
                         }
                     }
-                );
+                });
 
                 if (error) {
                     errEl.textContent = error.message;
@@ -673,11 +898,19 @@
                     return;
                 }
 
-                // Step 3 — Payment confirmed! Save order to backend
-                // Did the shopper keep the free gift? (available + still showing)
-                const giftEl = document.getElementById('free-gift-container');
-                const freeGiftAccepted = giftAvailable && giftEl && giftEl.style.display !== 'none';
+                // With redirect:'if_required', a completed inline payment returns the
+                // PaymentIntent. Anything other than 'succeeded' means we must NOT
+                // record an order.
+                if (!paymentIntent || paymentIntent.status !== 'succeeded') {
+                    errEl.textContent = 'Payment could not be completed. Please try again.';
+                    btn.disabled = false;
+                    btn.textContent = 'Place Order';
+                    processing.style.display = 'none';
+                    return;
+                }
 
+                // Inline payment confirmed (card / wallet / Link). Save the order now.
+                // (Redirect methods never reach this line — they finalize on order-complete.html.)
                 const orderResponse = await fetch('/.netlify/functions/save-order', {
                     method: 'POST',
                     headers: {
@@ -692,6 +925,9 @@
                         freeGift: freeGiftAccepted
                     })
                 });
+
+                // Inline order saved — clear the redirect stash so it can't be reused.
+                localStorage.removeItem('hh_pendingOrder');
 
                 const orderData = await orderResponse.json();
 
@@ -744,15 +980,15 @@
 <!-- MailerLite footer form handler -->
 <script>
     (function() {
-        var btn   = document.getElementById('ml-footer-btn');
-        var email = document.getElementById('ml-footer-email');
-        var name  = document.getElementById('ml-footer-name');
+        let btn = document.getElementById('ml-footer-btn');
+        let email = document.getElementById('ml-footer-email');
+        let name = document.getElementById('ml-footer-name');
         if (!btn || !email) return;
 
         btn.addEventListener('click', async function(e) {
             e.preventDefault();
-            var emailVal = email.value.trim();
-            var nameVal  = name ? name.value.trim() : '';
+            let emailVal = email.value.trim();
+            let nameVal = name ? name.value.trim() : '';
 
             if (!emailVal || !emailVal.includes('@')) {
                 email.style.borderColor = '#e05c5c';
@@ -765,10 +1001,10 @@
             btn.textContent = 'Subscribing...';
 
             try {
-                var res = await fetch('/.netlify/functions/subscribe', {
-                    method:  'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body:    JSON.stringify({ email: emailVal, name: nameVal })
+                let res = await fetch('/.netlify/functions/subscribe', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email: emailVal, name: nameVal})
                 });
                 await res.json();
 
