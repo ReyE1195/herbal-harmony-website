@@ -13,10 +13,10 @@ exports.handler = async (event) => {
 
     try {
         connectLambda(event);
-        const { name, product, rating, body, createdAt } = JSON.parse(event.body);
+        const { name, product, title, rating, body, createdAt } = JSON.parse(event.body);
         if (!rating) return { statusCode: 400, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ error: 'A star rating is required.' }) };
 
-        const review = { name: name || 'Anonymous', product: product || 'General', rating, body: body || '', createdAt: createdAt || new Date().toISOString(), id: 'review-' + Date.now() };
+        const review = { name: name || 'Anonymous', product: product || 'General', title: title || '', rating, body: body || '', createdAt: createdAt || new Date().toISOString(), id: 'review-' + Date.now() };
         const store = getStore('hh-reviews');
         await store.setJSON(review.id, review);
 
