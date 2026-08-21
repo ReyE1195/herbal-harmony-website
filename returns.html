@@ -20,6 +20,7 @@
             --charcoal:          #3B575A;
         }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html {background: #000000; }
         body { font-family: "Montserrat", sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
         h1, h2, h3 { font-family: "Cormorant Garamond", serif; }
         a { text-decoration: none; color: inherit; }
@@ -244,7 +245,7 @@
         .newsletter-submit:hover { background: #D0EED0 !important; color: #000000 !important; }
 
         /* ── Footer hover styles ── */
-        .footer-social-icon { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1.5px solid rgba(208,238,208,0.3); color:rgba(208,238,208,0.8); transition:all 0.3s ease; text-decoration:none; }
+        .footer-social-icon { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:2px solid rgba(208,238,208,0.3); color:rgba(208,238,208,0.8); transition:all 0.3s ease; text-decoration:none; }
         .footer-social-icon:hover { background:rgba(208,238,208,0.15); border-color:#D0EED0; color:#D0EED0; transform:translateY(-3px); box-shadow:0 4px 16px rgba(208,238,208,0.2); }
         .footer-review-link { font-size:0.76rem; color:#D0EED0; text-decoration:underline; text-underline-offset:3px; transition:color 0.3s ease, text-shadow 0.3s ease; }
         .footer-bottom-right { display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
@@ -399,15 +400,15 @@
 <!-- MailerLite footer form handler -->
 <script>
     (function() {
-        var btn   = document.getElementById('ml-footer-btn');
-        var email = document.getElementById('ml-footer-email');
-        var name  = document.getElementById('ml-footer-name');
+        const btn = document.getElementById('ml-footer-btn');
+        const email = document.getElementById('ml-footer-email');
+        const name = document.getElementById('ml-footer-name');
         if (!btn || !email) return;
 
         btn.addEventListener('click', async function(e) {
             e.preventDefault();
-            var emailVal = email.value.trim();
-            var nameVal  = name ? name.value.trim() : '';
+            const emailVal = email.value.trim();
+            const nameVal = name ? name.value.trim() : '';
 
             if (!emailVal || !emailVal.includes('@')) {
                 email.style.borderColor = '#e05c5c';
@@ -420,10 +421,10 @@
             btn.textContent = 'Subscribing...';
 
             try {
-                var res = await fetch('/.netlify/functions/subscribe', {
-                    method:  'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body:    JSON.stringify({ email: emailVal, name: nameVal })
+                const res = await fetch('/.netlify/functions/subscribe', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email: emailVal, name: nameVal})
                 });
                 await res.json();
 

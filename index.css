@@ -26,7 +26,7 @@
 
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: #000000;}
 body { font-family: 'Montserrat', sans-serif; background-color: var(--cream); color: var(--charcoal); overflow-x: hidden; }
 h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
 a { text-decoration: none; color: inherit; }
@@ -1160,7 +1160,7 @@ footer {
 
     /* Product card sizing */
     .product-card { width: calc(100vw - 6rem); max-width: none; }
-    .product-image { height: 200px; object-fit: cover; }
+    .product-image { height: 200px; object-fit: contain; padding: 0.5rem; background: var(--cream); }
 
     /* View more button */
     .view-more {
