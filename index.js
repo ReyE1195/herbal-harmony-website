@@ -146,20 +146,24 @@ function goToGroup(idx) {
     const targetSlot = currentIndex + 1; // +1 to account for the leading clones
     isTransitioning = true;
 
-    // Scroll to the target card's ACTUAL position rather than a calculated
-    // multiple of STEP. cards[0] sits at the scroll origin, so the gap between
-    // it and the target card is exactly the scrollLeft we need — no drift, and
-    // no overshooting the last card into the hidden clone.
     const cards = scrollTrack.querySelectorAll('.product-card');
     const targetCard = cards[targetSlot * CARDS_PER_VIEW];
     const targetLeft = targetCard
         ? targetCard.offsetLeft - cards[0].offsetLeft
-        : targetSlot * STEP; // safety fallback
+        : targetSlot * STEP;
 
     scrollTrack.style.scrollBehavior = 'smooth';
     scrollTrack.scrollTo({ left: targetLeft, behavior: 'smooth' });
 
     updateDots();
+
+    // Safety net: if 'scrollend' never fires — which can happen when the last
+    // group is uneven (product count not divisible by CARDS_PER_VIEW) — force
+    // isTransitioning back to false so the arrow buttons never lock up.
+    clearTimeout(window.__hhScrollSafety);
+    window.__hhScrollSafety = setTimeout(() => {
+        if (isTransitioning) handleScrollEnd();
+    }, 500);
 }
 
 // After the smooth scroll settles, silently jump if we landed on a clone group
@@ -167,19 +171,32 @@ function handleScrollEnd() {
     if (!isTransitioning) return;
     isTransitioning = false;
 
-    const totalSlots = TOTAL_GROUPS + 2; // real groups + 2 clone slots
-    const scrolledSlot = Math.round(scrollTrack.scrollLeft / STEP);
+    const cards = scrollTrack.querySelectorAll('.product-card');
 
-    if (scrolledSlot === 0) {
+    // Measure real clone boundaries straight from the DOM instead of assuming
+    // every group is the same pixel width — this is what breaks when the last
+    // group has fewer cards than CARDS_PER_VIEW.
+    const firstRealLeft    = cards[CARDS_PER_VIEW].offsetLeft - cards[0].offsetLeft;
+    const trailingCloneIdx = CARDS_PER_VIEW + products.length;
+    const trailingCloneLeft = cards[trailingCloneIdx]
+        ? cards[trailingCloneIdx].offsetLeft - cards[0].offsetLeft
+        : null;
+    const lastRealLeft = cards[TOTAL_GROUPS * CARDS_PER_VIEW]
+        ? cards[TOTAL_GROUPS * CARDS_PER_VIEW].offsetLeft - cards[0].offsetLeft
+        : null;
+
+    const tolerance = 5; // px, allows for subpixel rounding
+
+    if (scrollTrack.scrollLeft <= tolerance) {
         // Landed on the leading clone → wrap to the last real group
         scrollTrack.style.scrollBehavior = 'auto';
-        scrollTrack.scrollLeft = TOTAL_GROUPS * STEP;
+        if (lastRealLeft !== null) scrollTrack.scrollLeft = lastRealLeft;
         currentIndex = TOTAL_GROUPS - 1;
         updateDots();
-    } else if (scrolledSlot === totalSlots - 1) {
-        // Landed on the trailing clone → wrap to the first real group
+    } else if (trailingCloneLeft !== null && scrollTrack.scrollLeft >= trailingCloneLeft - tolerance) {
+        // Landed on/at the trailing clone → wrap to the first real group
         scrollTrack.style.scrollBehavior = 'auto';
-        scrollTrack.scrollLeft = STEP;
+        scrollTrack.scrollLeft = firstRealLeft;
         currentIndex = 0;
         updateDots();
     }
