@@ -1,0 +1,24 @@
+[build]
+functions = "netlify/functions"
+publish = "."
+
+[build.environment]
+SECRETS_SCAN_OMIT_PATHS = "privacy.html,terms.html,disclaimer.html,cookie-policy.html"
+
+[functions]
+node_bundler = "nft"
+
+[[plugins]]
+package = "@netlify/plugin-functions-install-core"
+
+[[headers]]
+for = "/netlify/functions/*"
+[headers.values]
+Access-Control-Allow-Origin = "*"
+Access-Control-Allow-Headers = "Content-Type, Authorization"
+Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+
+[[redirects]]
+from = "/*"
+to = "/404-Green.html"
+status = 404

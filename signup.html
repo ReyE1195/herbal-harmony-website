@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up — Herbal Harmony with Holistic Healing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon:              #528552;
+            --neon-glow:         0 0 8px #528552, 0 0 22px #528552, 0 0 44px rgba(82,133,82,0.35);
+            --neon-forest:       #3D5A3D;
+            --neon-frosted-mint: #D0EED0;
+            --cream:             #F8F4E9;
+            --cream-dark:        #CDCFC0;
+            --sage:              #B8BBA3;
+            --sage-dark:         #9F9989;
+            --forest:            #3d5a3d;
+            --charcoal:          #3B575A;
+            --ink:               #000000;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: "Montserrat", sans-serif;
+            background: var(--cream);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                    radial-gradient(ellipse at 15% 50%, rgba(61,90,61,0.08) 0%, transparent 55%),
+                    radial-gradient(ellipse at 85% 20%, rgba(82,133,82,0.07) 0%, transparent 50%),
+                    radial-gradient(ellipse at 60% 85%, rgba(208,238,208,0.1) 0%, transparent 45%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        h1, h2, h3 { font-family: "Cormorant Garamond", serif; }
+        a { text-decoration: none; color: inherit; }
+
+        .auth-card {
+            position: relative;
+            z-index: 1;
+            background: white;
+            border: 1px solid var(--cream-dark);
+            border-radius: 1.5rem;
+            padding: 3rem 3.5rem;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 8px 48px rgba(61,90,61,0.1), 0 2px 8px rgba(61,90,61,0.06);
+        }
+
+        .auth-brand {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .auth-brand h1 {
+            font-size: 1.8rem;
+            color: var(--forest);
+            line-height: 1.3;
+            margin-bottom: 0.4rem;
+        }
+
+        .auth-brand p {
+            font-style: italic;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 1.1rem;
+            color: var(--sage-dark);
+        }
+
+        .auth-divider {
+            width: 40px;
+            height: 2px;
+            background: var(--neon);
+            margin: 0.9rem auto 0;
+            border-radius: 999px;
+            box-shadow: var(--neon-glow);
+        }
+
+        .section-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--neon);
+            text-align: center;
+            margin-bottom: 0.3rem;
+        }
+
+        .form-group { margin-bottom: 1.1rem; }
+
+        .form-group label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--charcoal);
+            margin-bottom: 0.4rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.6rem;
+            border: 2px solid var(--cream-dark);
+            background: var(--cream);
+            color: var(--charcoal);
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.86rem;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input::placeholder { color: var(--sage-dark); }
+
+        .form-group input:focus {
+            border-color: var(--neon);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(82,133,82,0.12);
+        }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+        .auth-submit {
+            width: 100%;
+            padding: 0.88rem;
+            margin-top: 0.75rem;
+            border: 2px solid var(--neon-forest);
+            border-radius: 999px;
+            background: var(--neon-forest);
+            color: var(--neon-frosted-mint);
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.86rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .auth-submit:hover {
+            background: var(--neon);
+            border-color: var(--neon);
+            box-shadow: var(--neon-glow);
+            transform: translateY(-2px);
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.82rem;
+            color: var(--sage-dark);
+        }
+
+        .auth-footer a {
+            color: var(--neon-forest);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .auth-footer a:hover { color: var(--neon); }
+
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.76rem;
+            letter-spacing: 0.06em;
+            color: var(--sage);
+            transition: color 0.3s;
+        }
+
+        .back-home:hover { color: var(--forest); }
+
+        @media (max-width: 520px) {
+            .auth-card { padding: 2rem 1.5rem; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="auth-card">
+    <div class="auth-brand">
+        <p class="section-label">Join Our Community</p>
+        <h1>Herbal Harmony<br><em>with Holistic Healing</em></h1>
+        <div class="auth-divider"></div>
+        <p>Create your account 🌿</p>
+    </div>
+
+    <form id="signup-form" novalidate>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="firstName" placeholder="Jane" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="lastName" placeholder="Smith" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="janesmith7@outlook.com" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number (optional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 231-5647">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Min. 8 characters" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirmPassword" placeholder="Repeat password" required>
+        </div>
+        <button type="submit" class="auth-submit">Create Account</button>
+    </form>
+
+    <p class="auth-footer">Already have an account? <a href="login.html">Log in here</a></p>
+    <a href="index.html" class="back-home">&#8592; Back to Home</a>
+</div>
+<script>
+    // ── Error message display ──────────────────────────────────────
+    function showError(message) {
+        let errEl = document.getElementById('form-error');
+        if (!errEl) {
+            errEl = document.createElement('p');
+            errEl.id = 'form-error';
+            errEl.style.cssText = 'color:#e05c5c;font-size:0.78rem;text-align:center;margin-top:0.75rem;padding:0.6rem;background:rgba(224,92,92,0.08);border-radius:0.5rem;';
+            document.querySelector('.auth-submit').after(errEl);
+        }
+        errEl.textContent = message;
+    }
+
+    function clearError() {
+        const errEl = document.getElementById('form-error');
+        if (errEl) errEl.textContent = '';
+    }
+
+    document.getElementById("signup-form").addEventListener("submit", async function(e) {
+        e.preventDefault();
+        clearError();
+
+        const firstName = document.getElementById("first-name").value.trim();
+        const lastName  = document.getElementById("last-name").value.trim();
+        const email     = document.getElementById("email").value.trim();
+        const phone     = document.getElementById("phone").value.trim();
+        const pw        = document.getElementById("password").value;
+        const cpw       = document.getElementById("confirm-password").value;
+
+        // Validate passwords match
+        if (pw !== cpw) {
+            const cpwInput = document.getElementById("confirm-password");
+            cpwInput.style.borderColor = "#e05c5c";
+            cpwInput.value = "";
+            cpwInput.placeholder = "Passwords do not match";
+            return;
+        }
+
+        // Disable button while submitting
+        const btn = document.querySelector(".auth-submit");
+        btn.disabled = true;
+        btn.textContent = "Creating account...";
+
+        try {
+            const response = await fetch('/.netlify/functions/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ firstName, lastName, email, phone, password: pw })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                showError(data.error || 'Something went wrong. Please try again.');
+                btn.disabled = false;
+                btn.textContent = "Create Account";
+                return;
+            }
+
+            // Save token and user info to localStorage
+            localStorage.setItem('hh_token', data.token);
+            localStorage.setItem('hh_profile', JSON.stringify({
+                firstName: data.user.firstName,
+                lastName:  data.user.lastName,
+                email:     data.user.email,
+                phone:     data.user.phone,
+                emailVerified: data.user.emailVerified
+            }));
+
+            btn.textContent = "Welcome! 🌿";
+            btn.style.background = "var(--neon)";
+
+            setTimeout(() => {
+                window.location.href = "account.html";
+            }, 800);
+
+        } catch(err) {
+            showError('Connection error. Please check your internet and try again.');
+            btn.disabled = false;
+            btn.textContent = "Create Account";
+        }
+    });
+</script>
+</body>
+</html>
