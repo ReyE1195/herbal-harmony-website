@@ -1,0 +1,10 @@
+{
+  "name": "herbal-harmony-with-holistic-healing",
+  "private": true,
+  "dependencies": {
+    "stripe": "^14.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "@netlify/blobs": "^7.0.0",
+    "bcryptjs": "^2.4.3"
+  }
+}
